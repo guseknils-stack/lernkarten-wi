@@ -5,7 +5,7 @@
 import { baerSVG } from "./bear.js";
 
 // ---------- Einstellungen ----------
-const TAGESZIEL = 10;        // so viele Antworten pro Tag zählen als "gelernt"
+const TAGESZIEL = 10;        // so viele RICHTIG beantwortete Karten pro Tag ergeben einen Trainingstag
 const FORTSCHRITT_MAX = 22;  // so viele Lerntage, bis der Bär voll entwickelt ist
 const FORTSCHRITT_MIN = -10; // tiefster Stand: Bär ist richtig krank
 const MINUS_POSITIV = 3;     // verpasster Tag, solange der Fortschritt über 0 ist
@@ -18,7 +18,8 @@ const SPEICHER = "paukbaer-v1";
 function laden() {
   try { return JSON.parse(localStorage.getItem(SPEICHER)) || {}; } catch { return {}; }
 }
-let S = Object.assign({ karten: {}, tage: {}, tests: [] }, laden());
+// tage = alle Antworten pro Tag, richtigTage = nur die richtigen (die zählen fürs Training)
+let S = Object.assign({ karten: {}, tage: {}, richtigTage: {}, tests: [] }, laden());
 function speichern() {
   try { localStorage.setItem(SPEICHER, JSON.stringify(S)); } catch { /* z. B. privater Modus */ }
 }
@@ -59,6 +60,7 @@ function verbuchen(fach, nr, richtig) {
   else { k.stufe = Math.max(0, k.stufe - 1); k.falsch++; }
   S.karten[kartenSchluessel(fach, nr)] = k;
   S.tage[heute()] = (S.tage[heute()] || 0) + 1;
+  if (richtig) S.richtigTage[heute()] = (S.richtigTage[heute()] || 0) + 1;
   speichern();
 }
 
@@ -76,32 +78,52 @@ function paketQuote(daten, p) {
 }
 
 // ---------- Der Bär ----------
-// Berechnet den Zustand des Bären aus allen Lerntagen: Trainingsfortschritt, Stimmung, Serie, Ausstattung
+const heuteRichtig = () => S.richtigTage[heute()] || 0;
+// Ein Trainingstag ist ein Tag mit mindestens TAGESZIEL richtig beantworteten Karten
+const trainiert = (d) => (S.richtigTage[d] || 0) >= TAGESZIEL;
+
+// Geht alle Tage vom ersten Trainingstag bis heute durch und rechnet den Trainingsfortschritt aus.
+// Liefert pro Tag: Datum, ob trainiert/verpasst, die Änderung und den Stand danach (für Bär und Kalender).
+// Regeln: +1 pro Trainingstag (bis 22). Verpasster Tag: -3, solange der Stand über 0 ist (aber nicht unter 0),
+// danach -1 pro Tag bis -10. Heute zählt erst als verpasst, wenn der Tag vorbei ist.
+function trainingsVerlauf() {
+  const t = heute();
+  const erster = Object.keys(S.richtigTage).filter(trainiert).sort()[0];
+  const verlauf = [];
+  let stand = 0;
+  if (!erster) return verlauf;
+  for (let d = erster; d <= t; d = plusTage(d, 1)) {
+    const vorher = stand;
+    let art = "offen"; // offen = heute, noch nicht geschafft
+    if (trainiert(d)) { art = "trainiert"; stand = Math.min(FORTSCHRITT_MAX, stand + 1); }
+    else if (d !== t) {
+      art = "verpasst";
+      stand = stand > 0 ? Math.max(0, stand - MINUS_POSITIV) : Math.max(FORTSCHRITT_MIN, stand - MINUS_NEGATIV);
+    }
+    verlauf.push({ datum: d, art, aenderung: stand - vorher, stand, richtig: S.richtigTage[d] || 0 });
+  }
+  return verlauf;
+}
+
+// Berechnet den Zustand des Bären aus dem Trainingsverlauf: Fortschritt, Stimmung, Serie, Ausstattung
 function baerZustand(daten) {
   const t = heute();
-  const gelernt = Object.keys(S.tage).filter((d) => S.tage[d] >= TAGESZIEL).sort();
-  // Trainingsfortschritt: +1 pro Lerntag (bis 22). Verpasster Tag: -3, solange er über 0 ist
-  // (aber nicht unter 0), danach -1 pro Tag bis -10. Der heutige Tag zählt erst als verpasst, wenn er vorbei ist.
-  let fortschritt = 0;
-  if (gelernt.length) {
-    for (let d = gelernt[0]; d <= t; d = plusTage(d, 1)) {
-      if (S.tage[d] >= TAGESZIEL) fortschritt = Math.min(FORTSCHRITT_MAX, fortschritt + 1);
-      else if (d !== t) fortschritt = fortschritt > 0 ? Math.max(0, fortschritt - MINUS_POSITIV) : Math.max(FORTSCHRITT_MIN, fortschritt - MINUS_NEGATIV);
-    }
-  }
+  const verlauf = trainingsVerlauf();
+  const fortschritt = verlauf.length ? verlauf[verlauf.length - 1].stand : 0;
+  const gelernt = verlauf.filter((v) => v.art === "trainiert").map((v) => v.datum);
   const letzter = gelernt[gelernt.length - 1];
-  const pause = letzter ? tageZwischen(letzter, t) : 0; // 0 = heute gelernt, 1 = gestern
-  // Stimmung: unter 0 wird er Schritt für Schritt kränker. Über 0 wird er nur müde, wenn gestern nicht gelernt wurde.
+  const pause = letzter ? tageZwischen(letzter, t) : 0; // 0 = heute trainiert, 1 = gestern
+  // Stimmung: unter 0 wird er Schritt für Schritt kränker. Über 0 wird er nur müde, wenn gestern nicht trainiert wurde.
   const stimmung = fortschritt <= -7 ? "krank" : fortschritt <= -4 ? "zerzaust" : fortschritt <= -1 ? "muede"
     : (letzter && pause >= 2) ? "muede" : "fit";
-  // Serie: zusammenhängende Lerntage bis heute oder gestern
+  // Serie: zusammenhängende Trainingstage bis heute oder gestern
   let serie = 0;
-  if (letzter && pause <= 1) { for (let d = letzter; S.tage[d] >= TAGESZIEL; d = plusTage(d, -1)) serie++; }
+  if (letzter && pause <= 1) { for (let d = letzter; trainiert(d); d = plusTage(d, -1)) serie++; }
   const gruen = daten ? daten.pakete.filter((p) => ampel(daten, p) === "gruen").length : 0;
   const n = daten ? daten.pakete.length : 1;
   // Für die Zeichnung: Fortschritt 0–22 auf Muskelstufe 0–10 umrechnen
   const muskeln = Math.max(0, fortschritt) * 10 / FORTSCHRITT_MAX;
-  return { fortschritt, muskeln, stimmung, serie, pause, brille: gruen >= Math.ceil(n / 2), kette: gruen === n, gruen, n, heuteAntworten: S.tage[t] || 0 };
+  return { fortschritt, muskeln, stimmung, serie, pause, brille: gruen >= Math.ceil(n / 2), kette: gruen === n, gruen, n, heuteRichtig: heuteRichtig() };
 }
 
 // Der Satz unter dem Bären, passend zu seinem Zustand
@@ -112,7 +134,7 @@ function baerText(z) {
   if (z.kette) return "Voll ausgestattet: Muskeln, Ray-Ban und Goldkette. 💪😎";
   if (z.brille) return "Halbzeit geschafft: Die goldene Ray-Ban sitzt! 😎";
   if (z.fortschritt >= FORTSCHRITT_MAX) return "Voll entwickelt! 22 Tage Training haben sich gelohnt. 🏆";
-  if (z.heuteAntworten >= TAGESZIEL) return "Heute trainiert! Der Trainingsfortschritt steigt.";
+  if (z.heuteRichtig >= TAGESZIEL) return "Heute trainiert! Der Trainingsfortschritt steigt.";
   if (z.fortschritt === 0) return "Hi, ich bin dein PaukBär. Trainier mit mir!";
   return "Bereit fürs Training?";
 }
@@ -131,7 +153,7 @@ function countdownText(datum) {
 async function startseite() {
   const daten = await fachLaden("logistik");
   const z = baerZustand(daten);
-  const ziel = Math.min(100, Math.round((z.heuteAntworten / TAGESZIEL) * 100));
+  const ziel = Math.min(100, Math.round((z.heuteRichtig / TAGESZIEL) * 100));
   zeige(`
     <div class="kopf"><h1>PaukBär</h1></div>
     <section class="feld baer-feld">
@@ -143,7 +165,9 @@ async function startseite() {
         <div><b>🟢 ${z.gruen}/${z.n}</b><span class="leise">Pakete grün</span></div>
       </div>
       <div class="tagesziel"><span style="width:${ziel}%"></span></div>
-      <div class="leise">Tagesziel: ${Math.min(z.heuteAntworten, TAGESZIEL)} von ${TAGESZIEL} Karten</div>
+      <div class="leise">Tägliches Trainingsziel: ${Math.min(z.heuteRichtig, TAGESZIEL)} von ${TAGESZIEL} Karten richtig${z.heuteRichtig >= TAGESZIEL ? " ✅" : ""}</div>
+      <div class="abstand"></div>
+      <button class="knopf zweit" data-los="kalender">📅 Trainingskalender</button>
     </section>
     ${FAECHER.map((f) => `
       <button class="feld fach ${f.bald ? "bald" : ""}" ${f.bald ? "disabled" : `data-los="fach/${f.id}"`}>
@@ -206,6 +230,68 @@ async function paketSeite(id, nr) {
   `);
 }
 
+// ---------- Trainingskalender ----------
+// Zeigt, an welchen Tagen trainiert oder verpasst wurde, und wie weit es noch bis zur Bestform ist
+function kalender() {
+  const t = heute();
+  const verlauf = trainingsVerlauf();
+  const proTag = Object.fromEntries(verlauf.map((v) => [v.datum, v]));
+  const stand = verlauf.length ? verlauf[verlauf.length - 1].stand : 0;
+  const anzahl = (art) => verlauf.filter((v) => v.art === art).length;
+  // Wie viele Trainingstage fehlen noch bis 22? Unter 0 muss man erst zurück auf 0.
+  const fehlen = FORTSCHRITT_MAX - stand;
+  const bestform = stand >= FORTSCHRITT_MAX ? "🏆 Bestform erreicht!"
+    : `Noch <b>${fehlen}</b> Trainingstag${fehlen === 1 ? "" : "e"} ohne Pause bis zur Bestform.`;
+
+  // Ein Monat als Raster Mo–So
+  const monat = (jahr, m) => {
+    const erster = new Date(jahr, m, 1);
+    const leer = (erster.getDay() + 6) % 7; // Montag = 0
+    const tage = new Date(jahr, m + 1, 0).getDate();
+    let zellen = "";
+    for (let i = 0; i < leer; i++) zellen += `<div></div>`;
+    for (let tag = 1; tag <= tage; tag++) {
+      const d = datumText(new Date(jahr, m, tag));
+      const v = proTag[d];
+      const art = v ? v.art : d > t ? "zukunft" : "";
+      const zeichen = art === "trainiert" ? "✓" : art === "verpasst" ? "✗" : (S.richtigTage[d] ? S.richtigTage[d] : "");
+      zellen += `<div class="tag ${art} ${d === t ? "heute" : ""}"><span>${tag}</span><small>${zeichen}</small></div>`;
+    }
+    const name = erster.toLocaleDateString("de-DE", { month: "long", year: "numeric" });
+    return `<section class="feld"><h3>${name}</h3>
+      <div class="kalender">${["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"].map((w) => `<div class="wtag">${w}</div>`).join("")}${zellen}</div></section>`;
+  };
+  // Monate vom ersten Trainingstag bis heute, der aktuelle zuerst
+  const jetzt = new Date();
+  const start = verlauf.length ? new Date(verlauf[0].datum + "T12:00") : jetzt;
+  const monate = [];
+  let j = jetzt.getFullYear(), m = jetzt.getMonth();
+  while (j * 12 + m >= start.getFullYear() * 12 + start.getMonth()) {
+    monate.push(monat(j, m));
+    m--; if (m < 0) { m = 11; j--; }
+  }
+  const zeile = (v) => `<li><b>${new Date(v.datum + "T12:00").toLocaleDateString("de-DE", { weekday: "short", day: "numeric", month: "short" })}</b>:
+    ${v.art === "trainiert" ? "✓ trainiert" : v.art === "verpasst" ? "✗ verpasst" : "heute noch offen"} (${v.richtig} richtig)
+    <span class="leise">· ${v.aenderung > 0 ? "+" : ""}${v.aenderung} → Stand ${v.stand}</span></li>`;
+
+  zeige(`
+    ${kopf("Trainingskalender", "start")}
+    <section class="feld">
+      <div class="serie">
+        <div><b>🏋️ ${stand}/${FORTSCHRITT_MAX}</b><span class="leise">Stand</span></div>
+        <div><b>✓ ${anzahl("trainiert")}</b><span class="leise">trainiert</span></div>
+        <div><b>✗ ${anzahl("verpasst")}</b><span class="leise">verpasst</span></div>
+      </div>
+      <div class="tagesziel"><span style="width:${Math.max(0, stand) * 100 / FORTSCHRITT_MAX}%"></span></div>
+      <p style="margin:6px 0 0">${bestform}</p>
+      <p class="leise">Ein Trainingstag zählt ab ${TAGESZIEL} richtigen Karten. +1 pro Trainingstag, −${MINUS_POSITIV} pro verpasstem Tag (nicht unter 0), ab 0 dann −${MINUS_NEGATIV} pro Tag bis ${FORTSCHRITT_MIN}.</p>
+    </section>
+    ${monate.join("")}
+    <p class="leise">✓ = trainiert · ✗ = verpasst · Zahl = so viele richtige Karten, Ziel noch nicht erreicht</p>
+    ${verlauf.length ? `<section class="feld"><h3>Verlauf</h3><ul class="fehler">${verlauf.slice(-14).reverse().map(zeile).join("")}</ul></section>` : `<p class="leise">Noch kein Trainingstag. Schaff heute ${TAGESZIEL} richtige Karten, dann geht es los!</p>`}
+  `);
+}
+
 // ---------- Antwort-Bewertung (Tipp-Modus) ----------
 // Wörter, die beim Vergleich keine Rolle spielen
 const FUELLWOERTER = new Set(["also", "eine", "einer", "eines", "einem", "einen", "der", "die", "das", "den", "dem", "des", "und", "oder", "für", "mit", "von", "vom", "bei", "beim", "nicht", "nach", "auf", "aus", "ein", "ist", "sind", "wird", "werden", "noch", "auch", "nur", "wie", "was", "dass", "z.b", "englisch", "bzw", "etc"]);
@@ -256,7 +342,8 @@ function bewerten(eingabe, karte) {
 
 // ---------- Karteikarten ----------
 // Karteikarten: mischen, dann entweder Antwort eintippen (App bewertet) oder umdrehen (selbst bewerten).
-// Nicht gewusste Karten kommen am Ende der Runde nochmal. Das Symbol erscheint erst bei der Lösung,
+// Hat die Karte eine Wissensfrage (mc), kommt sie danach als zweiter Teil. Die Karte zählt nur als
+// richtig, wenn beide Teile stimmen. Nicht gewusste Karten kommen am Ende der Runde nochmal. Das Symbol erscheint erst bei der Lösung,
 // weil es sonst bei Abkürzungen einen Hinweis geben würde.
 function karteikarten(id, nr) {
   fachLaden(id).then((d) => {
@@ -295,7 +382,7 @@ function karteikarten(id, nr) {
       }
       zeige(`
         ${kopf(`Paket ${p.nr} · Karteikarten`, `paket/${id}/${nr}`)}
-        <div class="fortschritt">Karte ${pos + 1} von ${stapel.length}</div>
+        <div class="fortschritt">Karte ${pos + 1} von ${stapel.length}${k.mc ? " · Teil 1 von 2" : ""}</div>
         <section class="feld karteikarte">
           <div class="begriff">${esc(vorne(k))}</div>
           ${zustand === "geprueft" ? `<div class="urteil ${urteil ? "ok" : "nok"}">${urteil ? "✅ Richtig!" : "❌ Nicht ganz."}<br><span class="leise">Deine Antwort: ${esc(eingabe)}</span></div>` : ""}
@@ -304,13 +391,8 @@ function karteikarten(id, nr) {
         ${unten}
       `);
 
-      // Antwort verbuchen und zur nächsten Karte
-      const weiter = (gewusst) => {
-        verbuchen(id, k.nr, gewusst); gesamt++;
-        if (gewusst) richtig++; else if (!nochmal.has(k.nr)) { nochmal.add(k.nr); stapel.push(k); }
-        pos++;
-        pos < stapel.length ? karte() : ende();
-      };
+      // Nach Teil 1: Wissensfrage stellen, falls vorhanden, sonst die Karte gleich abschließen
+      const weiter = (gewusst) => (k.mc ? teil2(k, gewusst) : abschliessen(k, gewusst));
 
       if (zustand === "frage") {
         document.getElementById("drehen").onclick = () => karte("umgedreht");
@@ -329,11 +411,33 @@ function karteikarten(id, nr) {
       }
     };
 
+    // Teil 2: die schwere Multiple-Choice-Frage zur Karte
+    // f wird beim ersten Aufruf gebaut und danach weitergereicht, damit die Antworten nach dem Tippen nicht neu gemischt werden
+    const teil2 = (k, teil1Ok, f = wissensFrage(k), gewaehlt) => {
+      const beantwortet = gewaehlt !== undefined;
+      zeige(`
+        ${kopf(`Paket ${p.nr} · Karteikarten`, `paket/${id}/${nr}`)}
+        <div class="fortschritt">Karte ${pos + 1} von ${stapel.length} · Teil 2 von 2 · Teil 1 ${teil1Ok ? "✅" : "❌"}</div>
+        ${mcHtml(f, gewaehlt)}
+        ${beantwortet ? `<button class="knopf" id="weiter">Weiter</button>` : ""}
+      `);
+      if (!beantwortet) mcKlicks(f, (i) => teil2(k, teil1Ok, f, i));
+      else document.getElementById("weiter").onclick = () => abschliessen(k, teil1Ok && f.optionen[gewaehlt].richtig);
+    };
+
+    // Karte verbuchen und zur nächsten
+    const abschliessen = (k, gewusst) => {
+      verbuchen(id, k.nr, gewusst); gesamt++;
+      if (gewusst) richtig++; else if (!nochmal.has(k.nr)) { nochmal.add(k.nr); stapel.push(k); }
+      pos++;
+      pos < stapel.length ? karte() : ende();
+    };
+
     const ende = () => zeige(`
       ${kopf("Runde geschafft! 🎉", `paket/${id}/${nr}`)}
       <section class="feld" style="text-align:center">
         <div class="ergebnis">${richtig}/${gesamt}</div>
-        <p>Antworten gewusst. Ampel jetzt: ${{ rot: "🔴", gelb: "🟡", gruen: "🟢" }[ampel(d, p)]}</p>
+        <p>Karten komplett richtig. Ampel jetzt: ${{ rot: "🔴", gelb: "🟡", gruen: "🟢" }[ampel(d, p)]}</p>
       </section>
       <button class="knopf" data-los="karten/${id}/${nr}">Neue Runde (neu gemischt)</button>
       <div class="abstand"></div>
@@ -345,41 +449,68 @@ function karteikarten(id, nr) {
   });
 }
 
-// Multiple-Choice-Frage bauen: richtige Antwort + 3 falsche aus derselben Kategorie
-function frageBauen(d, k) {
+// ---------- Multiple Choice (Quiz und Probetest) ----------
+// Bedeutungsfrage: "Was bedeutet X?" mit der richtigen Antwort und 3 falschen aus derselben Kategorie
+function bedeutungsFrage(d, k) {
   const andere = mischen(d.karten.filter((x) => x.nr !== k.nr && x.kategorie === k.kategorie && x.antwort !== k.antwort)).slice(0, 3);
-  return { karte: k, optionen: mischen([k, ...andere]) };
+  return {
+    karte: k, ueber: "Was bedeutet …", frage: `${vorne(k)}?`, erklaerung: k.erklaerung,
+    optionen: mischen([k, ...andere]).map((o) => ({ text: o.antwort, richtig: o.nr === k.nr })),
+  };
+}
+// Wissensfrage: die schwere Frage aus den Kartendaten (mc). In der Datei steht die richtige Antwort immer
+// an erster Stelle, deshalb wird hier gemischt.
+function wissensFrage(k) {
+  return {
+    karte: k, ueber: `Wissensfrage zu ${vorne(k)}`, frage: k.mc.frage, erklaerung: k.mc.erklaerung,
+    optionen: mischen(k.mc.optionen.map((text, i) => ({ text, richtig: i === 0 }))),
+  };
+}
+// Zeichnet eine Frage mit Antwortknöpfen. Ist schon gewählt, werden richtig/falsch markiert und die Erklärung gezeigt.
+function mcHtml(f, gewaehlt, mitAuswertung = true) {
+  const beantwortet = gewaehlt !== undefined && mitAuswertung;
+  return `
+    <section class="feld"><div class="leise">${esc(f.ueber)}</div><h2>${esc(f.frage)}</h2></section>
+    ${f.optionen.map((o, i) => {
+      const kl = beantwortet ? (o.richtig ? "richtig" : i === gewaehlt ? "falsch" : "") : "";
+      return `<button class="option ${kl}" data-i="${i}" ${beantwortet ? "disabled" : ""}>${"ABCD"[i]}) ${esc(o.text)}</button>`;
+    }).join("")}
+    ${beantwortet ? `<section class="feld">
+        <b>${f.optionen[gewaehlt].richtig ? "✅ Richtig!" : "❌ Leider falsch."}</b>
+        <p>${f.karte.symbol} ${esc(f.erklaerung)}</p>
+        <div class="quelle">Quelle Karte: ${mitLinks(f.karte.quelle)}</div>
+      </section>` : ""}`;
+}
+// Hängt an die Antwortknöpfe die Funktion, die mit der Nummer der gewählten Antwort aufgerufen wird
+function mcKlicks(f, beiWahl) {
+  document.querySelectorAll(".option").forEach((b) => (b.onclick = () => beiWahl(+b.dataset.i)));
 }
 
+// Quiz: pro Karte erst die Bedeutungsfrage, dann (falls vorhanden) die Wissensfrage.
+// Verbucht wird pro Karte: richtig nur, wenn alle Fragen zu dieser Karte stimmen.
 function quiz(id, nr) {
   fachLaden(id).then((d) => {
     const p = d.pakete.find((x) => x.nr === +nr);
-    const fragen = mischen(paketKarten(d, p)).map((k) => frageBauen(d, k));
+    const fragen = mischen(paketKarten(d, p)).flatMap((k) => (k.mc ? [bedeutungsFrage(d, k), wissensFrage(k)] : [bedeutungsFrage(d, k)]));
+    const kartenOk = {};
     let pos = 0, richtig = 0;
     const frage = (gewaehlt) => {
       const f = fragen[pos], beantwortet = gewaehlt !== undefined;
       zeige(`
         ${kopf(`Paket ${p.nr} · Quiz`, `paket/${id}/${nr}`)}
         <div class="fortschritt">Frage ${pos + 1} von ${fragen.length} · ${richtig} richtig</div>
-        <section class="feld"><div class="leise">Was bedeutet …</div><h2>${beantwortet ? f.karte.symbol + " " : ""}${esc(vorne(f.karte))}?</h2></section>
-        ${f.optionen.map((o, i) => {
-          let kl = "";
-          if (beantwortet) kl = o.nr === f.karte.nr ? "richtig" : i === gewaehlt ? "falsch" : "";
-          return `<button class="option ${kl}" data-i="${i}" ${beantwortet ? "disabled" : ""}>${"ABCD"[i]}) ${esc(o.antwort)}</button>`;
-        }).join("")}
-        ${beantwortet ? `<section class="feld">
-            <b>${f.optionen[gewaehlt].nr === f.karte.nr ? "✅ Richtig!" : "❌ Leider falsch."}</b>
-            <p>${esc(f.karte.erklaerung)}</p>
-            <div class="quelle">Quelle: ${mitLinks(f.karte.quelle)}</div>
-          </section>
-          <button class="knopf" id="weiter">${pos + 1 < fragen.length ? "Weiter" : "Auswertung"}</button>` : ""}
+        ${mcHtml(f, gewaehlt)}
+        ${beantwortet ? `<button class="knopf" id="weiter">${pos + 1 < fragen.length ? "Weiter" : "Auswertung"}</button>` : ""}
       `);
       if (!beantwortet) {
-        document.querySelectorAll(".option").forEach((b) => (b.onclick = () => {
-          const i = +b.dataset.i, ok = f.optionen[i].nr === f.karte.nr;
-          verbuchen(id, f.karte.nr, ok); if (ok) richtig++;
+        mcKlicks(f, (i) => {
+          const ok = f.optionen[i].richtig, nrK = f.karte.nr;
+          if (ok) richtig++;
+          kartenOk[nrK] = (kartenOk[nrK] ?? true) && ok;
+          // letzte Frage zu dieser Karte? Dann die Karte verbuchen
+          if (fragen[pos + 1]?.karte.nr !== nrK) verbuchen(id, nrK, kartenOk[nrK]);
           frage(i);
-        }));
+        });
       } else {
         document.getElementById("weiter").onclick = () => { pos++; pos < fragen.length ? frage() : ende(); };
       }
@@ -396,10 +527,13 @@ function quiz(id, nr) {
   });
 }
 
-// Probetest: zufällige Fragen aus allen Paketen, mit Zeitlimit, Auswertung erst am Ende
+// Probetest: zufällige Karten aus allen Paketen, mit Zeitlimit, Auswertung erst am Ende.
+// Pro Karte eine Frage: Hat sie eine Wissensfrage, kommt die mit 50 % Wahrscheinlichkeit, sonst die Bedeutungsfrage.
+// So ist der Test eine Mischung aus beidem, wie es im echten Kurztest vermutlich auch sein wird.
 function probetest(id) {
   fachLaden(id).then((d) => {
-    const fragen = mischen(d.karten).slice(0, PROBETEST_FRAGEN).map((k) => frageBauen(d, k));
+    const fragen = mischen(d.karten).slice(0, PROBETEST_FRAGEN)
+      .map((k) => (k.mc && Math.random() < 0.5 ? wissensFrage(k) : bedeutungsFrage(d, k)));
     const antworten = [];
     const ablauf = Date.now() + PROBETEST_MINUTEN * 60000;
     let pos = 0;
@@ -414,26 +548,26 @@ function probetest(id) {
       zeige(`
         ${kopf("Probetest", `fach/${id}`)}
         <div class="fortschritt">Frage ${pos + 1} von ${fragen.length} · ⏱️ <span class="timer" id="uhr"></span></div>
-        <section class="feld"><div class="leise">Was bedeutet …</div><h2>${esc(vorne(f.karte))}?</h2></section>
-        ${f.optionen.map((o, i) => `<button class="option" data-i="${i}">${"ABCD"[i]}) ${esc(o.antwort)}</button>`).join("")}
+        ${mcHtml(f, undefined, false)}
       `);
       uhr(); aktiveUhr = setInterval(uhr, 1000);
-      document.querySelectorAll(".option").forEach((b) => (b.onclick = () => {
-        antworten[pos] = +b.dataset.i; pos++;
+      mcKlicks(f, (i) => {
+        antworten[pos] = i; pos++;
         pos < fragen.length ? frage() : ende(false);
-      }));
+      });
     };
     const ende = (zeitUm) => {
       const fehler = [];
       let richtig = 0;
       fragen.forEach((f, i) => {
         if (antworten[i] === undefined) { fehler.push({ f, gewaehlt: null }); return; }
-        const ok = f.optionen[antworten[i]].nr === f.karte.nr;
+        const ok = f.optionen[antworten[i]].richtig;
         verbuchen(id, f.karte.nr, ok);
         ok ? richtig++ : fehler.push({ f, gewaehlt: f.optionen[antworten[i]] });
       });
       S.tests.push({ fach: id, datum: Date.now(), richtig, gesamt: fragen.length }); speichern();
       const quote = Math.round((richtig / fragen.length) * 100);
+      const loesung = (f) => f.optionen.find((o) => o.richtig).text;
       zeige(`
         ${kopf("Probetest – Ergebnis", `fach/${id}`)}
         <section class="feld" style="text-align:center">
@@ -442,7 +576,7 @@ function probetest(id) {
           <p>${richtig} von ${fragen.length} richtig. ${quote >= 90 ? "Stark, du bist bereit! 🏆" : quote >= 70 ? "Gut! Die Fehler unten noch einmal ansehen." : "Da geht noch was. Lern die Pakete mit gelber Ampel weiter."}</p>
         </section>
         ${fehler.length ? `<section class="feld"><h3>Das solltest du wiederholen</h3><ul class="fehler">
-          ${fehler.map(({ f, gewaehlt }) => `<li><b>${esc(vorne(f.karte))}</b>: ${esc(f.karte.antwort)}${gewaehlt ? `<br><span class="leise">Deine Antwort: ${esc(gewaehlt.antwort)}</span>` : `<br><span class="leise">nicht beantwortet</span>`}</li>`).join("")}
+          ${fehler.map(({ f, gewaehlt }) => `<li><b>${esc(f.frage)}</b><br>✅ ${esc(loesung(f))}${gewaehlt ? `<br><span class="leise">Deine Antwort: ${esc(gewaehlt.text)}</span>` : `<br><span class="leise">nicht beantwortet</span>`}<br><span class="leise">${esc(f.erklaerung)}</span></li>`).join("")}
         </ul></section>` : ""}
         <button class="knopf" data-los="probetest/${id}">Neuer Probetest</button>
         <div class="abstand"></div>
@@ -457,7 +591,7 @@ function probetest(id) {
 function route() {
   const [seite, a, b] = (location.hash.slice(1) || "start").split("/");
   ({ start: startseite, fach: () => fachSeite(a), paket: () => paketSeite(a, b), karten: () => karteikarten(a, b),
-     quiz: () => quiz(a, b), probetest: () => probetest(a) }[seite] || startseite)();
+     quiz: () => quiz(a, b), probetest: () => probetest(a), kalender }[seite] || startseite)();
 }
 $app.addEventListener("click", (e) => {
   const z = e.target.closest("[data-los]");

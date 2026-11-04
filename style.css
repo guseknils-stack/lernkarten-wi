@@ -93,3 +93,16 @@ ul.fehler { padding-left: 18px; } ul.fehler li { margin-bottom: 10px; }
 .eingabe:focus { outline: none; border-color: var(--akzent); }
 .urteil { font-weight: 700; font-size: 19px; margin: 6px 0; text-align: center; }
 .urteil.ok { color: var(--gruen); } .urteil.nok { color: var(--rot); }
+
+/* Trainingskalender */
+.kalender { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin-top: 10px; text-align: center; }
+.kalender .wtag { font-size: 12px; color: var(--leise); }
+.kalender .tag { border-radius: 10px; padding: 4px 0; min-height: 42px; background: var(--bg); display: flex; flex-direction: column; justify-content: center; }
+.kalender .tag span { font-size: 14px; }
+.kalender .tag small { font-size: 12px; font-weight: 700; min-height: 14px; color: var(--leise); }
+.kalender .tag.trainiert { background: rgba(47,158,91,.18); }
+.kalender .tag.trainiert small { color: var(--gruen); }
+.kalender .tag.verpasst { background: rgba(214,69,69,.14); }
+.kalender .tag.verpasst small { color: var(--rot); }
+.kalender .tag.zukunft { opacity: .4; }
+.kalender .tag.heute { outline: 2px solid var(--akzent); }

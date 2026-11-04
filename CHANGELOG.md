@@ -2,6 +2,17 @@
 
 Neueste Änderungen stehen oben.
 
+## 2026-11-04 – Wissensfragen, Trainingsziel mit richtigen Antworten, Trainingskalender
+- `data/logistik.json`: 85 von 92 Karten haben jetzt eine schwere Multiple-Choice-Frage (Feld `mc`), gebaut aus den Folien und dem Skript (z. B. „Wie wird ein GLT bewegt?“, Rechenaufgaben zu TEU, Lademeter, OTIF). Bei 7 Begriffen (RM, FP, Senke, SC, Lead Time, Shelf life, End-to-End) gab es keine sinnvolle schwere Frage, sie bleiben ohne. Die richtige Antwort steht in der Datei an erster Stelle und wird in der App gemischt. Ich habe außerdem darauf geachtet, dass die richtige Antwort nicht fast immer die längste ist.
+- `data/logistik.json`: Kitting (Nr. 11) steht doch ausführlich in den Folien (VL 8, S. 39). Quelle und Markierung korrigiert.
+- `app.js` Karteikarten: Nach dem Tippen oder Umdrehen kommt als Teil 2 die Wissensfrage. Die Karte zählt nur als richtig, wenn beide Teile stimmen.
+- `app.js` Quiz: pro Karte die Bedeutungsfrage und danach die Wissensfrage. Probetest: pro Karte zufällig eine der beiden Fragearten.
+- `app.js`: Ein Trainingstag zählt jetzt erst ab 10 RICHTIG beantworteten Karten (neuer Speicher `richtigTage`). Auf der Startseite steht „Tägliches Trainingsziel: x von 10 Karten richtig“. Achtung: Richtige Antworten von vor diesem Update wurden nicht extra gespeichert, sie zählen deshalb nicht.
+- `app.js` + `style.css`: Neue Seite „Trainingskalender“ (Knopf auf der Startseite): Monatskalender mit ✓ trainiert / ✗ verpasst, Stand x/22, wie viele Trainingstage bis zur Bestform fehlen, und eine Liste der letzten 14 Tage mit +1/−3/−1.
+- `app.js`: Die Berechnung des Trainingsfortschritts steckt jetzt in `trainingsVerlauf()`, damit Bär und Kalender dieselbe Rechnung benutzen.
+- `sw.js`: Cache-Version auf v7.
+- Warum: Nils will schwierigere Fragen auf Test-Niveau, ein Trainingsziel, das nur mit richtigen Antworten zählt, und einen Überblick über seine Trainingstage.
+
 ## 2026-11-04 – Abkürzungen ohne Langform auf der Karte
 - `data/logistik.json`: Neues Feld `frage` = das, was auf der Vorderseite steht. Gesetzt bei 5 Karten, deren Begriff in Seifermanns Liste die Langform schon enthält: GiBo (6), lm / Ldm (34), HU (36), Safety Stock (80), OOS (83). Die Langform steht jetzt am Anfang der Antwort, damit man sie eintippen kann.
 - `app.js`: Neue Hilfsfunktion `vorne(k)` nimmt `frage`, wenn vorhanden, sonst `begriff`. Sie wird überall genutzt, wo ein Begriff angezeigt wird (Paketliste, Karteikarte, Quiz, Probetest, Fehlerliste).
