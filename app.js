@@ -1,3 +1,7 @@
+// PaukBär – Hauptlogik der App.
+// Enthält: Speicher (Lernfortschritt auf dem Gerät), Bär-Zustand, alle Ansichten
+// (Startseite, Fach, Paket, Karteikarten, Quiz, Probetest) und die Navigation.
+
 import { baerSVG } from "./bear.js";
 
 // ---------- Einstellungen ----------
