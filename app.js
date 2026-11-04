@@ -183,48 +183,135 @@ async function paketSeite(id, nr) {
     <button class="knopf zweit" data-los="quiz/${id}/${p.nr}">❓ Quiz mit Erklärungen</button>
     <div class="abstand"></div>
     <section class="feld">
-      ${ks.map((k) => `<div class="paket" style="padding:6px 0"><span class="ampel ${stufe(id, k.nr) >= 2 ? "gruen" : gesehen(id, k.nr) ? "gelb" : "rot"}"></span><span class="info">${k.symbol} ${esc(k.begriff)}</span></div>`).join("")}
+      ${ks.map((k) => `<div class="paket" style="padding:6px 0"><span class="ampel ${stufe(id, k.nr) >= 2 ? "gruen" : gesehen(id, k.nr) ? "gelb" : "rot"}"></span><span class="info">${esc(k.begriff)}</span></div>`).join("")}
     </section>
     <p class="leise">Grün wird eine Karte, wenn du sie zweimal mehr richtig als falsch hattest. Die Reihenfolge wird bei jeder Runde neu gemischt.</p>
   `);
 }
 
-// Karteikarten: mischen, raten, umdrehen, selbst bewerten. Nicht gewusste kommen am Ende nochmal.
+// ---------- Antwort-Bewertung (Tipp-Modus) ----------
+// Wörter, die beim Vergleich keine Rolle spielen
+const FUELLWOERTER = new Set(["also", "eine", "einer", "eines", "einem", "einen", "der", "die", "das", "den", "dem", "des", "und", "oder", "für", "mit", "von", "vom", "bei", "beim", "nicht", "nach", "auf", "aus", "ein", "ist", "sind", "wird", "werden", "noch", "auch", "nur", "wie", "was", "dass", "z.b", "englisch", "bzw", "etc"]);
+
+// Text vereinheitlichen: klein, Umlaute ausschreiben, Satzzeichen weg
+function normal(t) {
+  return t.toLowerCase().replace(/ä/g, "ae").replace(/ö/g, "oe").replace(/ü/g, "ue").replace(/ß/g, "ss")
+    .replace(/[^a-z0-9 ]+/g, " ").replace(/\s+/g, " ").trim();
+}
+
+// Levenshtein-Abstand: wie viele Buchstaben man ändern muss, damit zwei Wörter gleich sind (für Tippfehler)
+function abstand(a, b) {
+  const z = Array.from({ length: a.length + 1 }, (_, i) => [i]);
+  for (let j = 1; j <= b.length; j++) z[0][j] = j;
+  for (let i = 1; i <= a.length; i++)
+    for (let j = 1; j <= b.length; j++)
+      z[i][j] = Math.min(z[i - 1][j] + 1, z[i][j - 1] + 1, z[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+  return z[a.length][b.length];
+}
+
+// Zwei Wörter gelten als gleich bei kleinen Tippfehlern oder wenn eins im anderen steckt (z. B. "Güterstrom" in "Güterstroms")
+function wortPasst(a, b) {
+  if (a === b) return true;
+  if (a.length >= 5 && b.length >= 5 && (a.includes(b) || b.includes(a))) return true;
+  const erlaubt = Math.max(a.length, b.length) <= 6 ? 1 : 2;
+  return abstand(a, b) <= erlaubt;
+}
+
+// Bewertet eine getippte Antwort. Richtig, wenn sie einer Teil-Antwort fast gleicht
+// oder genug Schlüsselwörter der Lösung enthält. Das ist nicht perfekt, deshalb gibt es den "Doch richtig"-Knopf.
+function bewerten(eingabe, karte) {
+  const ein = normal(eingabe);
+  if (ein.length < 2) return false;
+  const einWoerter = ein.split(" ");
+  // Teil-Antworten: die Lösung an ":", "/", "(" und " = " aufteilen (nicht am Komma, sonst würde bei
+  // "Transport, Umschlag, Lagerung" schon "Transport" allein reichen)
+  const teile = karte.antwort.split(/[:/()]| = /).map(normal).filter((t) => t.length >= 2);
+  for (const t of teile) {
+    if (abstand(ein, t) <= Math.max(1, Math.floor(t.length * 0.2))) return true;
+  }
+  // Schlüsselwörter der Lösung, die in der Eingabe vorkommen
+  const schluessel = [...new Set(normal(karte.antwort).split(" ").filter((w) => w.length >= 4 && !FUELLWOERTER.has(w)))];
+  if (!schluessel.length) return false;
+  const treffer = schluessel.filter((s) => einWoerter.some((w) => w.length >= 3 && wortPasst(w, s))).length;
+  // Mindestens die Hälfte der Schlüsselwörter oder drei Treffer
+  return treffer / schluessel.length >= 0.5 || treffer >= 3;
+}
+
+// ---------- Karteikarten ----------
+// Karteikarten: mischen, dann entweder Antwort eintippen (App bewertet) oder umdrehen (selbst bewerten).
+// Nicht gewusste Karten kommen am Ende der Runde nochmal. Das Symbol erscheint erst bei der Lösung,
+// weil es sonst bei Abkürzungen einen Hinweis geben würde.
 function karteikarten(id, nr) {
   fachLaden(id).then((d) => {
     const p = d.pakete.find((x) => x.nr === +nr);
     let stapel = mischen(paketKarten(d, p));
     const nochmal = new Set();
     let pos = 0, richtig = 0, gesamt = 0;
-    const karte = (umgedreht) => {
+
+    // Lösungsteil der Karte (wird nach dem Umdrehen oder Prüfen gezeigt)
+    const loesung = (k) => `<div class="antwort">
+        <div class="gross" style="text-align:center">${k.symbol}</div>
+        <div class="kurz">${esc(k.antwort)}</div>
+        <div>${esc(k.erklaerung)}</div>
+        ${k.in_folien !== "ja" ? `<span class="badge">${k.in_folien === "nein" ? "⚠️ nicht in den Folien" : "🔶 in den Folien nur erwähnt"}</span>` : ""}
+        <div class="quelle">Quelle: ${mitLinks(k.quelle)}</div>
+      </div>`;
+
+    // zustand: "frage" | "umgedreht" | "geprueft"
+    const karte = (zustand = "frage", eingabe = "", urteil = null) => {
       const k = stapel[pos];
+      let unten = "";
+      if (zustand === "frage") {
+        unten = `
+          <form id="tippen" autocomplete="off">
+            <input id="eingabe" class="eingabe" type="text" placeholder="Antwort eintippen (optional)" autocapitalize="off" spellcheck="false">
+            <div class="abstand"></div>
+            <div class="reihe"><button type="button" class="knopf zweit" id="drehen">Umdrehen</button><button type="submit" class="knopf">Prüfen</button></div>
+          </form>`;
+      } else if (zustand === "umgedreht") {
+        unten = `<div class="reihe"><button class="knopf rot" id="nein">Nicht gewusst</button><button class="knopf gruen" id="ja">Gewusst</button></div>`;
+      } else {
+        unten = `
+          <button class="knopf" id="weiter">Weiter</button>
+          <div class="abstand"></div>
+          <button class="knopf zweit" id="korrigieren">${urteil ? "Ich lag doch falsch" : "Ich lag doch richtig"}</button>`;
+      }
       zeige(`
         ${kopf(`Paket ${p.nr} · Karteikarten`, `paket/${id}/${nr}`)}
         <div class="fortschritt">Karte ${pos + 1} von ${stapel.length}</div>
         <section class="feld karteikarte">
-          <div class="gross">${k.symbol}</div>
           <div class="begriff">${esc(k.begriff)}</div>
-          ${umgedreht ? `<div class="antwort">
-              <div class="kurz">${esc(k.antwort)}</div>
-              <div>${esc(k.erklaerung)}</div>
-              ${k.in_folien !== "ja" ? `<span class="badge">${k.in_folien === "nein" ? "⚠️ nicht in den Folien" : "🔶 in den Folien nur erwähnt"}</span>` : ""}
-              <div class="quelle">Quelle: ${mitLinks(k.quelle)}</div>
-            </div>` : `<p class="leise">Erst überlegen, dann umdrehen.</p>`}
+          ${zustand === "geprueft" ? `<div class="urteil ${urteil ? "ok" : "nok"}">${urteil ? "✅ Richtig!" : "❌ Nicht ganz."}<br><span class="leise">Deine Antwort: ${esc(eingabe)}</span></div>` : ""}
+          ${zustand === "frage" ? `<p class="leise">Erst überlegen, dann eintippen oder umdrehen.</p>` : loesung(k)}
         </section>
-        ${umgedreht
-          ? `<div class="reihe"><button class="knopf rot" id="nein">Nicht gewusst</button><button class="knopf gruen" id="ja">Gewusst</button></div>`
-          : `<button class="knopf" id="drehen">Umdrehen</button>`}
+        ${unten}
       `);
-      if (!umgedreht) return (document.getElementById("drehen").onclick = () => karte(true));
+
+      // Antwort verbuchen und zur nächsten Karte
       const weiter = (gewusst) => {
         verbuchen(id, k.nr, gewusst); gesamt++;
         if (gewusst) richtig++; else if (!nochmal.has(k.nr)) { nochmal.add(k.nr); stapel.push(k); }
         pos++;
-        pos < stapel.length ? karte(false) : ende();
+        pos < stapel.length ? karte() : ende();
       };
-      document.getElementById("ja").onclick = () => weiter(true);
-      document.getElementById("nein").onclick = () => weiter(false);
+
+      if (zustand === "frage") {
+        document.getElementById("drehen").onclick = () => karte("umgedreht");
+        document.getElementById("tippen").onsubmit = (e) => {
+          e.preventDefault();
+          const text = document.getElementById("eingabe").value.trim();
+          if (!text) return karte("umgedreht");          // leer = einfach umdrehen
+          karte("geprueft", text, bewerten(text, k));
+        };
+      } else if (zustand === "umgedreht") {
+        document.getElementById("ja").onclick = () => weiter(true);
+        document.getElementById("nein").onclick = () => weiter(false);
+      } else {
+        document.getElementById("weiter").onclick = () => weiter(urteil);
+        document.getElementById("korrigieren").onclick = () => weiter(!urteil);
+      }
     };
+
     const ende = () => zeige(`
       ${kopf("Runde geschafft! 🎉", `paket/${id}/${nr}`)}
       <section class="feld" style="text-align:center">
@@ -237,7 +324,7 @@ function karteikarten(id, nr) {
       <div class="abstand"></div>
       <button class="knopf zweit" data-los="start">Zum Bären</button>
     `);
-    karte(false);
+    karte();
   });
 }
 
@@ -257,7 +344,7 @@ function quiz(id, nr) {
       zeige(`
         ${kopf(`Paket ${p.nr} · Quiz`, `paket/${id}/${nr}`)}
         <div class="fortschritt">Frage ${pos + 1} von ${fragen.length} · ${richtig} richtig</div>
-        <section class="feld"><div class="leise">Was bedeutet …</div><h2>${f.karte.symbol} ${esc(f.karte.begriff)}?</h2></section>
+        <section class="feld"><div class="leise">Was bedeutet …</div><h2>${beantwortet ? f.karte.symbol + " " : ""}${esc(f.karte.begriff)}?</h2></section>
         ${f.optionen.map((o, i) => {
           let kl = "";
           if (beantwortet) kl = o.nr === f.karte.nr ? "richtig" : i === gewaehlt ? "falsch" : "";
