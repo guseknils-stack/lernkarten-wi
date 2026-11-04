@@ -180,18 +180,18 @@
    "begriff": "Ameise",
    "symbol": "🐜",
    "antwort": "Umgangssprachlich: elektrischer Hochhubwagen",
-   "erklaerung": "Elektrischer Hochhubwagen, ein Stapelgerät für Paletten.",
+   "erklaerung": "Elektrischer Hochhubwagen, ein Stapelgerät für Paletten. Achtung: Im Alltag heißt oft auch der elektrische Niederhubwagen (ohne Stapelfunktion) „Ameise“. In der Vorlesung steht sie bei den Stapelgeräten.",
    "quelle": "VL 7, S. 22",
    "in_folien": "ja",
    "mc": {
-    "frage": "Was kann eine „Ameise“, was ein einfacher Handhubwagen nicht kann?",
+    "frage": "Wie ordnet VL 7 die „Ameise“ bei den Flurförderzeugen ein?",
     "optionen": [
-     "Paletten elektrisch hoch anheben und stapeln",
-     "Paletten ein paar Zentimeter anheben und verschieben",
-     "Ohne Fahrer eine feste Route abfahren",
-     "Lasten flurfrei an der Decke transportieren"
+     "Als Stapelgerät (elektrischer Hochhubwagen), neben dem Gabelstapler",
+     "Als manuelles Umschlaggerät, neben Sackkarre und Handhubwagen",
+     "Als Transportgerät, neben Wagen und Schleppern",
+     "Als Fahrerloses Transportsystem (FTS) mit fester Route"
     ],
-    "erklaerung": "VL 7, S. 22: Die Ameise ist ein Stapelgerät (elektrischer Hochhubwagen). Der Handhubwagen ist ein manuelles Umschlaggerät ohne Stapelfunktion."
+    "erklaerung": "VL 7, S. 22 wörtlich: „Stapelgeräte: elektrischer Hochhubwagen, „Ameise“; Gabelstapler“. Achtung: Im Alltag sagt man „Ameise“ oft auch zum elektrischen Niederhubwagen, der nicht stapeln kann. Für den Test gilt die Einordnung aus der Vorlesung."
    }
   },
   {

@@ -2,6 +2,11 @@
 
 Neueste Änderungen stehen oben.
 
+## 2026-11-04 – Ameise-Frage korrigiert
+- `data/logistik.json`, Karte 7: Die Wissensfrage fragte, was die Ameise „kann“. Das ist unsauber, weil man im Alltag auch den elektrischen Niederhubwagen (ohne Stapeln) „Ameise“ nennt. Neue Frage: Wie ordnet VL 7 die Ameise ein? (Stapelgerät, VL 7, S. 22 wörtlich). Hinweis auf den Alltagsgebrauch in Erklärung ergänzt.
+- `sw.js`: Cache-Version auf v8.
+- Warum: Nils hat die alte Frage zu Recht angezweifelt.
+
 ## 2026-11-04 – Wissensfragen, Trainingsziel mit richtigen Antworten, Trainingskalender
 - `data/logistik.json`: 85 von 92 Karten haben jetzt eine schwere Multiple-Choice-Frage (Feld `mc`), gebaut aus den Folien und dem Skript (z. B. „Wie wird ein GLT bewegt?“, Rechenaufgaben zu TEU, Lademeter, OTIF). Bei 7 Begriffen (RM, FP, Senke, SC, Lead Time, Shelf life, End-to-End) gab es keine sinnvolle schwere Frage, sie bleiben ohne. Die richtige Antwort steht in der Datei an erster Stelle und wird in der App gemischt. Ich habe außerdem darauf geachtet, dass die richtige Antwort nicht fast immer die längste ist.
 - `data/logistik.json`: Kitting (Nr. 11) steht doch ausführlich in den Folien (VL 8, S. 39). Quelle und Markierung korrigiert.
