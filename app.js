@@ -6,6 +6,10 @@ import { baerSVG } from "./bear.js";
 
 // ---------- Einstellungen ----------
 const TAGESZIEL = 10;        // so viele Antworten pro Tag zählen als "gelernt"
+const FORTSCHRITT_MAX = 22;  // so viele Lerntage, bis der Bär voll entwickelt ist
+const FORTSCHRITT_MIN = -10; // tiefster Stand: Bär ist richtig krank
+const MINUS_POSITIV = 3;     // verpasster Tag, solange der Fortschritt über 0 ist
+const MINUS_NEGATIV = 1;     // verpasster Tag, wenn der Fortschritt schon bei 0 oder darunter ist
 const PROBETEST_FRAGEN = 20;
 const PROBETEST_MINUTEN = 20;
 const SPEICHER = "paukbaer-v1";
@@ -68,35 +72,44 @@ function paketQuote(daten, p) {
 }
 
 // ---------- Der Bär ----------
+// Berechnet den Zustand des Bären aus allen Lerntagen: Trainingsfortschritt, Stimmung, Serie, Ausstattung
 function baerZustand(daten) {
   const t = heute();
   const gelernt = Object.keys(S.tage).filter((d) => S.tage[d] >= TAGESZIEL).sort();
-  // Muskeln: +1 pro Lerntag, ab dem 2. verpassten Tag in Folge -1 pro Tag
-  let muskeln = 0, verpasst = 0;
+  // Trainingsfortschritt: +1 pro Lerntag (bis 22). Verpasster Tag: -3, solange er über 0 ist
+  // (aber nicht unter 0), danach -1 pro Tag bis -10. Der heutige Tag zählt erst als verpasst, wenn er vorbei ist.
+  let fortschritt = 0;
   if (gelernt.length) {
     for (let d = gelernt[0]; d <= t; d = plusTage(d, 1)) {
-      if (S.tage[d] >= TAGESZIEL) { muskeln = Math.min(10, muskeln + 1); verpasst = 0; }
-      else if (d !== t) { verpasst++; if (verpasst >= 2) muskeln = Math.max(0, muskeln - 1); }
+      if (S.tage[d] >= TAGESZIEL) fortschritt = Math.min(FORTSCHRITT_MAX, fortschritt + 1);
+      else if (d !== t) fortschritt = fortschritt > 0 ? Math.max(0, fortschritt - MINUS_POSITIV) : Math.max(FORTSCHRITT_MIN, fortschritt - MINUS_NEGATIV);
     }
   }
   const letzter = gelernt[gelernt.length - 1];
   const pause = letzter ? tageZwischen(letzter, t) : 0; // 0 = heute gelernt, 1 = gestern
-  const stimmung = !letzter ? "fit" : pause <= 1 ? "fit" : pause === 2 ? "muede" : pause === 3 ? "zerzaust" : "krank";
+  // Stimmung: unter 0 wird er Schritt für Schritt kränker. Über 0 wird er nur müde, wenn gestern nicht gelernt wurde.
+  const stimmung = fortschritt <= -7 ? "krank" : fortschritt <= -4 ? "zerzaust" : fortschritt <= -1 ? "muede"
+    : (letzter && pause >= 2) ? "muede" : "fit";
   // Serie: zusammenhängende Lerntage bis heute oder gestern
   let serie = 0;
   if (letzter && pause <= 1) { for (let d = letzter; S.tage[d] >= TAGESZIEL; d = plusTage(d, -1)) serie++; }
   const gruen = daten ? daten.pakete.filter((p) => ampel(daten, p) === "gruen").length : 0;
   const n = daten ? daten.pakete.length : 1;
-  return { muskeln, stimmung, serie, pause, brille: gruen >= Math.ceil(n / 2), kette: gruen === n, gruen, n, heuteAntworten: S.tage[t] || 0 };
+  // Für die Zeichnung: Fortschritt 0–22 auf Muskelstufe 0–10 umrechnen
+  const muskeln = Math.max(0, fortschritt) * 10 / FORTSCHRITT_MAX;
+  return { fortschritt, muskeln, stimmung, serie, pause, brille: gruen >= Math.ceil(n / 2), kette: gruen === n, gruen, n, heuteAntworten: S.tage[t] || 0 };
 }
+
+// Der Satz unter dem Bären, passend zu seinem Zustand
 function baerText(z) {
   if (z.stimmung === "krank") return "Dein Bär ist krank vor Faulheit. Lern heute, dann wird er wieder fit! 🤒";
-  if (z.stimmung === "zerzaust") return "Drei Tage ohne Training … er sieht ziemlich zerzaust aus.";
-  if (z.stimmung === "muede") return "Er wird müde. Gestern wurde nicht trainiert.";
+  if (z.stimmung === "zerzaust") return "Zu lange kein Training … er sieht ziemlich zerzaust aus.";
+  if (z.stimmung === "muede") return z.fortschritt < 0 ? "Er wird schlapp. Trainier heute, damit er wieder fit wird." : "Er wird müde. Gestern wurde nicht trainiert.";
   if (z.kette) return "Voll ausgestattet: Muskeln, Ray-Ban und Goldkette. 💪😎";
   if (z.brille) return "Halbzeit geschafft: Die goldene Ray-Ban sitzt! 😎";
-  if (z.heuteAntworten >= TAGESZIEL) return "Heute trainiert! Morgen gibt's mehr Muskeln.";
-  if (z.muskeln === 0) return "Hi, ich bin dein PaukBär. Trainier mit mir!";
+  if (z.fortschritt >= FORTSCHRITT_MAX) return "Voll entwickelt! 22 Tage Training haben sich gelohnt. 🏆";
+  if (z.heuteAntworten >= TAGESZIEL) return "Heute trainiert! Der Trainingsfortschritt steigt.";
+  if (z.fortschritt === 0) return "Hi, ich bin dein PaukBär. Trainier mit mir!";
   return "Bereit fürs Training?";
 }
 
@@ -122,7 +135,7 @@ async function startseite() {
       <div class="baer-status">${esc(baerText(z))}</div>
       <div class="serie">
         <div><b>🔥 ${z.serie}</b><span class="leise">Tage Serie</span></div>
-        <div><b>💪 ${z.muskeln}/10</b><span class="leise">Muskeln</span></div>
+        <div><b>🏋️ ${z.fortschritt}/${FORTSCHRITT_MAX}</b><span class="leise">Training</span></div>
         <div><b>🟢 ${z.gruen}/${z.n}</b><span class="leise">Pakete grün</span></div>
       </div>
       <div class="tagesziel"><span style="width:${ziel}%"></span></div>

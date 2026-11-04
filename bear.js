@@ -1,5 +1,5 @@
 // Zeichnet den PaukBär als SVG – weiche Formen, Schattierung, Muskeln wachsen mit.
-// muskeln: 0–10, stimmung: "fit" | "muede" | "zerzaust" | "krank", brille / kette: true/false
+// muskeln: 0–10 (Kommazahlen erlaubt, app.js rechnet den Trainingsfortschritt 0–22 darauf um), stimmung: "fit" | "muede" | "zerzaust" | "krank", brille / kette: true/false
 let zaehler = 0;
 
 export function baerSVG({ muskeln = 0, stimmung = "fit", brille = false, kette = false }) {
@@ -137,7 +137,7 @@ export function baerSVG({ muskeln = 0, stimmung = "fit", brille = false, kette =
     </g>`;
 
   return `
-  <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="PaukBär, Stimmung ${stimmung}, Muskeln ${m} von 10">
+  <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="PaukBär, Stimmung ${stimmung}, Trainingsstufe ${Math.round(m)} von 10">
     <defs>
       <radialGradient id="${id}fell" cx="40%" cy="35%" r="75%">
         <stop offset="0%" stop-color="${fellHell}"/><stop offset="65%" stop-color="${fell}"/><stop offset="100%" stop-color="${fellDunkel}"/>
