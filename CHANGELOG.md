@@ -2,6 +2,12 @@
 
 Neueste Änderungen stehen oben.
 
+## 2026-11-04 – Abkürzungen ohne Langform auf der Karte
+- `data/logistik.json`: Neues Feld `frage` = das, was auf der Vorderseite steht. Gesetzt bei 5 Karten, deren Begriff in Seifermanns Liste die Langform schon enthält: GiBo (6), lm / Ldm (34), HU (36), Safety Stock (80), OOS (83). Die Langform steht jetzt am Anfang der Antwort, damit man sie eintippen kann.
+- `app.js`: Neue Hilfsfunktion `vorne(k)` nimmt `frage`, wenn vorhanden, sonst `begriff`. Sie wird überall genutzt, wo ein Begriff angezeigt wird (Paketliste, Karteikarte, Quiz, Probetest, Fehlerliste).
+- `sw.js`: Cache-Version auf v6.
+- Warum: Nils fiel bei „GiBo / Gitterbox“ auf, dass die Lösung schon auf der Karte steht.
+
 ## 2026-11-04 – Trainingsfortschritt statt Muskeln
 - `app.js`: Anzeige heißt jetzt „Training“ mit Skala -10 bis 22 (vorher „Muskeln“ 0–10). +1 pro Lerntag, voll entwickelt nach 22 Lerntagen. Verpasster Tag: -3, solange der Wert über 0 ist (nicht unter 0), danach -1 pro Tag bis -10.
 - `app.js`: Die Stimmung hängt jetzt am Fortschritt: -1 bis -3 müde, -4 bis -6 zerzaust, -7 bis -10 krank.

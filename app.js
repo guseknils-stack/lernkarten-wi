@@ -33,6 +33,10 @@ const heute = () => datumText(new Date());
 function datumText(d) { return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; }
 function tageZwischen(a, b) { return Math.round((new Date(b + "T12:00") - new Date(a + "T12:00")) / 86400000); }
 function plusTage(t, n) { const d = new Date(t + "T12:00"); d.setDate(d.getDate() + n); return datumText(d); }
+// Was auf der Vorderseite steht: "frage", falls vorhanden, sonst der Begriff aus der Liste.
+// Grund: Manche Begriffe stehen in der Liste mit Langform (z. B. "GiBo / Gitterbox"),
+// dann würde die Lösung schon auf der Karte stehen.
+const vorne = (k) => k.frage || k.begriff;
 
 // ---------- Daten ----------
 let FAECHER = [];
@@ -196,7 +200,7 @@ async function paketSeite(id, nr) {
     <button class="knopf zweit" data-los="quiz/${id}/${p.nr}">❓ Quiz mit Erklärungen</button>
     <div class="abstand"></div>
     <section class="feld">
-      ${ks.map((k) => `<div class="paket" style="padding:6px 0"><span class="ampel ${stufe(id, k.nr) >= 2 ? "gruen" : gesehen(id, k.nr) ? "gelb" : "rot"}"></span><span class="info">${esc(k.begriff)}</span></div>`).join("")}
+      ${ks.map((k) => `<div class="paket" style="padding:6px 0"><span class="ampel ${stufe(id, k.nr) >= 2 ? "gruen" : gesehen(id, k.nr) ? "gelb" : "rot"}"></span><span class="info">${esc(vorne(k))}</span></div>`).join("")}
     </section>
     <p class="leise">Grün wird eine Karte, wenn du sie zweimal mehr richtig als falsch hattest. Die Reihenfolge wird bei jeder Runde neu gemischt.</p>
   `);
@@ -293,7 +297,7 @@ function karteikarten(id, nr) {
         ${kopf(`Paket ${p.nr} · Karteikarten`, `paket/${id}/${nr}`)}
         <div class="fortschritt">Karte ${pos + 1} von ${stapel.length}</div>
         <section class="feld karteikarte">
-          <div class="begriff">${esc(k.begriff)}</div>
+          <div class="begriff">${esc(vorne(k))}</div>
           ${zustand === "geprueft" ? `<div class="urteil ${urteil ? "ok" : "nok"}">${urteil ? "✅ Richtig!" : "❌ Nicht ganz."}<br><span class="leise">Deine Antwort: ${esc(eingabe)}</span></div>` : ""}
           ${zustand === "frage" ? `<p class="leise">Erst überlegen, dann eintippen oder umdrehen.</p>` : loesung(k)}
         </section>
@@ -357,7 +361,7 @@ function quiz(id, nr) {
       zeige(`
         ${kopf(`Paket ${p.nr} · Quiz`, `paket/${id}/${nr}`)}
         <div class="fortschritt">Frage ${pos + 1} von ${fragen.length} · ${richtig} richtig</div>
-        <section class="feld"><div class="leise">Was bedeutet …</div><h2>${beantwortet ? f.karte.symbol + " " : ""}${esc(f.karte.begriff)}?</h2></section>
+        <section class="feld"><div class="leise">Was bedeutet …</div><h2>${beantwortet ? f.karte.symbol + " " : ""}${esc(vorne(f.karte))}?</h2></section>
         ${f.optionen.map((o, i) => {
           let kl = "";
           if (beantwortet) kl = o.nr === f.karte.nr ? "richtig" : i === gewaehlt ? "falsch" : "";
@@ -410,7 +414,7 @@ function probetest(id) {
       zeige(`
         ${kopf("Probetest", `fach/${id}`)}
         <div class="fortschritt">Frage ${pos + 1} von ${fragen.length} · ⏱️ <span class="timer" id="uhr"></span></div>
-        <section class="feld"><div class="leise">Was bedeutet …</div><h2>${esc(f.karte.begriff)}?</h2></section>
+        <section class="feld"><div class="leise">Was bedeutet …</div><h2>${esc(vorne(f.karte))}?</h2></section>
         ${f.optionen.map((o, i) => `<button class="option" data-i="${i}">${"ABCD"[i]}) ${esc(o.antwort)}</button>`).join("")}
       `);
       uhr(); aktiveUhr = setInterval(uhr, 1000);
@@ -438,7 +442,7 @@ function probetest(id) {
           <p>${richtig} von ${fragen.length} richtig. ${quote >= 90 ? "Stark, du bist bereit! 🏆" : quote >= 70 ? "Gut! Die Fehler unten noch einmal ansehen." : "Da geht noch was. Lern die Pakete mit gelber Ampel weiter."}</p>
         </section>
         ${fehler.length ? `<section class="feld"><h3>Das solltest du wiederholen</h3><ul class="fehler">
-          ${fehler.map(({ f, gewaehlt }) => `<li><b>${esc(f.karte.begriff)}</b>: ${esc(f.karte.antwort)}${gewaehlt ? `<br><span class="leise">Deine Antwort: ${esc(gewaehlt.antwort)}</span>` : `<br><span class="leise">nicht beantwortet</span>`}</li>`).join("")}
+          ${fehler.map(({ f, gewaehlt }) => `<li><b>${esc(vorne(f.karte))}</b>: ${esc(f.karte.antwort)}${gewaehlt ? `<br><span class="leise">Deine Antwort: ${esc(gewaehlt.antwort)}</span>` : `<br><span class="leise">nicht beantwortet</span>`}</li>`).join("")}
         </ul></section>` : ""}
         <button class="knopf" data-los="probetest/${id}">Neuer Probetest</button>
         <div class="abstand"></div>
