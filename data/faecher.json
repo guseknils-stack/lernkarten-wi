@@ -1,0 +1,5 @@
+[
+ {"id": "logistik", "titel": "Logistik-Kurztest", "symbol": "🚛", "testdatum": "2026-11-27", "datei": "data/logistik.json"},
+ {"id": "python", "titel": "Python", "symbol": "🐍", "bald": true, "hinweis": "Kommt in einem eigenen Projekt"},
+ {"id": "frei", "titel": "Weiteres Fach", "symbol": "➕", "bald": true, "hinweis": "Platz für dein nächstes Fach"}
+]

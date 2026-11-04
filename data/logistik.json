@@ -1,0 +1,977 @@
+{
+ "id": "logistik",
+ "titel": "Logistik-Kurztest",
+ "untertitel": "Grundlegende Logistik-Begriffe",
+ "testdatum": "2026-11-27",
+ "testinfo": "Fr 27.11.2026 · 20 Min · Multiple Choice",
+ "symbol": "🚛",
+ "pakete": [
+  {
+   "nr": 1,
+   "von": 1,
+   "bis": 10
+  },
+  {
+   "nr": 2,
+   "von": 11,
+   "bis": 20
+  },
+  {
+   "nr": 3,
+   "von": 21,
+   "bis": 30
+  },
+  {
+   "nr": 4,
+   "von": 31,
+   "bis": 40
+  },
+  {
+   "nr": 5,
+   "von": 41,
+   "bis": 50
+  },
+  {
+   "nr": 6,
+   "von": 51,
+   "bis": 60
+  },
+  {
+   "nr": 7,
+   "von": 61,
+   "bis": 70
+  },
+  {
+   "nr": 8,
+   "von": 71,
+   "bis": 80
+  },
+  {
+   "nr": 9,
+   "von": 81,
+   "bis": 92
+  }
+ ],
+ "karten": [
+  {
+   "nr": 1,
+   "kategorie": "Intralogistik",
+   "begriff": "AKL",
+   "symbol": "🤖",
+   "antwort": "Automatisches Kleinteilelager",
+   "erklaerung": "Behälterregal für kleine Teile (in Behältern oder Tablaren), das automatisch statt von Hand bedient wird. Paletten wären für Kleinteile zu groß.",
+   "quelle": "VL 9, S. 27",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 2,
+   "kategorie": "Intralogistik",
+   "begriff": "AS/RS",
+   "symbol": "🏗️",
+   "antwort": "Automated Storage and Retrieval System, also automatisches Lager- und Bereitstellungssystem",
+   "erklaerung": "Automatisches Lagersystem, z. B. ein automatisiertes Hochregallager. Es lagert selbstständig ein und aus und bringt die Lagereinheit zum Kommissionierplatz.",
+   "quelle": "VL 9, S. 36; VL 11, S. 10",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 3,
+   "kategorie": "Intralogistik",
+   "begriff": "KLT",
+   "symbol": "🧺",
+   "antwort": "Kleinladungsträger",
+   "erklaerung": "Stapelbarer, poolfähiger Kunststoffbehälter. Maximale Grundfläche 600 × 400 mm (Viertel einer Euro-Palette), maximal 20 kg befüllt (Ergonomie beim Heben von Hand).",
+   "quelle": "VL 8, S. 29",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 4,
+   "kategorie": "Intralogistik",
+   "begriff": "Schäferkiste",
+   "symbol": "🗃️",
+   "antwort": "Offener, stapelbarer Sicht-Lagerkasten aus Kunststoff",
+   "erklaerung": "Stapelbare Kunststoffbox mit Öffnung vorne, damit man Kleinteile sieht und greifen kann. Typisch in Werkstatt, Montage und Kommissionierung. Benannt nach dem Hersteller SSI Schäfer (1953: „Lager-Fix-Box“).",
+   "quelle": "[SSI Schäfer, Unternehmensgeschichte](https://www.ssi-schaefer.com/en-de/about-us/history)",
+   "in_folien": "nein"
+  },
+  {
+   "nr": 5,
+   "kategorie": "Intralogistik",
+   "begriff": "GLT",
+   "symbol": "📦",
+   "antwort": "Großladungsträger",
+   "erklaerung": "Großer Behälter (z. B. Gitterbox), der nur mit Flurförderzeug (Stapler, Hubwagen) bewegt werden kann. Für Großteile oder große Mengen mittelgroßer Teile.",
+   "quelle": "VL 8, S. 28 und 30",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 6,
+   "kategorie": "Intralogistik",
+   "begriff": "GiBo / Gitterbox",
+   "symbol": "🔲",
+   "antwort": "Euro-Gitterbox-Pool-Palette: Palette mit Gitterwänden",
+   "erklaerung": "Palette mit Wänden aus Gittern, gehört zu den Großladungsträgern (GLT).",
+   "quelle": "VL 8, S. 30",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 7,
+   "kategorie": "Intralogistik",
+   "begriff": "Ameise",
+   "symbol": "🐜",
+   "antwort": "Umgangssprachlich: elektrischer Hochhubwagen",
+   "erklaerung": "Elektrischer Hochhubwagen, ein Stapelgerät für Paletten.",
+   "quelle": "VL 7, S. 22",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 8,
+   "kategorie": "Intralogistik",
+   "begriff": "AGV / FTS / FTF",
+   "symbol": "🚗",
+   "antwort": "Fahrerloses Transportsystem bzw. -fahrzeug (Automated Guided Vehicle) mit fester Route",
+   "erklaerung": "AGV = Automated Guided Vehicle, FTS = Fahrerloses Transportsystem, FTF = Fahrerloses Transportfahrzeug. Automatischer Transport ohne Fahrer entlang einer vorgegebenen Route (Draht im Boden, Magnetband, Laser …). Ein Hindernis stoppt das Fahrzeug.",
+   "quelle": "VL 7, S. 27 und 28 (FTF als Einzelfahrzeug: übliche Fachsprache, nicht in den Folien)",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 9,
+   "kategorie": "Intralogistik",
+   "begriff": "AMR",
+   "symbol": "🦾",
+   "antwort": "Autonomous Mobile Robot: fährt ohne feste Route und umfährt Hindernisse",
+   "erklaerung": "Wie ein FTS, aber ohne feste Route: orientiert sich in Echtzeit an der Umgebung und fährt um Hindernisse herum. Kein Umbau nötig (keine Magnetbänder), dafür meist teurer.",
+   "quelle": "[produktion.de: AGV und AMR – die Unterschiede](https://www.produktion.de/technik/agv-und-amr-die-unterschiede-im-ueberblick/1663496)",
+   "in_folien": "nein"
+  },
+  {
+   "nr": 10,
+   "kategorie": "Intralogistik",
+   "begriff": "RBG",
+   "symbol": "🏗️",
+   "antwort": "Regalbediengerät",
+   "erklaerung": "Gerät, das Ware in ein Regal ein- und wieder auslagert, typisch fest installiert im Hochregallager.",
+   "quelle": "VL 9, S. 25; VL 7, S. 20 und 25",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 11,
+   "kategorie": "Intralogistik",
+   "begriff": "Kitting",
+   "symbol": "🧰",
+   "antwort": "Zusammenstellen aller Teile für einen Arbeitsgang in einem Set (Kit)",
+   "erklaerung": "Alle Teile, die für einen bestimmten Arbeitsschritt oder Auftrag gebraucht werden, werden vorab zu einem Set (Kit) zusammengestellt und gemeinsam bereitgestellt, z. B. ein Warenkorb pro Fahrzeug an der Montagelinie. In den Folien nur als Beispiel genannt („Kitting bzw. KLTs“), nicht erklärt.",
+   "quelle": "VL 12, S. 8 (nur erwähnt); Erklärung: [Penske Logistics Glossary: Kitting](https://penskelogistics.com/insights/logistics-glossary/what-is-kitting)",
+   "in_folien": "teilweise"
+  },
+  {
+   "nr": 12,
+   "kategorie": "Intralogistik",
+   "begriff": "Pick-by-Light / Pick-by-Voice",
+   "symbol": "💡",
+   "antwort": "Beleglose Kommissionierung: Lichtsignal am Fach bzw. Sprachansage per Headset",
+   "erklaerung": "Pick-by-Light: Lampen am Regalfach zeigen, wo und wie viel entnommen wird, Quittierung direkt am Lichtsignal. Pick-by-Voice: Headset sagt Platz, Artikel und Menge an, Quittierung durch Sprechen (z. B. Prüfnummer).",
+   "quelle": "VL 11, S. 26 und 30",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 13,
+   "kategorie": "Intralogistik",
+   "begriff": "Pick & Pack",
+   "symbol": "🛍️",
+   "antwort": "Kommissionieren direkt in den Versandbehälter, der zum Kunden geht",
+   "erklaerung": "Variante von Pick-to-Box: Der Kommissionierer legt die Ware in einen mitgeführten Behälter, und dieser Behälter ist gleichzeitig die Versandeinheit zum Kunden.",
+   "quelle": "VL 11, S. 13",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 14,
+   "kategorie": "Intralogistik",
+   "begriff": "WMS",
+   "symbol": "💻",
+   "antwort": "Warehouse Management System (Lagerverwaltungssystem)",
+   "erklaerung": "IT-System für die Lagerverwaltung. Ergänzt das ERP-System: Das ERP kennt nur Mengen, das WMS weiß auch, wo die Ware steht. Stock-Locator und Leitsystem sind Teil des WMS.",
+   "quelle": "VL 8, S. 25",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 15,
+   "kategorie": "Intralogistik",
+   "begriff": "Stock-Locator",
+   "symbol": "📍",
+   "antwort": "System, das speichert, welche Ware auf welchem Lagerplatz liegt",
+   "erklaerung": "Bildet die Belegung jedes einzelnen Lagerplatzes ab und ermöglicht so das schnelle Wiederfinden der Ware. Teil des WMS.",
+   "quelle": "VL 8, S. 15 und 25",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 16,
+   "kategorie": "Intralogistik",
+   "begriff": "MES",
+   "symbol": "🏭",
+   "antwort": "Manufacturing Execution System",
+   "erklaerung": "Produktionsleitsystem auf der Betriebsleitebene. Verbindet ERP und operativen Betrieb: meldet Daten aus der Produktion an das ERP-System.",
+   "quelle": "Gesamtskript, S. 328–329 (Vorlesung ERP-Systeme)",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 17,
+   "kategorie": "Intralogistik",
+   "begriff": "BDE",
+   "symbol": "📊",
+   "antwort": "Betriebsdatenerfassung",
+   "erklaerung": "Elektronische Erfassung von Daten am Ort der Entstehung (z. B. Bestände, Auftragsfortschritt) und Weitergabe ans ERP-System.",
+   "quelle": "VL 1, S. 34; Gesamtskript, S. 328",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 18,
+   "kategorie": "Intralogistik",
+   "begriff": "RM",
+   "symbol": "🪨",
+   "antwort": "Raw Material (Rohmaterial)",
+   "erklaerung": "Rohmaterial, das in die Produktion eingeht. In der Folie steht das Beispiel: 3.000 unterschiedliche Rohmaterialien (RM).",
+   "quelle": "VL 1, S. 17",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 19,
+   "kategorie": "Intralogistik",
+   "begriff": "FP",
+   "symbol": "🎁",
+   "antwort": "Fertigprodukt (Finished Product)",
+   "erklaerung": "Fertiges, verkaufsfähiges Produkt. Beispiel in der Folie: 250 Fertigprodukte (FP).",
+   "quelle": "VL 1, S. 17",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 20,
+   "kategorie": "Intralogistik",
+   "begriff": "HALB / INT",
+   "symbol": "⚙️",
+   "antwort": "Halbfertigprodukt (Halbfabrikat, englisch Intermediate)",
+   "erklaerung": "Zwischenprodukt zwischen Rohmaterial (RM) und Fertigprodukt (FP): schon teilweise bearbeitet, aber noch nicht verkaufsfertig. HALB ist die SAP-Materialart für Halbfabrikate. INT steht vermutlich für „Intermediate“ (englisch für Zwischenprodukt). Das ist meine Schlussfolgerung, eine direkte Quelle für die Abkürzung INT habe ich nicht gefunden.",
+   "quelle": "[SAP-Materialart HALB](https://yasirbhutta.github.io/sap-education-research/docs/sap-mm/halb-material.html); passt zur Reihe RM → HALB/INT → FP aus VL 1, S. 17",
+   "in_folien": "nein"
+  },
+  {
+   "nr": 21,
+   "kategorie": "Intralogistik",
+   "begriff": "Umschlaghäufigkeit",
+   "symbol": "🔄",
+   "antwort": "Wie oft der Lagerbestand pro Jahr komplett umgeschlagen wird (Wareneinsatz ÷ Ø Lagerbestand)",
+   "erklaerung": "Kennzahl, wie oft sich der durchschnittliche Lagerbestand in einer Periode umschlägt. Formel: Umschlaghäufigkeit = Wareneinsatz (Abgang) ÷ durchschnittlicher Lagerbestand. Hoch = Schnelldreher, niedrig = Langsamdreher. In den Folien wird sie nur als Kriterium für Zonen genannt (Schnelldreher vorne), die Formel steht dort nicht.",
+   "quelle": "VL 9, S. 41; VL 11, S. 17 (nur erwähnt); Formel: [WHK Controlling: Lagerumschlag](https://www.whk-controlling.de/wissen/lagerumschlag-rechner)",
+   "in_folien": "teilweise"
+  },
+  {
+   "nr": 22,
+   "kategorie": "Logistik",
+   "begriff": "Maße einer Euro-Palette (EUR/EPAL)",
+   "symbol": "🟫",
+   "antwort": "1.200 × 800 mm",
+   "erklaerung": "Euro-Palette: 1.200 mm × 800 mm. Halbpalette 600 × 800 mm, Viertelpalette 600 × 400 mm (= Grundmaß des KLT).",
+   "quelle": "VL 12, S. 34",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 23,
+   "kategorie": "Logistik",
+   "begriff": "EPAL",
+   "symbol": "🇪🇺",
+   "antwort": "European Pallet Association (Verband, der die Euro-Palette normt und lizenziert)",
+   "erklaerung": "Gemeinnütziger Verband (gegründet 1991), der die Herstellung, Reparatur und den Tausch von EPAL-Paletten organisiert, also das größte Palettentauschsystem der Welt. EPAL 1 = Euro-Palette 1.200 × 800 mm.",
+   "quelle": "[proLogistik Lexikon: EPAL](https://www.prologistik.com/en/logistics-lexicon/epal/)",
+   "in_folien": "nein"
+  },
+  {
+   "nr": 24,
+   "kategorie": "Logistik",
+   "begriff": "Maße DIN-Palette / Industriepalette / England-Palette",
+   "symbol": "📐",
+   "antwort": "1.200 × 1.000 mm",
+   "erklaerung": "Industriepalette: 1.000 mm × 1.200 mm (in den Folien so angegeben). Sie ist also 20 cm breiter als die Euro-Palette. „DIN-Palette“ und „England-Palette“ meinen in der Praxis dasselbe Maß 1.200 × 1.000 mm.",
+   "quelle": "VL 12, S. 34 (Industriepalette); dass DIN-/England-Palette dasselbe Maß meinen, ist übliche Fachsprache, steht aber nicht in den Folien",
+   "in_folien": "teilweise"
+  },
+  {
+   "nr": 25,
+   "kategorie": "Logistik",
+   "begriff": "CHEP-Palette",
+   "symbol": "🟦",
+   "antwort": "Blaue Mietpalette des Pooling-Anbieters CHEP",
+   "erklaerung": "CHEP (Commonwealth Handling Equipment Pool, gehört zu Brambles) vermietet Paletten über ein Pool-System: Die Paletten werden gemietet statt gekauft oder getauscht und von CHEP gewartet. Man erkennt sie an der blauen Farbe und dem CHEP-Logo.",
+   "quelle": "[Wikipedia: CHEP](https://en.wikipedia.org/wiki/CHEP)",
+   "in_folien": "nein"
+  },
+  {
+   "nr": 26,
+   "kategorie": "Logistik",
+   "begriff": "40-Fuß-Container (40')",
+   "symbol": "🚢",
+   "antwort": "ISO-Seecontainer, ca. 12,2 m lang = 2 TEU (auch FEU)",
+   "erklaerung": "Standard-Seecontainer, außen ca. 12,19 m lang, 2,44 m breit, 2,59 m hoch, ca. 67 m³. Zählt als 2 TEU.",
+   "quelle": "[Containerhandbuch (GDV): Abmessungen](https://containerhandbuch.de/chb_e/stra/stra_03_02_00.html); die Außenmaße stehen dort nur in einer Tabelle als Bild, sie entsprechen der Norm ISO 668",
+   "in_folien": "nein"
+  },
+  {
+   "nr": 27,
+   "kategorie": "Logistik",
+   "begriff": "20-Fuß-Container (20')",
+   "symbol": "🚢",
+   "antwort": "ISO-Seecontainer, ca. 6,1 m lang = 1 TEU",
+   "erklaerung": "Standard-Seecontainer, außen ca. 6,06 m lang, 2,44 m breit, 2,59 m hoch, ca. 30 m³, max. Gesamtgewicht ca. 30,5 t. Ist die Basiseinheit für TEU.",
+   "quelle": "[Containerhandbuch (GDV): Abmessungen](https://containerhandbuch.de/chb_e/stra/stra_03_02_00.html) (ISO 668)",
+   "in_folien": "nein"
+  },
+  {
+   "nr": 28,
+   "kategorie": "Logistik",
+   "begriff": "Big Bag",
+   "symbol": "👜",
+   "antwort": "Großer flexibler Sack für Schüttgut (FIBC)",
+   "erklaerung": "Großer, flexibler Gewebesack mit Schlaufen, z. B. für Granulat oder Pulver. Ladungsträger mit tragender und umschließender Funktion.",
+   "quelle": "VL 2, S. 20",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 29,
+   "kategorie": "Logistik",
+   "begriff": "IBC",
+   "symbol": "🛢️",
+   "antwort": "Intermediate Bulk Container: Kunststofftank im Gitterkäfig auf Palette für Flüssigkeiten",
+   "erklaerung": "Ladungsträger mit tragender, umschließender und abschließender Funktion, typisch ca. 1.000 Liter für Flüssigkeiten. In der Folie heißt er „Industrial Bulk Container“. Üblicher ist „Intermediate Bulk Container“, beides meint dasselbe.",
+   "quelle": "VL 2, S. 21 (die Bezeichnung Intermediate ist übliche Fachsprache)",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 30,
+   "kategorie": "Logistik",
+   "begriff": "TEU",
+   "symbol": "📏",
+   "antwort": "Twenty-foot Equivalent Unit: Maßeinheit = ein 20-Fuß-Container",
+   "erklaerung": "Standard-Maßeinheit für Containerkapazität (Schiffe, Häfen). 1 TEU = ein 20'-Container, ein 40'-Container = 2 TEU.",
+   "quelle": "VL 2, S. 37 und 39",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 31,
+   "kategorie": "Logistik",
+   "begriff": "Stückgut",
+   "symbol": "📦",
+   "antwort": "Güter, die bei Transport, Umschlag und Lagerung als Einheit behandelt werden und ihre Form behalten",
+   "erklaerung": "Lassen sich während Transport, Umschlag und Lagern (TUL) als eine Einheit behandeln und ändern dabei Gestalt und Form nicht (z. B. Kiste, Palette). Verpackung zählt meist auch als Stückgut.",
+   "quelle": "VL 2, S. 13",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 32,
+   "kategorie": "Logistik",
+   "begriff": "Schüttgut",
+   "symbol": "⛰️",
+   "antwort": "Schüttbare Güter (körnig/staubförmig), die beim Transport ihre Form ändern",
+   "erklaerung": "Verändern ihre Gestalt während Transport und Umschlag, sind schüttbar (körnig oder staubförmig), z. B. Sand, Getreide, Kohle.",
+   "quelle": "VL 2, S. 13",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 33,
+   "kategorie": "Logistik",
+   "begriff": "Colli",
+   "symbol": "📦",
+   "antwort": "Packstücke (Plural von Collo)",
+   "erklaerung": "Colli ist der Plural von Collo und bezeichnet die einzelnen Packstücke einer Sendung (Karton, Kiste, Palette …). Beispiel: „Die Sendung besteht aus 50 Colli.“",
+   "quelle": "[proLogistik Lexikon: Colli](https://www.prologistik.com/en/logistics-lexicon/colli/)",
+   "in_folien": "nein"
+  },
+  {
+   "nr": 34,
+   "kategorie": "Logistik",
+   "begriff": "Lademeter (lm oder Ldm)",
+   "symbol": "📏",
+   "antwort": "1 Meter Ladefläche eines LKW in der Länge (bei voller Breite ca. 2,4 m)",
+   "erklaerung": "1 Lademeter = 1 m Länge der Ladefläche über die volle Breite (ca. 2,4 m). Darauf passen 2,5 Euro-Paletten, eine Euro-Palette belegt also 0,4 ldm. Dient zur Abrechnung von Teilladungen.",
+   "quelle": "[chemie.de Lexikon: Lademeter](https://www.chemie.de/lexikon/Lademeter.html)",
+   "in_folien": "nein"
+  },
+  {
+   "nr": 35,
+   "kategorie": "Logistik",
+   "begriff": "Brutto / Netto / Tara",
+   "symbol": "⚖️",
+   "antwort": "Brutto = Gesamtgewicht, Netto = reines Warengewicht, Tara = Gewicht der Verpackung",
+   "erklaerung": "Bruttogewicht = Netto + Tara. Netto = Gewicht der Ware allein. Tara = Gewicht der Verpackung bzw. des Ladungsträgers. Achtung: In den Folien kommen Brutto/Netto nur als Bruttobedarf/Nettobedarf vor (Materialbedarfsplanung). Das ist etwas anderes!",
+   "quelle": "Übliche kaufmännische Definition, z. B. [chemie.de Lexikon: Brutto](https://www.chemie.de/lexikon/Brutto.html) (per Suche gefunden, nicht Zeile für Zeile geprüft)",
+   "in_folien": "nein"
+  },
+  {
+   "nr": 36,
+   "kategorie": "Logistik",
+   "begriff": "Handling Unit (HU)",
+   "symbol": "🏷️",
+   "antwort": "Physische Pack- oder Ladeeinheit mit eindeutiger Nummer (z. B. Palette mit Ware)",
+   "erklaerung": "Eine Packeinheit oder Ladeeinheit (z. B. Palette samt Ware), die über eine eindeutige HU-Nummer identifiziert wird. Kann ein oder mehrere Produkte enthalten, und HUs lassen sich verschachteln.",
+   "quelle": "[proLogistik Lexikon: Handling Unit](https://www.prologistik.com/en/logistics-lexicon/handling-unit-hu/)",
+   "in_folien": "nein"
+  },
+  {
+   "nr": 37,
+   "kategorie": "Logistik",
+   "begriff": "FTL / LTL",
+   "symbol": "🚛",
+   "antwort": "Full Truck Load (Komplettladung) / Less than Truck Load (Teilladung)",
+   "erklaerung": "FTL: Ein Kunde bucht den ganzen LKW, keine Umladung unterwegs. LTL: Teilladungen mehrerer Versender werden auf einem LKW zusammengefasst.",
+   "quelle": "[DHL Freight: FTL and LTL](https://dhl-freight-connections.com/en/business/ftl-and-ltl-in-road-freight/)",
+   "in_folien": "nein"
+  },
+  {
+   "nr": 38,
+   "kategorie": "Logistik",
+   "begriff": "FCL / LCL",
+   "symbol": "🛳️",
+   "antwort": "Full Container Load / Less than Container Load (Seefracht)",
+   "erklaerung": "FCL: ganzer Container für einen Empfänger. LCL: Ladung zu klein für einen ganzen Container, deshalb wird sie mit anderen Sendungen in einem Container zusammengefasst. Merkhilfe: T = Truck (Straße), C = Container (See).",
+   "quelle": "[Forto: FCL and LCL](https://help.forto.com/en/articles/2779894-what-do-fcl-and-lcl-mean)",
+   "in_folien": "nein"
+  },
+  {
+   "nr": 39,
+   "kategorie": "Logistik",
+   "begriff": "Dangerous Goods / ADR",
+   "symbol": "☢️",
+   "antwort": "Gefahrgut / Europäisches Übereinkommen über die Beförderung gefährlicher Güter auf der Straße",
+   "erklaerung": "Dangerous Goods = Gefahrgut (explosiv, entzündlich, giftig …). ADR = Europäisches Übereinkommen vom 30.09.1957 über die internationale Beförderung gefährlicher Güter auf der Straße. Gefahrgut steht in den Folien, das Kürzel ADR nicht.",
+   "quelle": "Gefahrgut: VL 1, S. 17; VL 12, S. 6. ADR: [Gesetze im Internet: ADR-Gesetz Art. 1](https://www.gesetze-im-internet.de/adrg/art_1.html)",
+   "in_folien": "teilweise"
+  },
+  {
+   "nr": 40,
+   "kategorie": "Logistik",
+   "begriff": "Cross-Docking",
+   "symbol": "🔀",
+   "antwort": "Umschlag ohne Lagerung: Ware wird vom ankommenden LKW direkt in den abgehenden umsortiert",
+   "erklaerung": "Lagerfreies Verteilkonzept: Ware wird am Umschlagpunkt „über Kreuz“ vom LKW in den LKW umgeschlagen und kundenspezifisch zusammengestellt. Ziel: weniger Lagerstufen, Bestände und Durchlaufzeit. Voraussetzung: zuverlässige Planung und Transporte. Varianten: einstufig (vorkommissioniert) und zweistufig.",
+   "quelle": "VL 4, S. 24 und 25",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 41,
+   "kategorie": "Logistik",
+   "begriff": "Konsolidierung / Deconsolidation",
+   "symbol": "🧩",
+   "antwort": "Zusammenfassen kleiner Sendungen zu einer großen / Aufteilen einer großen Sendung in kleine",
+   "erklaerung": "Konsolidierung: Mehrere kleine Sendungen (LTL/LCL) werden an einem Punkt zu einer großen Sendung zusammengefasst. Deconsolidation: das Gegenteil, eine große Sendung wird wieder in kleinere Einheiten aufgeteilt. In den Folien steht nur „Prozesskonsolidierung“, und die meint etwas anderes.",
+   "quelle": "[Maersk: Consolidation vs. Deconsolidation](https://www.maersk.com/support/faqs/what-is-the-difference-between-consolidation-and-deconsolidation)",
+   "in_folien": "nein"
+  },
+  {
+   "nr": 42,
+   "kategorie": "Logistik",
+   "begriff": "BoL / B/L",
+   "symbol": "📜",
+   "antwort": "Bill of Lading: Seefrachtbrief / Konnossement",
+   "erklaerung": "Frachtbrief im Schifftransport (Konnossement).",
+   "quelle": "VL 3, S. 18",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 43,
+   "kategorie": "Logistik",
+   "begriff": "AWB",
+   "symbol": "✈️",
+   "antwort": "Air Waybill: Luftfrachtbrief",
+   "erklaerung": "Frachtbrief in der Luftfracht, mit Seriennummer der IATA.",
+   "quelle": "VL 3, S. 18",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 44,
+   "kategorie": "Logistik",
+   "begriff": "CMR / Truckaway Bill",
+   "symbol": "🧾",
+   "antwort": "Internationaler LKW-Frachtbrief (Straße)",
+   "erklaerung": "CMR = Convention relative au contrat de transport international des marchandises par route, also der internationale LKW-Frachtbrief („truckaway bill“). Bahn = CIM.",
+   "quelle": "VL 3, S. 18",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 45,
+   "kategorie": "Logistik",
+   "begriff": "LDL",
+   "symbol": "🤝",
+   "antwort": "Logistikdienstleister",
+   "erklaerung": "Unternehmen, das logistische Leistungen für andere erbringt. Gründe fürs Outsourcing: Logistik ist kein Kerngeschäft, LDL haben Spezialwissen und oft niedrigeres Lohnniveau. Stufen: 1PL (Transport), 2PL (TUL), 3PL (Kontraktlogistik), 4PL.",
+   "quelle": "VL 3, S. 33 und 35",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 46,
+   "kategorie": "Logistik",
+   "begriff": "TUL",
+   "symbol": "🔁",
+   "antwort": "Transport, Umschlag, Lagerung",
+   "erklaerung": "Die drei logistischen Kernprozesse. Ein 2PL-Dienstleister bietet genau diese TUL-Leistungen an.",
+   "quelle": "VL 2, S. 13; VL 3, S. 35",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 47,
+   "kategorie": "Logistik",
+   "begriff": "Curtainsider",
+   "symbol": "🚚",
+   "antwort": "LKW mit Schiebeplanen an der Seite",
+   "erklaerung": "Aufbau mit seitlichen Schiebeplanen. Vorteil: schnelle Be- und Entladung von der Seite und von hinten, kostengünstig.",
+   "quelle": "VL 2, S. 33 und 34; VL 8, S. 10",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 48,
+   "kategorie": "Logistik",
+   "begriff": "Kofferfahrzeug",
+   "symbol": "🚚",
+   "antwort": "LKW mit festem, geschlossenem Kastenaufbau",
+   "erklaerung": "Fester Aufbau. Vorteile: hohe Transportsicherheit, Schutz gegen Diebstahl, temperierte Transporte möglich. Beladung nur von hinten.",
+   "quelle": "VL 2, S. 33 und 34; VL 8, S. 10",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 49,
+   "kategorie": "Logistik",
+   "begriff": "Spriegelbretter",
+   "symbol": "🪵",
+   "antwort": "Holzlatten/Bügel, die die Plane eines Pritschen-LKW tragen",
+   "erklaerung": "Beim Pritschenaufbau mit Plane tragen die Spriegel (Bügel) und Spriegelbretter (seitliche Latten) die Plane und stabilisieren die Seitenwand. In der Folie steht nur „Pritschenaufbau mit Plane und Spriegelbrettern“, ohne Erklärung.",
+   "quelle": "VL 2, S. 33 (nur erwähnt); Erklärung: übliche Fahrzeugtechnik, keine extra Quelle geprüft",
+   "in_folien": "teilweise"
+  },
+  {
+   "nr": 50,
+   "kategorie": "Logistik",
+   "begriff": "erste / letzte Meile",
+   "symbol": "🏁",
+   "antwort": "Vorlauf (Abholung) und Nachlauf (Zustellung) einer Transportkette, meist per LKW",
+   "erklaerung": "In einer Transportkette mit Vorlauf, Hauptlauf und Nachlauf ist die erste Meile der Vorlauf und die letzte Meile der Nachlauf zum Empfänger, in der Regel per Straßentransport.",
+   "quelle": "VL 2, S. 33; Gesamtskript, S. 44",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 51,
+   "kategorie": "Logistik",
+   "begriff": "Pro-Forma Invoice",
+   "symbol": "🧾",
+   "antwort": "Vorab-Rechnung ohne Zahlungspflicht (z. B. für Angebot oder Importlizenz)",
+   "erklaerung": "Meist in der Angebotsphase. Keine Zahlungspflicht für den Käufer, kann bis auf den Titel identisch mit der Commercial Invoice sein. Wird zur Beantragung von Importlizenzen genutzt.",
+   "quelle": "VL 3, S. 15",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 52,
+   "kategorie": "Logistik",
+   "begriff": "IATA",
+   "symbol": "✈️",
+   "antwort": "International Air Transport Association",
+   "erklaerung": "Internationaler Dachverband der Fluggesellschaften. Vergibt die Seriennummern für AWBs.",
+   "quelle": "VL 3, S. 18",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 53,
+   "kategorie": "Logistik",
+   "begriff": "KEP",
+   "symbol": "📮",
+   "antwort": "Kurier-, Express- und Paketdienste",
+   "erklaerung": "Dienstleister für kleine Sendungen (Kurier-, Express- und Paketdienst, z. B. DHL, UPS, DPD). Gehört zu den 1PL.",
+   "quelle": "VL 3, S. 37",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 54,
+   "kategorie": "Logistik",
+   "begriff": "Quelle",
+   "symbol": "⛲",
+   "antwort": "Ausgangspunkt eines Güterstroms (z. B. Werk)",
+   "erklaerung": "Ort, von dem ein Güterstrom ausgeht, z. B. ein Werk oder Zentrallager. Gegenstück: Senke.",
+   "quelle": "VL 4, S. 26; VL 5, S. 6",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 55,
+   "kategorie": "Logistik",
+   "begriff": "Senke",
+   "symbol": "🕳️",
+   "antwort": "Endpunkt eines Güterstroms (z. B. Kunde)",
+   "erklaerung": "Ort, an dem ein Güterstrom endet, z. B. ein Kunde oder Verteillager. Güterströme werden als Matrix von Quellen zu Senken dargestellt.",
+   "quelle": "VL 4, S. 26; VL 5, S. 6",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 56,
+   "kategorie": "Logistik",
+   "begriff": "EAN",
+   "symbol": "▮▯",
+   "antwort": "European Article Number: 13-stelliger Strichcode zur Artikelidentifikation",
+   "erklaerung": "Internationale Artikelnummer zur eindeutigen Beschreibung jedes Handelsartikels, standardisiert als 1D-Barcode mit 13 Stellen. Heute GTIN genannt.",
+   "quelle": "VL 6, S. 15 und 16",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 57,
+   "kategorie": "Logistik",
+   "begriff": "GTIN",
+   "symbol": "🌍",
+   "antwort": "Global Trade Item Number: heutiger Name der EAN",
+   "erklaerung": "Weltweit eindeutige Artikelnummer, der Nachfolger bzw. heutige Name der EAN.",
+   "quelle": "VL 6, S. 16",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 58,
+   "kategorie": "Logistik",
+   "begriff": "EDI",
+   "symbol": "🔌",
+   "antwort": "Electronic Data Interchange: automatischer Austausch strukturierter Daten zwischen Unternehmen",
+   "erklaerung": "Automatisierter und eingriffsfreier Austausch strukturierter Daten zwischen Geschäftspartnern nach einheitlichen Standards. Erstimplementierung aufwendig, jede Nachricht muss genau einmal ankommen.",
+   "quelle": "VL 6, S. 32 und 35",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 59,
+   "kategorie": "Logistik",
+   "begriff": "Dock-Door",
+   "symbol": "🚪",
+   "antwort": "Verladetor mit Schleuse, an das der LKW von hinten andockt",
+   "erklaerung": "Be- und Entladeplatz (Dock-Door bzw. Schleuse): Beladung von hinten, mit Wetter- und Verschmutzungsschutz.",
+   "quelle": "VL 8, S. 10",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 60,
+   "kategorie": "Logistik",
+   "begriff": "ASN",
+   "symbol": "📨",
+   "antwort": "Advanced Shipping Notification: elektronische Lieferavis vorab",
+   "erklaerung": "Vorab-Ankündigung einer Lieferung (Liefertag, Uhrzeit, Inhalt), z. B. per EDI. Wichtig bei vielen Einzeleinheiten. Der Versender bereitet die ASN beim Warenausgang vor.",
+   "quelle": "VL 8, S. 11 und 19",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 61,
+   "kategorie": "Logistik",
+   "begriff": "In-Transit",
+   "symbol": "🛣️",
+   "antwort": "Ware, die unterwegs ist (versendet, aber noch nicht angekommen)",
+   "erklaerung": "In-Transit-Bestände sind „rollende Bestände“: angekündigt bzw. versendet, aber noch nicht geliefert.",
+   "quelle": "Gesamtskript, S. 280 (Vorlesung Inventur/Kennzahlen)",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 62,
+   "kategorie": "Supply Chain Management",
+   "begriff": "SCM",
+   "symbol": "🔗",
+   "antwort": "Supply Chain Management: Koordination der Aktivitäten entlang der gesamten Wertschöpfungskette",
+   "erklaerung": "Koordination und Integration von Aktivitäten entlang der Wertschöpfungskette, von der Produktentwicklung des Lieferanten bis zum Beziehungsmanagement des Händlers (Arnold et al. 2008). Es gibt keine einheitliche Definition.",
+   "quelle": "Gesamtskript, S. 294; VL 1, S. 12",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 63,
+   "kategorie": "Supply Chain Management",
+   "begriff": "SC",
+   "symbol": "⛓️",
+   "antwort": "Supply Chain: Lieferkette/Wertschöpfungskette über mehrere Stufen",
+   "erklaerung": "Die Wertschöpfungskette über mehrere Stufen (Lieferanten, Hersteller, Händler, Kunde). SCM optimiert sie.",
+   "quelle": "VL 1, S. 12",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 64,
+   "kategorie": "Supply Chain Management",
+   "begriff": "Lead Time",
+   "symbol": "⏱️",
+   "antwort": "Lieferzeit/Durchlaufzeit: Zeit von der Bestellung bis zur Lieferung",
+   "erklaerung": "Zeit zwischen Auftragserteilung und Lieferung. Verwandt damit ist die Wiederbeschaffungszeit, also die Zeit von der Bedarfsfeststellung bis zum wieder aufgefüllten Bestand.",
+   "quelle": "VL 1, S. 21; Gesamtskript, S. 378",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 65,
+   "kategorie": "Supply Chain Management",
+   "begriff": "VMI / SMI",
+   "symbol": "🧑‍💼",
+   "antwort": "Vendor/Supplier Managed Inventory: Lieferant steuert den Bestand im Lager des Kunden",
+   "erklaerung": "Der Lieferant übernimmt die Bestandsplanung im Lager des Kunden und entscheidet selbst über Liefertermine und -mengen. Grundlage ist intensiver Informationsaustausch (z. B. Point-of-Sale-Daten, Prognosen). Das Eigentum geht wie üblich bei Lieferung über.",
+   "quelle": "Gesamtskript, S. 406–407",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 66,
+   "kategorie": "Supply Chain Management",
+   "begriff": "VMOI / SMOI",
+   "symbol": "🔑",
+   "antwort": "Vendor/Supplier Managed and Owned Inventory: wie VMI, aber die Ware gehört dem Lieferanten bis zur Entnahme",
+   "erklaerung": "Erweiterung von VMI/SMI um einen verzögerten Eigentumsübergang (Konsignationslager): Die Ware gehört dem Lieferanten, bis sie entnommen wird, und wird erst dann bezahlt.",
+   "quelle": "Gesamtskript, S. 409",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 67,
+   "kategorie": "Supply Chain Management",
+   "begriff": "Artikelnummer",
+   "symbol": "🔢",
+   "antwort": "Nummer, die eine Artikelart eindeutig kennzeichnet (nicht das einzelne Stück)",
+   "erklaerung": "Kennzeichnet eine Artikelart eindeutig (z. B. EAN/GTIN als internationale Artikelnummer). Alle gleichen Produkte haben dieselbe Artikelnummer.",
+   "quelle": "VL 6, S. 16 und 28; VL 11, S. 25",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 68,
+   "kategorie": "Supply Chain Management",
+   "begriff": "Seriennummer",
+   "symbol": "#️⃣",
+   "antwort": "Eindeutige Nummer für ein einzelnes Stück",
+   "erklaerung": "Identifiziert genau ein einzelnes Produkt (jedes Handy hat eine eigene). Im Unterschied dazu kennzeichnet die Los-/Chargennummer eine ganze Gruppe gleichzeitig produzierter Teile. In den Folien kommt das Wort nur bei der AWB-Nummer vor.",
+   "quelle": "[tacto Einkäufer-Lexikon: Losnummer](https://www.tacto.ai/de/einkaufer-lexikon/losnummer)",
+   "in_folien": "nein"
+  },
+  {
+   "nr": 69,
+   "kategorie": "Supply Chain Management",
+   "begriff": "SKU",
+   "symbol": "🏷️",
+   "antwort": "Stock Keeping Unit: Lagereinheit/Artikel bzw. Variante im Lager",
+   "erklaerung": "Kleinste unterscheidbare Lagereinheit, also ein Artikel in einer bestimmten Ausführung (Farbe, Größe, Verpackung). In den Folien wird SKU gleichbedeutend mit Artikel verwendet. Die Langform „Stock Keeping Unit“ steht nicht in den Folien.",
+   "quelle": "VL 9, S. 20 und 22; VL 11, S. 17",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 70,
+   "kategorie": "Supply Chain Management",
+   "begriff": "Lot-Nummer / Batch-Nummer",
+   "symbol": "🧪",
+   "antwort": "Chargennummer: kennzeichnet eine Gruppe gleichzeitig produzierter Teile",
+   "erklaerung": "Kennzeichnet eine Produktionscharge bzw. ein Los, also viele Teile, die gemeinsam hergestellt wurden. Wichtig für die Rückverfolgung (Rückrufe). Wird beim Einbuchen im Wareneingang ggf. mit erfasst.",
+   "quelle": "VL 8, S. 13 („ggf. Lotnummer“, nur erwähnt); Erklärung: [tacto Einkäufer-Lexikon: Losnummer](https://www.tacto.ai/de/einkaufer-lexikon/losnummer)",
+   "in_folien": "teilweise"
+  },
+  {
+   "nr": 71,
+   "kategorie": "Supply Chain Management",
+   "begriff": "Shelf life",
+   "symbol": "📅",
+   "antwort": "Haltbarkeitsdauer / Lagerfähigkeit eines Produkts",
+   "erklaerung": "Zeitraum, in dem ein Material oder Produkt verwendet oder verkauft werden darf, z. B. das Mindesthaltbarkeitsdatum. In den Folien als relevante Information für Logistikpartner genannt.",
+   "quelle": "VL 1, S. 17; VL 6, S. 28 (nur erwähnt; Übersetzung = Standardbedeutung)",
+   "in_folien": "teilweise"
+  },
+  {
+   "nr": 72,
+   "kategorie": "Supply Chain Management",
+   "begriff": "Lost order",
+   "symbol": "❌",
+   "antwort": "Verlorener Auftrag: Auftrag, der nicht (rechtzeitig) erfüllt werden kann",
+   "erklaerung": "Ein Auftrag geht verloren, weil er nicht oder nicht rechtzeitig geliefert werden kann. Im Skript erscheint er als Fall, in dem nur noch eine komplette Neuplanung hilft (Supply Chain Event Management), und als Grund für Express-Transporte.",
+   "quelle": "Gesamtskript, S. 46 und 404",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 73,
+   "kategorie": "Supply Chain Management",
+   "begriff": "Make-to-Order",
+   "symbol": "📝",
+   "antwort": "Auftragsfertigung: Produktion erst nach Kundenauftrag",
+   "erklaerung": "Es wird erst produziert, wenn ein Kundenauftrag vorliegt. Die Distribution muss dann vor allem Lieferzusagen einhalten.",
+   "quelle": "VL 4, S. 7",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 74,
+   "kategorie": "Supply Chain Management",
+   "begriff": "Make-to-Stock",
+   "symbol": "🏬",
+   "antwort": "Lagerfertigung: Produktion auf Vorrat nach Prognose",
+   "erklaerung": "Es wird auf Vorrat produziert, um die erwartete Nachfrage aus dem Lager bedienen zu können.",
+   "quelle": "VL 4, S. 7",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 75,
+   "kategorie": "Supply Chain Management",
+   "begriff": "GPS",
+   "symbol": "🛰️",
+   "antwort": "Global Positioning System: Satellitenortung",
+   "erklaerung": "Satellitengestützte Ortung, in der Logistik zur Sendungsverfolgung während des Transports. Indoor wird stattdessen Funkpeilung („Indoor-GPS“) genutzt.",
+   "quelle": "VL 6, S. 21; VL 7, S. 28 (Langform: Standardbedeutung)",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 76,
+   "kategorie": "Supply Chain Management",
+   "begriff": "RFID",
+   "symbol": "📡",
+   "antwort": "Radio Frequency Identification: berührungslose Identifikation per Funk-Etikett",
+   "erklaerung": "Kontaktlose, induktive Identifikation per Funkchip (Tag). Ein Sichtkontakt ist im Gegensatz zum Barcode nicht nötig.",
+   "quelle": "VL 6, S. 9–10 und 17–20; VL 1, S. 32",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 77,
+   "kategorie": "Supply Chain Management",
+   "begriff": "WiP",
+   "symbol": "🔧",
+   "antwort": "Work in Process/Progress: unfertige Erzeugnisse",
+   "erklaerung": "Unfertige Erzeugnisse, die erst einen Teil der Wertschöpfung durchlaufen haben und noch nicht verkaufsfertig sind (Bestandsart nach HGB).",
+   "quelle": "Gesamtskript, S. 299",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 78,
+   "kategorie": "Supply Chain Management",
+   "begriff": "Forecast",
+   "symbol": "🔮",
+   "antwort": "Prognose (z. B. Absatzprognose)",
+   "erklaerung": "Vorhersage des künftigen Bedarfs bzw. Absatzes. Ausgangspunkt für die Planung neben dem Kundenauftrag. Ein fehlerhafter Forecast ist z. B. eine Ursache für Dead Stock.",
+   "quelle": "VL 1, S. 34; Gesamtskript, S. 389",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 79,
+   "kategorie": "Supply Chain Management",
+   "begriff": "EPQ / EOQ",
+   "symbol": "🧮",
+   "antwort": "Optimale Losgröße bzw. Bestellmenge nach Andler (Economic Production/Order Quantity)",
+   "erklaerung": "Optimale Bestell- bzw. Produktionsmenge nach der Andler-Formel. Sie minimiert die Summe aus Bestell- bzw. Rüstkosten (sinken bei großen Losen) und Lagerkosten (steigen bei großen Losen). Formel: x* = √(2 · Jahresbedarf · Bestellfixkosten ÷ (Stückpreis · Lagerkostensatz)). Achtung: Im Skript steht „Efficient Order/Production Quantity“, üblich ist „Economic“. Bei MC-Fragen beides erkennen!",
+   "quelle": "Gesamtskript, S. 336 (Formel dort grafisch, deshalb hier Standardform aus der Lehrbuchliteratur)",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 80,
+   "kategorie": "Supply Chain Management",
+   "begriff": "Safety Stock / Sicherheitsbestand",
+   "symbol": "🛟",
+   "antwort": "Reserve-Bestand gegen unvorhergesehene Schwankungen (Bedarf, Lieferzeit)",
+   "erklaerung": "Bestand in der Hinterhand, der nicht angetastet werden soll. Er sichert die Versorgung bei unvorhergesehenen Änderungen. Je kürzer die Wiederbeschaffungszeit, desto niedriger kann er sein. Formel im Skript: Sicherheitsbestand = Sicherheitsfaktor × Standardabweichung.",
+   "quelle": "VL 9, S. 9; Gesamtskript, S. 318, 378 und 380",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 81,
+   "kategorie": "Supply Chain Management",
+   "begriff": "SLA",
+   "symbol": "📑",
+   "antwort": "Service Level Agreement: Vereinbarung über einzuhaltende Lieferbereitschaft",
+   "erklaerung": "Vertragliche Vereinbarung, welche Lieferbereitschaft bzw. welchen Servicegrad der Lieferant einhalten muss, ggf. mit Eskalationsregeln.",
+   "quelle": "Gesamtskript, S. 382",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 82,
+   "kategorie": "Supply Chain Management",
+   "begriff": "Dead Stock",
+   "symbol": "🪦",
+   "antwort": "Bestand, für den kein Abruf mehr geplant ist",
+   "erklaerung": "Warenbestand, auf den kein Abruf geplant ist (kein Verbrauch, keine Verkäufe). Ursachen: Phase-out von Produkten, fehlerhafte Forecasts. Folge: Verschrottung, Verkauf mit Wertverlust, Rückverkauf …",
+   "quelle": "Gesamtskript, S. 389",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 83,
+   "kategorie": "Supply Chain Management",
+   "begriff": "OOS / Out-of-Stock",
+   "symbol": "🚫",
+   "antwort": "Artikel nicht vorrätig (Fehlbestand)",
+   "erklaerung": "Ein Artikel ist nicht auf Lager bzw. das Regal ist leer. Ursachen: Nachfragespitzen, Lieferverzug, schlechte Bedarfsplanung. Folge: verlorene Verkäufe (Lost Sales). In den Folien steht nur das verwandte Wort „Fehlmengen“.",
+   "quelle": "[Remira Glossar: Out-of-Stock](https://remira.com/en/glossary/out-of-stock-oos)",
+   "in_folien": "nein"
+  },
+  {
+   "nr": 84,
+   "kategorie": "Supply Chain Management",
+   "begriff": "Konsignation",
+   "symbol": "🏦",
+   "antwort": "Ware lagert beim Kunden, bleibt aber Eigentum des Lieferanten bis zur Entnahme",
+   "erklaerung": "Konsignationslager: Die Ware des Lieferanten steht beim Kunden, gehört aber dem Lieferanten, bis sie entnommen wird. Erst dann zahlt der Kunde (= VMOI/SMOI). Kritisch ist die Haftung bei Beschädigung oder Verlust.",
+   "quelle": "Gesamtskript, S. 409",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 85,
+   "kategorie": "Supply Chain Management",
+   "begriff": "End-to-End",
+   "symbol": "↔️",
+   "antwort": "Betrachtung der gesamten Supply Chain vom Anfang bis zum Ende",
+   "erklaerung": "Ganzheitliche Betrachtung der kompletten Supply Chain mit allen Aspekten, vom ersten Lieferanten bis zum Endkunden.",
+   "quelle": "Gesamtskript, S. 410",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 86,
+   "kategorie": "Supply Chain Management",
+   "begriff": "Durchlaufzeit",
+   "symbol": "⏳",
+   "antwort": "Bearbeitungszeit + Liegezeit",
+   "erklaerung": "Zeit, die ein Auftrag oder Teil vom Start bis zum Ende im System verbringt: Durchlaufzeit = Bearbeitungszeit + Liegezeit. Cross-Docking und JIT sollen sie verkürzen.",
+   "quelle": "Gesamtskript, S. 449; VL 4, S. 24",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 87,
+   "kategorie": "Supply Chain Management",
+   "begriff": "Supermarkt",
+   "symbol": "🛒",
+   "antwort": "Kleines Pufferlager nahe der Linie, aus dem sich der Verbraucher bedient (Pull-Prinzip)",
+   "erklaerung": "Bereitstellung vieler unterschiedlicher Teile (in KLTs, sortenrein, FIFO im Durchlaufregal) nahe am Arbeitsplatz. Der Verbraucher entnimmt, und nachgefüllt wird das Entnommene (Pull). Bei zu vielen Varianten stattdessen sequenzierte Bereitstellung.",
+   "quelle": "VL 8, S. 36 und 41",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 88,
+   "kategorie": "Supply Chain Management",
+   "begriff": "JIT",
+   "symbol": "⏰",
+   "antwort": "Just-in-Time: produzieren und liefern, was, wann, wo und in der Menge, wie es gebraucht wird",
+   "erklaerung": "Im gesamten Wertstrom produzieren und bereitstellen, was gebraucht wird, wann es gebraucht wird, wo es gebraucht wird und in der benötigten Menge und Qualität. Ziel: weniger Bestände und Durchlaufzeit bei mehr Flexibilität.",
+   "quelle": "Gesamtskript, S. 450–451",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 89,
+   "kategorie": "Supply Chain Management",
+   "begriff": "JIS",
+   "symbol": "📿",
+   "antwort": "Just-in-Sequence: JIT-Lieferung zusätzlich in der richtigen Reihenfolge",
+   "erklaerung": "JIT + in Sequenz: Der Lieferant liefert die gerade benötigte Variante genau in der festgelegten Fertigungsreihenfolge („Perlenkette“). Typisch in der Automobil-Endmontage.",
+   "quelle": "Gesamtskript, S. 461",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 90,
+   "kategorie": "Supply Chain Management",
+   "begriff": "Milkrun",
+   "symbol": "🥛",
+   "antwort": "Zyklische Versorgungstour auf fester Route mit festen Haltestellen",
+   "erklaerung": "Ein Routenzug fährt in regelmäßigen Abständen eine vorgeplante Route mit festen Haltestellen ab, liefert Material und nimmt Leergut mit. Er bündelt Transporte und liefert kleine Mengen häufig (Pull-System).",
+   "quelle": "VL 11, S. 32; Gesamtskript, S. 155 und 499",
+   "in_folien": "ja"
+  },
+  {
+   "nr": 91,
+   "kategorie": "Supply Chain Management",
+   "begriff": "ETA",
+   "symbol": "🕒",
+   "antwort": "Estimated Time of Arrival: voraussichtliche Ankunftszeit",
+   "erklaerung": "Erwartete Ankunftszeit eines Transports am Ziel. Gegenstück ETD = Estimated Time of Departure.",
+   "quelle": "[DHL Freight: Estimated Time of Arrival](https://dhl-freight-connections.com/en/logistics-dictionary/estimated-time-of-arrival)",
+   "in_folien": "nein"
+  },
+  {
+   "nr": 92,
+   "kategorie": "Supply Chain Management",
+   "begriff": "OTIF",
+   "symbol": "✅",
+   "antwort": "On Time In Full: Anteil der Lieferungen, die pünktlich und vollständig sind",
+   "erklaerung": "Kennzahl für Lieferperformance: Eine Lieferung zählt nur, wenn sie pünktlich und vollständig ist. Beispiel: 90 % pünktlich × 85 % vollständig ≈ 76,5 % (eine Variante der Berechnung). Gut sind 95–99 %.",
+   "quelle": "[MRPeasy: OTIF](https://www.mrpeasy.com/blog/de/otif-on-time-in-full/)",
+   "in_folien": "nein"
+  }
+ ]
+}
