@@ -74,7 +74,8 @@
    },
    "bereich": [
     "Lagerung"
-   ]
+   ],
+   "bild": "akl"
   },
   {
    "nr": 2,
@@ -97,7 +98,8 @@
    },
    "bereich": [
     "Lagerung"
-   ]
+   ],
+   "bild": "asrs"
   },
   {
    "nr": 3,
@@ -120,7 +122,8 @@
    },
    "bereich": [
     "Ladungsträger & Verpackung"
-   ]
+   ],
+   "bild": "klt"
   },
   {
    "nr": 4,
@@ -143,7 +146,8 @@
    },
    "bereich": [
     "Ladungsträger & Verpackung"
-   ]
+   ],
+   "bild": "schaeferkiste"
   },
   {
    "nr": 5,
@@ -166,7 +170,8 @@
    },
    "bereich": [
     "Ladungsträger & Verpackung"
-   ]
+   ],
+   "bild": "glt"
   },
   {
    "nr": 6,
@@ -190,7 +195,8 @@
    },
    "bereich": [
     "Ladungsträger & Verpackung"
-   ]
+   ],
+   "bild": "gibo"
   },
   {
    "nr": 7,
@@ -213,7 +219,8 @@
    },
    "bereich": [
     "Innerbetrieblicher Transport"
-   ]
+   ],
+   "bild": "ameise"
   },
   {
    "nr": 8,
@@ -236,7 +243,8 @@
    },
    "bereich": [
     "Innerbetrieblicher Transport"
-   ]
+   ],
+   "bild": "fts"
   },
   {
    "nr": 9,
@@ -259,7 +267,8 @@
    },
    "bereich": [
     "Innerbetrieblicher Transport"
-   ]
+   ],
+   "bild": "amr"
   },
   {
    "nr": 10,
@@ -283,7 +292,8 @@
    "bereich": [
     "Lagerung",
     "Innerbetrieblicher Transport"
-   ]
+   ],
+   "bild": "rbg"
   },
   {
    "nr": 11,
@@ -329,7 +339,8 @@
    },
    "bereich": [
     "Kommissionierung & Bereitstellung"
-   ]
+   ],
+   "bild": "pbl"
   },
   {
    "nr": 13,
@@ -542,7 +553,8 @@
    },
    "bereich": [
     "Ladungsträger & Verpackung"
-   ]
+   ],
+   "bild": "europalette"
   },
   {
    "nr": 23,
@@ -588,7 +600,8 @@
    },
    "bereich": [
     "Ladungsträger & Verpackung"
-   ]
+   ],
+   "bild": "industriepalette"
   },
   {
    "nr": 25,
@@ -611,7 +624,8 @@
    },
    "bereich": [
     "Ladungsträger & Verpackung"
-   ]
+   ],
+   "bild": "chep"
   },
   {
    "nr": 26,
@@ -635,7 +649,8 @@
    "bereich": [
     "Außerbetrieblicher Transport",
     "Ladungsträger & Verpackung"
-   ]
+   ],
+   "bild": "container40"
   },
   {
    "nr": 27,
@@ -659,7 +674,8 @@
    "bereich": [
     "Außerbetrieblicher Transport",
     "Ladungsträger & Verpackung"
-   ]
+   ],
+   "bild": "container20"
   },
   {
    "nr": 28,
@@ -682,7 +698,8 @@
    },
    "bereich": [
     "Ladungsträger & Verpackung"
-   ]
+   ],
+   "bild": "bigbag"
   },
   {
    "nr": 29,
@@ -705,7 +722,8 @@
    },
    "bereich": [
     "Ladungsträger & Verpackung"
-   ]
+   ],
+   "bild": "ibc"
   },
   {
    "nr": 30,
@@ -751,7 +769,8 @@
    },
    "bereich": [
     "Außerbetrieblicher Transport"
-   ]
+   ],
+   "bild": "stueckgut"
   },
   {
    "nr": 32,
@@ -774,7 +793,8 @@
    },
    "bereich": [
     "Außerbetrieblicher Transport"
-   ]
+   ],
+   "bild": "schuettgut"
   },
   {
    "nr": 33,
@@ -821,7 +841,8 @@
    },
    "bereich": [
     "Außerbetrieblicher Transport"
-   ]
+   ],
+   "bild": "lademeter"
   },
   {
    "nr": 35,
@@ -963,7 +984,8 @@
    },
    "bereich": [
     "Umschlag & Distribution"
-   ]
+   ],
+   "bild": "crossdocking"
   },
   {
    "nr": 41,
@@ -1126,7 +1148,8 @@
    },
    "bereich": [
     "Außerbetrieblicher Transport"
-   ]
+   ],
+   "bild": "curtainsider"
   },
   {
    "nr": 48,
@@ -1149,7 +1172,8 @@
    },
    "bereich": [
     "Außerbetrieblicher Transport"
-   ]
+   ],
+   "bild": "koffer"
   },
   {
    "nr": 49,
@@ -1172,7 +1196,8 @@
    },
    "bereich": [
     "Außerbetrieblicher Transport"
-   ]
+   ],
+   "bild": "pritsche"
   },
   {
    "nr": 50,
@@ -1323,7 +1348,8 @@
    },
    "bereich": [
     "Kennzeichnung & IT-Systeme"
-   ]
+   ],
+   "bild": "ean"
   },
   {
    "nr": 57,
@@ -1392,7 +1418,8 @@
    },
    "bereich": [
     "Umschlag & Distribution"
-   ]
+   ],
+   "bild": "dockdoor"
   },
   {
    "nr": 60,
@@ -1761,7 +1788,8 @@
    },
    "bereich": [
     "Kennzeichnung & IT-Systeme"
-   ]
+   ],
+   "bild": "rfid"
   },
   {
    "nr": 77,
@@ -2009,7 +2037,8 @@
    },
    "bereich": [
     "Kommissionierung & Bereitstellung"
-   ]
+   ],
+   "bild": "supermarkt"
   },
   {
    "nr": 88,
@@ -2057,7 +2086,8 @@
    "bereich": [
     "SCM-Konzepte & Zusammenarbeit",
     "Kommissionierung & Bereitstellung"
-   ]
+   ],
+   "bild": "jis"
   },
   {
    "nr": 90,
@@ -2081,7 +2111,8 @@
    "bereich": [
     "Kommissionierung & Bereitstellung",
     "Innerbetrieblicher Transport"
-   ]
+   ],
+   "bild": "milkrun"
   },
   {
    "nr": 91,

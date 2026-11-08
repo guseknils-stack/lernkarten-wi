@@ -106,3 +106,7 @@ ul.fehler { padding-left: 18px; } ul.fehler li { margin-bottom: 10px; }
 .kalender .tag.verpasst small { color: var(--rot); }
 .kalender .tag.zukunft { opacity: .4; }
 .kalender .tag.heute { outline: 2px solid var(--akzent); }
+
+/* Gezeichnete Bilder (bilder.js) */
+.bild { width: 100%; max-width: 340px; height: auto; display: block; margin: 6px auto 10px; border-radius: 10px; }
+.ohne-text .bt { display: none; }

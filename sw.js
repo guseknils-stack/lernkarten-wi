@@ -1,8 +1,8 @@
 // Service Worker: sorgt dafür, dass die App auch ohne Internet funktioniert.
 // Offline-Unterstützung: zuerst Netz (damit Updates ankommen), sonst Cache.
-const CACHE = "paukbaer-v9";
+const CACHE = "paukbaer-v10";
 const DATEIEN = [
-  "./", "index.html", "style.css", "app.js", "bear.js", "manifest.webmanifest",
+  "./", "index.html", "style.css", "app.js", "bear.js", "bilder.js", "manifest.webmanifest",
   "data/faecher.json", "data/logistik.json", "icons/icon-180.png", "icons/icon-192.png", "icons/icon-512.png",
 ];
 

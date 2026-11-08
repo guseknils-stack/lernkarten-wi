@@ -3,6 +3,7 @@
 // (Startseite, Fach, Paket, Karteikarten, Quiz, Probetest) und die Navigation.
 
 import { baerSVG } from "./bear.js";
+import { bildSVG } from "./bilder.js";
 
 // ---------- Einstellungen ----------
 const TAGESZIEL = 10;        // so viele RICHTIG beantwortete Karten pro Tag ergeben einen Trainingstag
@@ -13,7 +14,7 @@ const MINUS_NEGATIV = 1;     // verpasster Tag, wenn der Fortschritt schon bei 0
 const PROBETEST_FRAGEN = 20;
 const PROBETEST_MINUTEN = 20;
 // Wie oft welche Frageart in Quiz und Probetest kommt (höhere Zahl = öfter)
-const QUIZ_GEWICHTE = { wissen: 3, bedeutung: 2, begriff: 2, bereich: 1, kategorie: 1 };
+const QUIZ_GEWICHTE = { wissen: 3, bedeutung: 2, begriff: 2, bild: 2, bereich: 1, kategorie: 1 };
 const SPEICHER = "paukbaer-v1";
 
 // ---------- Speicher (nur auf diesem Gerät) ----------
@@ -356,7 +357,7 @@ function karteikarten(id, nr) {
 
     // Lösungsteil der Karte (wird nach dem Umdrehen oder Prüfen gezeigt)
     const loesung = (k) => `<div class="antwort">
-        <div class="gross" style="text-align:center">${k.symbol}</div>
+        ${k.bild ? bildSVG(k.bild, vorne(k)) : `<div class="gross" style="text-align:center">${k.symbol}</div>`}
         <div class="kurz">${esc(k.antwort)}</div>
         <div>${esc(k.erklaerung)}</div>
         ${k.in_folien !== "ja" ? `<span class="badge">${k.in_folien === "nein" ? "⚠️ nicht in den Folien" : "🔶 in den Folien nur erwähnt"}</span>` : ""}
@@ -472,13 +473,14 @@ function wissensFrage(k) {
 function mcHtml(f, gewaehlt, mitAuswertung = true) {
   const beantwortet = gewaehlt !== undefined && mitAuswertung;
   return `
-    <section class="feld"><div class="leise">${esc(f.ueber)}</div><h2>${esc(f.frage)}</h2></section>
+    <section class="feld"><div class="leise">${esc(f.ueber)}</div>${f.bild || ""}${f.frage ? `<h2>${esc(f.frage)}</h2>` : ""}</section>
     ${f.optionen.map((o, i) => {
       const kl = beantwortet ? (o.richtig ? "richtig" : i === gewaehlt ? "falsch" : "") : "";
       return `<button class="option ${kl}" data-i="${i}" ${beantwortet ? "disabled" : ""}>${"ABCD"[i]}) ${esc(o.text)}</button>`;
     }).join("")}
     ${beantwortet ? `<section class="feld">
         <b>${f.optionen[gewaehlt].richtig ? "✅ Richtig!" : "❌ Leider falsch."}</b>
+        ${f.karte.bild ? bildSVG(f.karte.bild, vorne(f.karte)) : ""}
         <p>${f.karte.symbol} ${esc(f.erklaerung)}</p>
         <div class="quelle">Quelle Karte: ${mitLinks(f.karte.quelle)}</div>
       </section>` : ""}`;
@@ -517,6 +519,16 @@ function bereichsFrage(d, k) {
   };
 }
 
+// Bilderfrage: Zeichnung ohne Beschriftung, gesucht ist der Begriff (falsche Antworten bevorzugt aus anderen Bildern)
+function bildFrage(d, k) {
+  const mitBild = mischen(d.karten.filter((x) => x.bild && x.nr !== k.nr));
+  const andere = [...mitBild, ...mischen(d.karten.filter((x) => !x.bild && x.kategorie === k.kategorie))].slice(0, 3);
+  return {
+    karte: k, ueber: "Was zeigt das Bild?", frage: "", bild: bildSVG(k.bild, "Bild zur Frage", true), erklaerung: `${vorne(k)}: ${k.erklaerung}`,
+    optionen: mischen([k, ...andere]).map((o) => ({ text: vorne(o), richtig: o.nr === k.nr })),
+  };
+}
+
 // Alle Fragetypen mit Prüfung, ob sie für eine Karte möglich sind
 const FRAGETYPEN = {
   wissen: { bauen: (d, k) => wissensFrage(k), moeglich: (k) => !!k.mc },
@@ -524,6 +536,7 @@ const FRAGETYPEN = {
   begriff: { bauen: begriffsFrage, moeglich: umkehrbar },
   bereich: { bauen: bereichsFrage, moeglich: (k) => !!k.bereich },
   kategorie: { bauen: kategorieFrage, moeglich: () => true },
+  bild: { bauen: bildFrage, moeglich: (k) => !!k.bild },
 };
 // Zieht zufällig einen Fragetyp für die Karte. gewichte z. B. { bedeutung: 2, kategorie: 1 }: höhere Zahl = kommt öfter.
 // "ohne" schließt Typen aus, die bei dieser Karte schon dran waren.
@@ -539,12 +552,12 @@ function mcKlicks(f, beiWahl) {
 }
 
 // Quiz: pro Karte zwei Fragen: die Wissensfrage (falls vorhanden) und eine zufällige andere Frageart
-// (Bedeutung, Begriff zur Beschreibung, Bereich, Kategorie). Ohne Wissensfrage: zwei verschiedene andere.
+// (Bedeutung, Begriff zur Beschreibung, Bild, Bereich, Kategorie). Ohne Wissensfrage: zwei verschiedene andere.
 // Verbucht wird pro Karte: richtig nur, wenn alle Fragen zu dieser Karte stimmen.
 function quiz(id, nr) {
   fachLaden(id).then((d) => {
     const p = d.pakete.find((x) => x.nr === +nr);
-    const gewichte = { bedeutung: QUIZ_GEWICHTE.bedeutung, begriff: QUIZ_GEWICHTE.begriff, bereich: QUIZ_GEWICHTE.bereich, kategorie: QUIZ_GEWICHTE.kategorie };
+    const { wissen, ...gewichte } = QUIZ_GEWICHTE; // alle Fragearten außer der Wissensfrage, die kommt extra
     const fragen = mischen(paketKarten(d, p)).flatMap((k) => {
       const erster = zufallsTyp(k, gewichte);
       const zweiter = k.mc ? "wissen" : zufallsTyp(k, gewichte, [erster]);

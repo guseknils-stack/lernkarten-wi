@@ -2,6 +2,14 @@
 
 Neueste Änderungen stehen oben.
 
+## 2026-11-08 – Gezeichnete Bilder und Bilderfrage
+- Neue Datei `bilder.js`: 31 einfache, selbst gezeichnete SVG-Bilder für greifbare Begriffe (z. B. KLT, GLT, GiBo, Ameise, Container, Curtainsider, Cross-Docking, Milkrun). Jedes Bild zeigt nur die Merkmale, an denen man den Gegenstand erkennt, mit kurzer Beschriftung.
+- `data/logistik.json`: Feld `bild` bei 31 Karten (Name aus `BILDER` in `bilder.js`). Abstrakte Begriffe (z. B. SLA, Forecast) haben bewusst kein Bild, weil ein Bild dort nichts erklären würde.
+- `app.js`: Das Bild erscheint in der Lösung der Karteikarte und in der Erklärung nach jeder Quizfrage. Neuer Fragetyp „Was zeigt das Bild?“: Bild ohne Beschriftung (sonst stünde die Lösung drin), gesucht ist der Begriff.
+- `style.css`: Stil `.bild`, und `.ohne-text .bt` blendet Beschriftungen aus.
+- `sw.js`: `bilder.js` wird offline gespeichert, Cache-Version auf v10.
+- Warum: Nils möchte Bilder, auf denen die wichtigsten Merkmale eindeutig zu erkennen sind, damit das Lernen leichter fällt.
+
 ## 2026-11-08 – Neue Fragetypen in Quiz und Probetest
 - `data/logistik.json`: Jede Karte hat jetzt ein Feld `bereich` (ein oder mehrere Themenbereiche, z. B. „Ladungsträger & Verpackung“). Die Liste aller 10 Bereiche steht oben in `bereiche`.
 - `app.js`: Drei neue Fragetypen: „Welcher Begriff passt?“ (Beschreibung gegeben, Begriff gesucht), „Themenbereich“ und „Kategorie in der Begriffsliste“ (Intralogistik / Logistik / SCM). Die umgekehrte Frage wird bei Brutto/Netto/Tara, HALB/INT und EAN weggelassen, weil die Antwort den Begriff verrät.

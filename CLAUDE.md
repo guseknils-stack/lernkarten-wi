@@ -19,6 +19,7 @@ Nils ist Programmier-Einsteiger. Der Code muss für ihn und für andere nachvoll
 - `index.html`: Grundgerüst der Seite
 - `app.js`: gesamte Logik (Speicher, Bär-Zustand, Ansichten, Navigation)
 - `bear.js`: zeichnet den Bären als SVG
+- `bilder.js`: gezeichnete Bilder zu den Begriffen (SVG)
 - `style.css`: Design
 - `sw.js`: Offline-Funktion (Service Worker)
 - `data/faecher.json`: Liste der Fächer; `data/<fach>.json`: Karten eines Fachs
