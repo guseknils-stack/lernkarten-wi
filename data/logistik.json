@@ -123,7 +123,29 @@
    "bereich": [
     "Ladungsträger & Verpackung"
    ],
-   "bild": "klt"
+   "bild": "klt",
+   "eigenschaften": [
+    {
+     "frage": "Welche maximale Grundfläche hat ein KLT laut VL 8?",
+     "optionen": [
+      "600 × 400 mm (Euro-Viertelpalette)",
+      "800 × 600 mm",
+      "1.200 × 800 mm",
+      "400 × 300 mm"
+     ],
+     "erklaerung": "VL 8, S. 29: max. 600 × 400 mm, also ein Viertel der Euro-Palette."
+    },
+    {
+     "frage": "Aus welchem Material ist ein KLT?",
+     "optionen": [
+      "Farbiger Kunststoff",
+      "Holz",
+      "Stahlblech",
+      "Wellpappe"
+     ],
+     "erklaerung": "VL 8, S. 29: aus farbigem Kunststoff, stapelbar, poolfähig, schlag- und stoßfest."
+    }
+   ]
   },
   {
    "nr": 4,
@@ -196,7 +218,29 @@
    "bereich": [
     "Ladungsträger & Verpackung"
    ],
-   "bild": "gibo"
+   "bild": "gibo",
+   "eigenschaften": [
+    {
+     "frage": "Woraus bestehen die Wände einer GiBo?",
+     "optionen": [
+      "Aus Stahlgitter",
+      "Aus Holzlatten",
+      "Aus Kunststoffplatten",
+      "Aus Wellpappe"
+     ],
+     "erklaerung": "Euro-Gitterbox-Pool-Palette: Stahlgitterwände auf einem Palettenboden."
+    },
+    {
+     "frage": "Welche Grundfläche hat eine Euro-Gitterbox ungefähr?",
+     "optionen": [
+      "Wie eine Euro-Palette (ca. 1.200 × 800 mm)",
+      "Wie ein KLT (600 × 400 mm)",
+      "Wie eine Industriepalette (1.200 × 1.000 mm)",
+      "Wie ein halber 20'-Container (ca. 3 × 2,4 m)"
+     ],
+     "erklaerung": "Die Gitterbox steht auf dem Euro-Palettenmaß und passt deshalb in dieselben Regale und Lager (nicht ausdrücklich in den Folien)."
+    }
+   ]
   },
   {
    "nr": 7,
@@ -554,7 +598,49 @@
    "bereich": [
     "Ladungsträger & Verpackung"
    ],
-   "bild": "europalette"
+   "bild": "europalette",
+   "eigenschaften": [
+    {
+     "frage": "Aus welchem Material ist die klassische Euro-Palette (EPAL 1)?",
+     "optionen": [
+      "Holz",
+      "Kunststoff",
+      "Aluminium",
+      "Pressspan"
+     ],
+     "erklaerung": "Die EPAL-Euro-Palette ist aus Holz (Bretter, Klötze, Nägel). Kunststoffpaletten gibt es auch, sie sind aber keine EPAL-1-Palette."
+    },
+    {
+     "frage": "Wie viele Klötze hat eine Euro-Palette?",
+     "optionen": [
+      "9",
+      "6",
+      "4",
+      "12"
+     ],
+     "erklaerung": "3 Reihen mit je 3 Klötzen = 9 Klötze. Daran erkennt man sie auch im Bild (Quelle: EPAL, nicht in den Folien)."
+    },
+    {
+     "frage": "Welche Maße hat eine Halbpalette laut VL 12?",
+     "optionen": [
+      "600 × 800 mm",
+      "400 × 600 mm",
+      "1.200 × 400 mm",
+      "800 × 800 mm"
+     ],
+     "erklaerung": "VL 12, S. 34: Euro 1.200 × 800, Halbpalette 600 × 800, Viertelpalette 600 × 400 mm."
+    },
+    {
+     "frage": "Wie viel darf eine Euro-Palette bei gleichmäßig verteilter Last ungefähr tragen?",
+     "optionen": [
+      "ca. 1.500 kg",
+      "ca. 150 kg",
+      "ca. 500 kg",
+      "ca. 10.000 kg"
+     ],
+     "erklaerung": "EPAL gibt für gleichmäßig verteilte Last ca. 1.500 kg an (nicht in den Folien)."
+    }
+   ]
   },
   {
    "nr": 23,
@@ -601,7 +687,19 @@
    "bereich": [
     "Ladungsträger & Verpackung"
    ],
-   "bild": "industriepalette"
+   "bild": "industriepalette",
+   "eigenschaften": [
+    {
+     "frage": "Wie viel größer ist die Fläche einer Industriepalette als die einer Euro-Palette?",
+     "optionen": [
+      "Um 25 % (1,2 m² statt 0,96 m²)",
+      "Um 50 %",
+      "Um 10 %",
+      "Gar nicht, nur die Form ist anders"
+     ],
+     "erklaerung": "1,2 × 1,0 = 1,2 m² und 1,2 × 0,8 = 0,96 m². 1,2 ÷ 0,96 = 1,25, also 25 % mehr."
+    }
+   ]
   },
   {
    "nr": 25,
@@ -625,7 +723,19 @@
    "bereich": [
     "Ladungsträger & Verpackung"
    ],
-   "bild": "chep"
+   "bild": "chep",
+   "eigenschaften": [
+    {
+     "frage": "Welche Farbe hat eine CHEP-Palette?",
+     "optionen": [
+      "Blau",
+      "Naturholz mit Brandzeichen",
+      "Rot",
+      "Grau"
+     ],
+     "erklaerung": "CHEP-Paletten sind blau gestrichen, damit man die Mietpaletten sofort erkennt."
+    }
+   ]
   },
   {
    "nr": 26,
@@ -650,7 +760,19 @@
     "Außerbetrieblicher Transport",
     "Ladungsträger & Verpackung"
    ],
-   "bild": "container40"
+   "bild": "container40",
+   "eigenschaften": [
+    {
+     "frage": "Wie groß ist das Volumen eines 40'-Containers ungefähr?",
+     "optionen": [
+      "ca. 67 m³",
+      "ca. 33 m³",
+      "ca. 120 m³",
+      "ca. 20 m³"
+     ],
+     "erklaerung": "40'-Standardcontainer: ca. 67 m³, also etwa doppelt so viel wie ein 20'-Container (ca. 33 m³)."
+    }
+   ]
   },
   {
    "nr": 27,
@@ -675,7 +797,29 @@
     "Außerbetrieblicher Transport",
     "Ladungsträger & Verpackung"
    ],
-   "bild": "container20"
+   "bild": "container20",
+   "eigenschaften": [
+    {
+     "frage": "Wie lang ist ein 20'-Container ungefähr?",
+     "optionen": [
+      "ca. 6,1 m",
+      "ca. 12,2 m",
+      "ca. 3 m",
+      "ca. 9 m"
+     ],
+     "erklaerung": "20 Fuß ≈ 6,1 m. Der 40'-Container ist ca. 12,2 m lang."
+    },
+    {
+     "frage": "Woraus besteht ein Standard-Seecontainer?",
+     "optionen": [
+      "Aus Stahl",
+      "Aus Holz",
+      "Aus Aluminium-Planen",
+      "Aus Kunststoff"
+     ],
+     "erklaerung": "ISO-Seecontainer sind aus Stahl (meist wetterfester Cortenstahl), damit sie stapelbar und seefest sind."
+    }
+   ]
   },
   {
    "nr": 28,
@@ -699,7 +843,29 @@
    "bereich": [
     "Ladungsträger & Verpackung"
    ],
-   "bild": "bigbag"
+   "bild": "bigbag",
+   "eigenschaften": [
+    {
+     "frage": "Aus welchem Material ist ein Big Bag?",
+     "optionen": [
+      "Flexibles Kunststoffgewebe",
+      "Hartplastik",
+      "Stahlblech",
+      "Holz"
+     ],
+     "erklaerung": "Big Bag (FIBC): großer, flexibler Gewebesack, meist aus Polypropylen-Gewebe, mit Schlaufen zum Anheben."
+    },
+    {
+     "frage": "Woran hebt man einen Big Bag an?",
+     "optionen": [
+      "An den Schlaufen oben (mit Stapler oder Kran)",
+      "An einer Gabeltasche unten wie bei einer Palette",
+      "An einem Hahn unten",
+      "Nur von Hand an zwei Griffen"
+     ],
+     "erklaerung": "Die Schlaufen werden über Staplergabeln oder einen Kranhaken gelegt."
+    }
+   ]
   },
   {
    "nr": 29,
@@ -723,7 +889,29 @@
    "bereich": [
     "Ladungsträger & Verpackung"
    ],
-   "bild": "ibc"
+   "bild": "ibc",
+   "eigenschaften": [
+    {
+     "frage": "Wie viel fasst ein typischer IBC?",
+     "optionen": [
+      "ca. 1.000 Liter",
+      "ca. 200 Liter",
+      "ca. 30 Liter",
+      "ca. 10.000 Liter"
+     ],
+     "erklaerung": "Ein IBC fasst typischerweise ca. 1.000 Liter. 200 Liter wäre ein Fass."
+    },
+    {
+     "frage": "Wie ist ein IBC aufgebaut?",
+     "optionen": [
+      "Kunststofftank in einem Stahlgitterkäfig auf einer Palette",
+      "Stahlfass auf Rollen",
+      "Flexibler Gewebesack mit Schlaufen",
+      "Holzkiste mit Deckel"
+     ],
+     "erklaerung": "VL 2, S. 21: tragend, umschließend und abschließend. Der Käfig schützt den Tank, die Palette macht ihn staplerfähig."
+    }
+   ]
   },
   {
    "nr": 30,
@@ -1349,7 +1537,19 @@
    "bereich": [
     "Kennzeichnung & IT-Systeme"
    ],
-   "bild": "ean"
+   "bild": "ean",
+   "eigenschaften": [
+    {
+     "frage": "Was für ein Code ist die EAN?",
+     "optionen": [
+      "Ein 1D-Strichcode",
+      "Ein 2D-Code wie der QR-Code",
+      "Ein Funk-Chip (RFID)",
+      "Eine reine Klarschrift ohne Code"
+     ],
+     "erklaerung": "VL 6, S. 16: EAN heute standardisiert als 1D-Barcode mit 13 Stellen."
+    }
+   ]
   },
   {
    "nr": 57,

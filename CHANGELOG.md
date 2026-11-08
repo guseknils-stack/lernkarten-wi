@@ -2,6 +2,14 @@
 
 Neueste Änderungen stehen oben.
 
+## 2026-11-08 – Eigenschaftsfragen, Probetest mit 30 Fragen, Dunkelmodus
+- `data/logistik.json`: Neues Feld `eigenschaften` bei 11 wichtigen Gegenständen (KLT, GiBo, Euro-Palette, Industriepalette, CHEP, 20'/40'-Container, Big Bag, IBC, EAN), insgesamt 18 Fragen zu Material, Maßen, Farbe, Aufbau oder Volumen. Die richtige Antwort steht an erster Stelle.
+- `app.js`: Neuer Fragetyp `eigenschaft`. Im Quiz bekommen diese Gegenstände eine dritte Frage, im Probetest kommt sie per Zufall (Gewicht in `QUIZ_GEWICHTE`).
+- `app.js`: `PROBETEST_FRAGEN` von 20 auf 30 (die Zeit bleibt 20 Minuten wie im echten Kurztest).
+- `style.css`, `index.html`, `manifest.webmanifest`: Die App ist jetzt immer dunkel, egal wie das iPhone eingestellt ist. Knopftext dunkel auf hellgrün, damit er gut lesbar ist.
+- `sw.js`: Cache-Version auf v11.
+- Warum: Nils' Wünsche nach dem Vergleich mit der App eines Kommilitonen.
+
 ## 2026-11-08 – Gezeichnete Bilder und Bilderfrage
 - Neue Datei `bilder.js`: 31 einfache, selbst gezeichnete SVG-Bilder für greifbare Begriffe (z. B. KLT, GLT, GiBo, Ameise, Container, Curtainsider, Cross-Docking, Milkrun). Jedes Bild zeigt nur die Merkmale, an denen man den Gegenstand erkennt, mit kurzer Beschriftung.
 - `data/logistik.json`: Feld `bild` bei 31 Karten (Name aus `BILDER` in `bilder.js`). Abstrakte Begriffe (z. B. SLA, Forecast) haben bewusst kein Bild, weil ein Bild dort nichts erklären würde.

@@ -1,26 +1,25 @@
 /* PaukBär – Design: Farben (hell und dunkel), Abstände, Knöpfe, Karten. */
 :root {
-  --bg: #f6f4ef;
-  --karte: #ffffff;
-  --text: #1f1d1a;
-  --leise: #6d675e;
-  --linie: #e4dfd5;
-  --akzent: #2f6f4f;
-  --akzent-hell: #e3f0e8;
+  /* Die App ist immer im Dunkelmodus (Nils' Wunsch). Die alten hellen Farben stehen unten als Kommentar,
+     falls man irgendwann wieder umschalten will. */
+  --bg: #161513;
+  --karte: #22201d;
+  --text: #f1eee8;
+  --leise: #a49d92;
+  --linie: #36322c;
+  --akzent: #5cbf8a;
+  --akzent-hell: #20352a;
   --rot: #d64545;
   --gelb: #e0a526;
   --gruen: #2f9e5b;
   --gold: #d4a017;
   --radius: 16px;
-  --schatten: 0 1px 2px rgba(0,0,0,.05), 0 4px 14px rgba(0,0,0,.05);
+  --schatten: 0 1px 2px rgba(0,0,0,.3);
+  color-scheme: dark;
 }
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #161513; --karte: #22201d; --text: #f1eee8; --leise: #a49d92;
-    --linie: #36322c; --akzent: #5cbf8a; --akzent-hell: #20352a;
-    --schatten: 0 1px 2px rgba(0,0,0,.3);
-  }
-}
+/* Helle Farben (zurzeit nicht benutzt):
+   --bg: #f6f4ef; --karte: #ffffff; --text: #1f1d1a; --leise: #6d675e; --linie: #e4dfd5;
+   --akzent: #2f6f4f; --akzent-hell: #e3f0e8; */
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 html, body { margin: 0; background: var(--bg); color: var(--text); }
 body {
@@ -54,7 +53,7 @@ a { color: var(--akzent); }
 .fach .info { flex: 1; min-width: 0; }
 .fach .titel { font-weight: 650; font-size: 18px; }
 .fach.bald { opacity: .55; cursor: default; }
-.countdown { background: var(--akzent); color: #fff; border-radius: 10px; padding: 4px 10px; font-weight: 700; font-size: 14px; white-space: nowrap; }
+.countdown { background: var(--akzent); color: #0f1f17; border-radius: 10px; padding: 4px 10px; font-weight: 700; font-size: 14px; white-space: nowrap; }
 
 .ampel { width: 16px; height: 16px; border-radius: 50%; flex-shrink: 0; }
 .ampel.rot { background: var(--rot); } .ampel.gelb { background: var(--gelb); } .ampel.gruen { background: var(--gruen); }
@@ -63,9 +62,9 @@ a { color: var(--akzent); }
 .balken { height: 6px; background: var(--linie); border-radius: 99px; overflow: hidden; margin-top: 6px; }
 .balken span { display: block; height: 100%; background: var(--gruen); }
 
-.knopf { display: block; width: 100%; padding: 15px 16px; border-radius: 14px; border: 0; font: inherit; font-weight: 650; cursor: pointer; background: var(--akzent); color: #fff; text-align: center; }
+.knopf { display: block; width: 100%; padding: 15px 16px; border-radius: 14px; border: 0; font: inherit; font-weight: 650; cursor: pointer; background: var(--akzent); color: #0f1f17; text-align: center; }
 .knopf.zweit { background: var(--akzent-hell); color: var(--akzent); }
-.knopf.rot { background: var(--rot); } .knopf.gruen { background: var(--gruen); }
+.knopf.rot { background: var(--rot); color: #fff; } .knopf.gruen { background: var(--gruen); color: #fff; }
 .knopf:disabled { opacity: .45; cursor: default; }
 .reihe { display: flex; gap: 10px; } .reihe > * { flex: 1; }
 .abstand { height: 10px; }

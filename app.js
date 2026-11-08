@@ -11,10 +11,10 @@ const FORTSCHRITT_MAX = 22;  // so viele Lerntage, bis der Bär voll entwickelt 
 const FORTSCHRITT_MIN = -10; // tiefster Stand: Bär ist richtig krank
 const MINUS_POSITIV = 3;     // verpasster Tag, solange der Fortschritt über 0 ist
 const MINUS_NEGATIV = 1;     // verpasster Tag, wenn der Fortschritt schon bei 0 oder darunter ist
-const PROBETEST_FRAGEN = 20;
+const PROBETEST_FRAGEN = 30;
 const PROBETEST_MINUTEN = 20;
 // Wie oft welche Frageart in Quiz und Probetest kommt (höhere Zahl = öfter)
-const QUIZ_GEWICHTE = { wissen: 3, bedeutung: 2, begriff: 2, bild: 2, bereich: 1, kategorie: 1 };
+const QUIZ_GEWICHTE = { wissen: 3, eigenschaft: 3, bedeutung: 2, begriff: 2, bild: 2, bereich: 1, kategorie: 1 };
 const SPEICHER = "paukbaer-v1";
 
 // ---------- Speicher (nur auf diesem Gerät) ----------
@@ -529,6 +529,16 @@ function bildFrage(d, k) {
   };
 }
 
+// Eigenschafts-Frage: bei wichtigen Gegenständen (z. B. Euro-Palette) Material, Maße, Farbe usw.
+// Eine Karte kann mehrere haben, es wird zufällig eine gezogen.
+function eigenschaftsFrage(d, k) {
+  const e = mischen(k.eigenschaften)[0];
+  return {
+    karte: k, ueber: `Eigenschaft: ${vorne(k)}`, frage: e.frage, erklaerung: e.erklaerung,
+    optionen: mischen(e.optionen.map((text, i) => ({ text, richtig: i === 0 }))),
+  };
+}
+
 // Alle Fragetypen mit Prüfung, ob sie für eine Karte möglich sind
 const FRAGETYPEN = {
   wissen: { bauen: (d, k) => wissensFrage(k), moeglich: (k) => !!k.mc },
@@ -537,6 +547,7 @@ const FRAGETYPEN = {
   bereich: { bauen: bereichsFrage, moeglich: (k) => !!k.bereich },
   kategorie: { bauen: kategorieFrage, moeglich: () => true },
   bild: { bauen: bildFrage, moeglich: (k) => !!k.bild },
+  eigenschaft: { bauen: eigenschaftsFrage, moeglich: (k) => !!k.eigenschaften?.length },
 };
 // Zieht zufällig einen Fragetyp für die Karte. gewichte z. B. { bedeutung: 2, kategorie: 1 }: höhere Zahl = kommt öfter.
 // "ohne" schließt Typen aus, die bei dieser Karte schon dran waren.
@@ -553,15 +564,18 @@ function mcKlicks(f, beiWahl) {
 
 // Quiz: pro Karte zwei Fragen: die Wissensfrage (falls vorhanden) und eine zufällige andere Frageart
 // (Bedeutung, Begriff zur Beschreibung, Bild, Bereich, Kategorie). Ohne Wissensfrage: zwei verschiedene andere.
+// Wichtige Gegenstände (z. B. Euro-Palette) bekommen zusätzlich eine Eigenschaftsfrage.
 // Verbucht wird pro Karte: richtig nur, wenn alle Fragen zu dieser Karte stimmen.
 function quiz(id, nr) {
   fachLaden(id).then((d) => {
     const p = d.pakete.find((x) => x.nr === +nr);
-    const { wissen, ...gewichte } = QUIZ_GEWICHTE; // alle Fragearten außer der Wissensfrage, die kommt extra
+    // Wissens- und Eigenschaftsfrage kommen extra, deshalb hier nur die übrigen Fragearten zum Losen
+    const { wissen, eigenschaft, ...gewichte } = QUIZ_GEWICHTE;
     const fragen = mischen(paketKarten(d, p)).flatMap((k) => {
       const erster = zufallsTyp(k, gewichte);
-      const zweiter = k.mc ? "wissen" : zufallsTyp(k, gewichte, [erster]);
-      return [erster, zweiter].map((typ) => FRAGETYPEN[typ].bauen(d, k));
+      const typen = [erster, k.mc ? "wissen" : zufallsTyp(k, gewichte, [erster])];
+      if (k.eigenschaften?.length) typen.push("eigenschaft");
+      return typen.map((typ) => FRAGETYPEN[typ].bauen(d, k));
     });
     const kartenOk = {};
     let pos = 0, richtig = 0;
