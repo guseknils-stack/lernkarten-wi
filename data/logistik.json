@@ -228,7 +228,7 @@
       "Aus Kunststoffplatten",
       "Aus Wellpappe"
      ],
-     "erklaerung": "Euro-Gitterbox-Pool-Palette: Stahlgitterwände auf einem Palettenboden."
+     "erklaerung": "Euro-Gitterbox-Pool-Palette: Stahlgitterwände auf einem Palettenboden. (nicht in den Folien)"
     },
     {
      "frage": "Welche Grundfläche hat eine Euro-Gitterbox ungefähr?",
@@ -608,7 +608,7 @@
       "Aluminium",
       "Pressspan"
      ],
-     "erklaerung": "Die EPAL-Euro-Palette ist aus Holz (Bretter, Klötze, Nägel). Kunststoffpaletten gibt es auch, sie sind aber keine EPAL-1-Palette."
+     "erklaerung": "Die EPAL-Euro-Palette ist aus Holz (Bretter, Klötze, Nägel). Kunststoffpaletten gibt es auch, sie sind aber keine EPAL-1-Palette. (nicht in den Folien)"
     },
     {
      "frage": "Wie viele Klötze hat eine Euro-Palette?",
@@ -697,7 +697,7 @@
       "Um 10 %",
       "Gar nicht, nur die Form ist anders"
      ],
-     "erklaerung": "1,2 × 1,0 = 1,2 m² und 1,2 × 0,8 = 0,96 m². 1,2 ÷ 0,96 = 1,25, also 25 % mehr."
+     "erklaerung": "1,2 × 1,0 = 1,2 m² und 1,2 × 0,8 = 0,96 m². 1,2 ÷ 0,96 = 1,25, also 25 % mehr. (nicht in den Folien)"
     }
    ]
   },
@@ -733,7 +733,7 @@
       "Rot",
       "Grau"
      ],
-     "erklaerung": "CHEP-Paletten sind blau gestrichen, damit man die Mietpaletten sofort erkennt."
+     "erklaerung": "CHEP-Paletten sind blau gestrichen, damit man die Mietpaletten sofort erkennt. (nicht in den Folien)"
     }
    ]
   },
@@ -770,7 +770,7 @@
       "ca. 120 m³",
       "ca. 20 m³"
      ],
-     "erklaerung": "40'-Standardcontainer: ca. 67 m³, also etwa doppelt so viel wie ein 20'-Container (ca. 33 m³)."
+     "erklaerung": "40'-Standardcontainer: ca. 67 m³, also etwa doppelt so viel wie ein 20'-Container (ca. 33 m³). (nicht in den Folien)"
     }
    ]
   },
@@ -807,7 +807,7 @@
       "ca. 3 m",
       "ca. 9 m"
      ],
-     "erklaerung": "20 Fuß ≈ 6,1 m. Der 40'-Container ist ca. 12,2 m lang."
+     "erklaerung": "20 Fuß ≈ 6,1 m. Der 40'-Container ist ca. 12,2 m lang. (nicht in den Folien)"
     },
     {
      "frage": "Woraus besteht ein Standard-Seecontainer?",
@@ -817,7 +817,7 @@
       "Aus Aluminium-Planen",
       "Aus Kunststoff"
      ],
-     "erklaerung": "ISO-Seecontainer sind aus Stahl (meist wetterfester Cortenstahl), damit sie stapelbar und seefest sind."
+     "erklaerung": "ISO-Seecontainer sind aus Stahl (meist wetterfester Cortenstahl), damit sie stapelbar und seefest sind. (nicht in den Folien)"
     }
    ]
   },
@@ -853,7 +853,7 @@
       "Stahlblech",
       "Holz"
      ],
-     "erklaerung": "Big Bag (FIBC): großer, flexibler Gewebesack, meist aus Polypropylen-Gewebe, mit Schlaufen zum Anheben."
+     "erklaerung": "Big Bag (FIBC): großer, flexibler Gewebesack, meist aus Polypropylen-Gewebe, mit Schlaufen zum Anheben. (nicht in den Folien)"
     },
     {
      "frage": "Woran hebt man einen Big Bag an?",
@@ -863,7 +863,7 @@
       "An einem Hahn unten",
       "Nur von Hand an zwei Griffen"
      ],
-     "erklaerung": "Die Schlaufen werden über Staplergabeln oder einen Kranhaken gelegt."
+     "erklaerung": "Die Schlaufen werden über Staplergabeln oder einen Kranhaken gelegt. (nicht in den Folien)"
     }
    ]
   },
@@ -899,7 +899,7 @@
       "ca. 30 Liter",
       "ca. 10.000 Liter"
      ],
-     "erklaerung": "Ein IBC fasst typischerweise ca. 1.000 Liter. 200 Liter wäre ein Fass."
+     "erklaerung": "Ein IBC fasst typischerweise ca. 1.000 Liter. 200 Liter wäre ein Fass. (nicht in den Folien)"
     },
     {
      "frage": "Wie ist ein IBC aufgebaut?",

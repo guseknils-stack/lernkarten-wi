@@ -7,7 +7,7 @@ Neueste Änderungen stehen oben.
 - `app.js`: Neuer Fragetyp `eigenschaft`. Im Quiz bekommen diese Gegenstände eine dritte Frage, im Probetest kommt sie per Zufall (Gewicht in `QUIZ_GEWICHTE`).
 - `app.js`: `PROBETEST_FRAGEN` von 20 auf 30 (die Zeit bleibt 20 Minuten wie im echten Kurztest).
 - `style.css`, `index.html`, `manifest.webmanifest`: Die App ist jetzt immer dunkel, egal wie das iPhone eingestellt ist. Knopftext dunkel auf hellgrün, damit er gut lesbar ist.
-- `sw.js`: Cache-Version auf v11.
+- `sw.js`: Cache-Version auf v11, dann v12 (Eigenschaften ohne Folienbeleg in der Erklärung markiert).
 - Warum: Nils' Wünsche nach dem Vergleich mit der App eines Kommilitonen.
 
 ## 2026-11-08 – Gezeichnete Bilder und Bilderfrage
