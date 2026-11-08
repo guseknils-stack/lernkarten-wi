@@ -12,6 +12,8 @@ const MINUS_POSITIV = 3;     // verpasster Tag, solange der Fortschritt über 0 
 const MINUS_NEGATIV = 1;     // verpasster Tag, wenn der Fortschritt schon bei 0 oder darunter ist
 const PROBETEST_FRAGEN = 20;
 const PROBETEST_MINUTEN = 20;
+// Wie oft welche Frageart in Quiz und Probetest kommt (höhere Zahl = öfter)
+const QUIZ_GEWICHTE = { wissen: 3, bedeutung: 2, begriff: 2, bereich: 1, kategorie: 1 };
 const SPEICHER = "paukbaer-v1";
 
 // ---------- Speicher (nur auf diesem Gerät) ----------
@@ -481,17 +483,73 @@ function mcHtml(f, gewaehlt, mitAuswertung = true) {
         <div class="quelle">Quelle Karte: ${mitLinks(f.karte.quelle)}</div>
       </section>` : ""}`;
 }
+// Teile eines Begriffs, z. B. "GiBo / Gitterbox" -> ["gibo", "gitterbox"]
+const begriffTeile = (k) => vorne(k).toLowerCase().split(/[\/()]/).map((t) => t.trim()).filter((t) => t.length >= 3);
+// Die umgekehrte Frage geht nur, wenn die Antwort den Begriff nicht selbst verrät (z. B. "Brutto = Gesamtgewicht …")
+const umkehrbar = (k) => !begriffTeile(k).some((t) => k.antwort.toLowerCase().includes(t));
+
+// Umgekehrte Frage: Die Beschreibung ist gegeben, gesucht ist der Begriff (falsche Antworten aus derselben Kategorie)
+function begriffsFrage(d, k) {
+  const andere = mischen(d.karten.filter((x) => x.nr !== k.nr && x.kategorie === k.kategorie)).slice(0, 3);
+  return {
+    karte: k, ueber: "Welcher Begriff passt?", frage: `„${k.antwort}“`, erklaerung: `${vorne(k)}: ${k.erklaerung}`,
+    optionen: mischen([k, ...andere]).map((o) => ({ text: vorne(o), richtig: o.nr === k.nr })),
+  };
+}
+// Kategorie-Frage: unter welcher Überschrift steht der Begriff in Seifermanns Liste?
+function kategorieFrage(d, k) {
+  const alle = [...new Set(d.karten.map((x) => x.kategorie))];
+  return {
+    karte: k, ueber: "Kategorie in der Begriffsliste", frage: `Unter welcher Kategorie steht „${vorne(k)}“?`,
+    erklaerung: `${vorne(k)} ist Nr. ${k.nr} der Liste und steht unter „${k.kategorie}“.`,
+    optionen: mischen(alle).map((text) => ({ text, richtig: text === k.kategorie })),
+  };
+}
+// Bereichs-Frage: zu welchem Themenbereich gehört der Begriff? Eine Karte kann zu mehreren Bereichen gehören,
+// deshalb kommen als falsche Antworten nur Bereiche infrage, die bei der Karte gar nicht stehen.
+function bereichsFrage(d, k) {
+  const richtig = mischen(k.bereich)[0];
+  const falsch = mischen(d.bereiche.filter((b) => !k.bereich.includes(b))).slice(0, 3);
+  return {
+    karte: k, ueber: "Themenbereich", frage: `Zu welchem Bereich gehört „${vorne(k)}“?`,
+    erklaerung: `${vorne(k)} gehört zu: ${k.bereich.join(", ")}. ${k.antwort}`,
+    optionen: mischen([richtig, ...falsch]).map((text) => ({ text, richtig: text === richtig })),
+  };
+}
+
+// Alle Fragetypen mit Prüfung, ob sie für eine Karte möglich sind
+const FRAGETYPEN = {
+  wissen: { bauen: (d, k) => wissensFrage(k), moeglich: (k) => !!k.mc },
+  bedeutung: { bauen: bedeutungsFrage, moeglich: () => true },
+  begriff: { bauen: begriffsFrage, moeglich: umkehrbar },
+  bereich: { bauen: bereichsFrage, moeglich: (k) => !!k.bereich },
+  kategorie: { bauen: kategorieFrage, moeglich: () => true },
+};
+// Zieht zufällig einen Fragetyp für die Karte. gewichte z. B. { bedeutung: 2, kategorie: 1 }: höhere Zahl = kommt öfter.
+// "ohne" schließt Typen aus, die bei dieser Karte schon dran waren.
+function zufallsTyp(k, gewichte, ohne = []) {
+  const topf = Object.entries(gewichte).filter(([typ]) => FRAGETYPEN[typ].moeglich(k) && !ohne.includes(typ))
+    .flatMap(([typ, n]) => Array(n).fill(typ));
+  return topf[Math.floor(Math.random() * topf.length)];
+}
+
 // Hängt an die Antwortknöpfe die Funktion, die mit der Nummer der gewählten Antwort aufgerufen wird
 function mcKlicks(f, beiWahl) {
   document.querySelectorAll(".option").forEach((b) => (b.onclick = () => beiWahl(+b.dataset.i)));
 }
 
-// Quiz: pro Karte erst die Bedeutungsfrage, dann (falls vorhanden) die Wissensfrage.
+// Quiz: pro Karte zwei Fragen: die Wissensfrage (falls vorhanden) und eine zufällige andere Frageart
+// (Bedeutung, Begriff zur Beschreibung, Bereich, Kategorie). Ohne Wissensfrage: zwei verschiedene andere.
 // Verbucht wird pro Karte: richtig nur, wenn alle Fragen zu dieser Karte stimmen.
 function quiz(id, nr) {
   fachLaden(id).then((d) => {
     const p = d.pakete.find((x) => x.nr === +nr);
-    const fragen = mischen(paketKarten(d, p)).flatMap((k) => (k.mc ? [bedeutungsFrage(d, k), wissensFrage(k)] : [bedeutungsFrage(d, k)]));
+    const gewichte = { bedeutung: QUIZ_GEWICHTE.bedeutung, begriff: QUIZ_GEWICHTE.begriff, bereich: QUIZ_GEWICHTE.bereich, kategorie: QUIZ_GEWICHTE.kategorie };
+    const fragen = mischen(paketKarten(d, p)).flatMap((k) => {
+      const erster = zufallsTyp(k, gewichte);
+      const zweiter = k.mc ? "wissen" : zufallsTyp(k, gewichte, [erster]);
+      return [erster, zweiter].map((typ) => FRAGETYPEN[typ].bauen(d, k));
+    });
     const kartenOk = {};
     let pos = 0, richtig = 0;
     const frage = (gewaehlt) => {
@@ -528,12 +586,12 @@ function quiz(id, nr) {
 }
 
 // Probetest: zufällige Karten aus allen Paketen, mit Zeitlimit, Auswertung erst am Ende.
-// Pro Karte eine Frage: Hat sie eine Wissensfrage, kommt die mit 50 % Wahrscheinlichkeit, sonst die Bedeutungsfrage.
-// So ist der Test eine Mischung aus beidem, wie es im echten Kurztest vermutlich auch sein wird.
+// Pro Karte eine Frage mit zufälligem Fragetyp (Gewichte oben in den Einstellungen).
+// Welche Fragearten im echten Kurztest kommen, wissen wir nicht. Deshalb eine Mischung.
 function probetest(id) {
   fachLaden(id).then((d) => {
     const fragen = mischen(d.karten).slice(0, PROBETEST_FRAGEN)
-      .map((k) => (k.mc && Math.random() < 0.5 ? wissensFrage(k) : bedeutungsFrage(d, k)));
+      .map((k) => FRAGETYPEN[zufallsTyp(k, QUIZ_GEWICHTE)].bauen(d, k));
     const antworten = [];
     const ablauf = Date.now() + PROBETEST_MINUTEN * 60000;
     let pos = 0;

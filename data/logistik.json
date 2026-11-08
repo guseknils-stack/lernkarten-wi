@@ -71,7 +71,10 @@
      "Es lagert ausschließlich nach dem FIFO-Prinzip"
     ],
     "erklaerung": "Behälterregale können wegen der geringen Teilegewichte manuell bedient werden. Bei automatischer Bedienung heißt es AKL (VL 9, S. 27). Die 12 m gelten für das Hochregallager."
-   }
+   },
+   "bereich": [
+    "Lagerung"
+   ]
   },
   {
    "nr": 2,
@@ -91,7 +94,10 @@
      "Es stellt Kleinteile im U-förmigen Kommissioniernest für sehr hohe Pickleistungen bereit"
     ],
     "erklaerung": "Das AS/RS ist ein Beispiel für zentrale, dynamische Bereitstellung (VL 11, S. 10). Das Kommissioniernest ist zentral, aber statisch."
-   }
+   },
+   "bereich": [
+    "Lagerung"
+   ]
   },
   {
    "nr": 3,
@@ -111,7 +117,10 @@
      "Weil der Kunststoff sonst beim Stapeln bricht"
     ],
     "erklaerung": "VL 8, S. 29: max. 20 kg befüllt „aufgrund ergonomischer Anforderungen bei manuellem Handling“."
-   }
+   },
+   "bereich": [
+    "Ladungsträger & Verpackung"
+   ]
   },
   {
    "nr": 4,
@@ -131,7 +140,10 @@
      "Damit Schüttgut kontrolliert und ohne Werkzeug aus dem Kasten rieseln kann"
     ],
     "erklaerung": "Sichtlagerkasten: vorne offen, stapelbar, für Kleinteile in Werkstatt, Montage und Kommissionierung."
-   }
+   },
+   "bereich": [
+    "Ladungsträger & Verpackung"
+   ]
   },
   {
    "nr": 5,
@@ -151,7 +163,10 @@
      "Nur auf Stetigförderern wie Rollenbahnen, die ihn automatisch weiterleiten"
     ],
     "erklaerung": "VL 8, S. 30: „Unterfahrbar (mit Stapler, Hubgerät, Regalbediengerät etc.) → Behälterhandling ausschließlich über Flurförderzeuge oder über Ketten“. Die 20-kg-Regel gilt für KLT."
-   }
+   },
+   "bereich": [
+    "Ladungsträger & Verpackung"
+   ]
   },
   {
    "nr": 6,
@@ -172,7 +187,10 @@
      "Big Bag: flexibel, wird an Schlaufen vom Kran gehoben"
     ],
     "erklaerung": "Die Euro-Gitterbox-Pool-Palette („Gibo“) ist in VL 8, S. 30 das Beispiel für einen GLT."
-   }
+   },
+   "bereich": [
+    "Ladungsträger & Verpackung"
+   ]
   },
   {
    "nr": 7,
@@ -192,7 +210,10 @@
      "Als Fahrerloses Transportsystem (FTS) mit fester Route"
     ],
     "erklaerung": "VL 7, S. 22 wörtlich: „Stapelgeräte: elektrischer Hochhubwagen, „Ameise“; Gabelstapler“. Achtung: Im Alltag sagt man „Ameise“ oft auch zum elektrischen Niederhubwagen, der nicht stapeln kann. Für den Test gilt die Einordnung aus der Vorlesung."
-   }
+   },
+   "bereich": [
+    "Innerbetrieblicher Transport"
+   ]
   },
   {
    "nr": 8,
@@ -212,7 +233,10 @@
      "Es fährt automatisch zurück zur Ladestation und meldet einen Fehler"
     ],
     "erklaerung": "FTS fahren entlang Draht, Magnetband oder Laser-Referenzen. Ausweichen kann erst ein AMR."
-   }
+   },
+   "bereich": [
+    "Innerbetrieblicher Transport"
+   ]
   },
   {
    "nr": 9,
@@ -232,7 +256,10 @@
      "Er darf ohne Sicherheitsprüfung fahren, weil er langsamer ist als ein Stapler"
     ],
     "erklaerung": "AMR orientieren sich in Echtzeit an der Umgebung. Dafür sind sie meist teurer. (nicht in den Folien, siehe Quelle der Karte)"
-   }
+   },
+   "bereich": [
+    "Innerbetrieblicher Transport"
+   ]
   },
   {
    "nr": 10,
@@ -252,7 +279,11 @@
      "Mitten im U-förmigen Kommissioniernest, vom Menschen geführt"
     ],
     "erklaerung": "VL 9, S. 25: Hochregallager mit fest installiertem Regalbediengerät mit Führungssystem."
-   }
+   },
+   "bereich": [
+    "Lagerung",
+    "Innerbetrieblicher Transport"
+   ]
   },
   {
    "nr": 11,
@@ -272,7 +303,10 @@
      "Ware wird über Kreuz direkt vom ankommenden in den abgehenden LKW umgeschlagen"
     ],
     "erklaerung": "VL 8, S. 39: Vorkommissionierte Bereitstellung von Kits, z. B. als mitfahrende Wagen in der Automobil-Endmontage."
-   }
+   },
+   "bereich": [
+    "Kommissionierung & Bereitstellung"
+   ]
   },
   {
    "nr": 12,
@@ -292,7 +326,10 @@
      "Durch Scannen des Lagerplatzes oder des Artikels mit dem Terminal"
     ],
     "erklaerung": "VL 11, S. 30. Taster am Licht = Pick-by-Light, Scannen = Pick-by-Scan, Abhaken = Pickliste."
-   }
+   },
+   "bereich": [
+    "Kommissionierung & Bereitstellung"
+   ]
   },
   {
    "nr": 13,
@@ -312,7 +349,10 @@
      "Wenn mit Pick-by-Light kommissioniert und am Licht quittiert wird"
     ],
     "erklaerung": "VL 11, S. 13. Ware aufs Förderband legen heißt Pick-to-Belt."
-   }
+   },
+   "bereich": [
+    "Kommissionierung & Bereitstellung"
+   ]
   },
   {
    "nr": 14,
@@ -332,7 +372,11 @@
      "Welche Bestellungen beim Lieferanten laufen"
     ],
     "erklaerung": "VL 8, S. 25: „ERP kennt nur Mengen, weiß aber nicht, wo diese stehen“."
-   }
+   },
+   "bereich": [
+    "Kennzeichnung & IT-Systeme",
+    "Lagerung"
+   ]
   },
   {
    "nr": 15,
@@ -352,7 +396,11 @@
      "Die tägliche Touren- und Fahrzeugplanung der LKW"
     ],
     "erklaerung": "VL 8, S. 25."
-   }
+   },
+   "bereich": [
+    "Kennzeichnung & IT-Systeme",
+    "Lagerung"
+   ]
   },
   {
    "nr": 16,
@@ -372,7 +420,10 @@
      "Beim Lieferanten, als Schnittstelle für den Datenaustausch"
     ],
     "erklaerung": "Gesamtskript, S. 328–329: Das MES verbindet ERP und operativen Betrieb."
-   }
+   },
+   "bereich": [
+    "Kennzeichnung & IT-Systeme"
+   ]
   },
   {
    "nr": 17,
@@ -392,7 +443,10 @@
      "Den Produktionsplan für die nächste Woche aus den Kundenaufträgen erstellen"
     ],
     "erklaerung": "Datenaustausch zwischen Unternehmen ist EDI, Lagerplatzbelegung ist der Stock-Locator."
-   }
+   },
+   "bereich": [
+    "Kennzeichnung & IT-Systeme"
+   ]
   },
   {
    "nr": 18,
@@ -402,7 +456,10 @@
    "antwort": "Raw Material (Rohmaterial)",
    "erklaerung": "Rohmaterial, das in die Produktion eingeht. In der Folie steht das Beispiel: 3.000 unterschiedliche Rohmaterialien (RM).",
    "quelle": "VL 1, S. 17",
-   "in_folien": "ja"
+   "in_folien": "ja",
+   "bereich": [
+    "Produktion & Bestände"
+   ]
   },
   {
    "nr": 19,
@@ -412,7 +469,10 @@
    "antwort": "Fertigprodukt (Finished Product)",
    "erklaerung": "Fertiges, verkaufsfähiges Produkt. Beispiel in der Folie: 250 Fertigprodukte (FP).",
    "quelle": "VL 1, S. 17",
-   "in_folien": "ja"
+   "in_folien": "ja",
+   "bereich": [
+    "Produktion & Bestände"
+   ]
   },
   {
    "nr": 20,
@@ -432,7 +492,10 @@
      "FP → HALB → RM"
     ],
     "erklaerung": "Rohmaterial wird zum Halbfabrikat (Zwischenprodukt) und dann zum Fertigprodukt."
-   }
+   },
+   "bereich": [
+    "Produktion & Bestände"
+   ]
   },
   {
    "nr": 21,
@@ -452,7 +515,11 @@
      "90"
     ],
     "erklaerung": "Umschlaghäufigkeit = Wareneinsatz ÷ Ø Lagerbestand = 600.000 ÷ 150.000 = 4. (90 wären die Tage Lagerdauer: 360 ÷ 4)"
-   }
+   },
+   "bereich": [
+    "Lagerung",
+    "Produktion & Bestände"
+   ]
   },
   {
    "nr": 22,
@@ -472,7 +539,10 @@
      "8"
     ],
     "erklaerung": "KLT max. 600 × 400 mm = Euro-Viertelpalette. 1.200 × 800 mm ÷ (600 × 400 mm) = 4."
-   }
+   },
+   "bereich": [
+    "Ladungsträger & Verpackung"
+   ]
   },
   {
    "nr": 23,
@@ -492,7 +562,10 @@
      "Sie hat das Industriemaß 1.200 × 1.000 mm statt des Euro-Maßes"
     ],
     "erklaerung": "EPAL organisiert Herstellung, Reparatur und Tausch der Euro-Paletten (nicht in den Folien)."
-   }
+   },
+   "bereich": [
+    "Ladungsträger & Verpackung"
+   ]
   },
   {
    "nr": 24,
@@ -512,7 +585,10 @@
      "10 cm"
     ],
     "erklaerung": "Euro: 1.200 × 800 mm, Industrie: 1.200 × 1.000 mm (VL 12, S. 34)."
-   }
+   },
+   "bereich": [
+    "Ladungsträger & Verpackung"
+   ]
   },
   {
    "nr": 25,
@@ -532,7 +608,10 @@
      "Sie gehört nach der Lieferung immer dem Empfänger der Ware"
     ],
     "erklaerung": "CHEP vermietet blaue Paletten über ein Pool-System (nicht in den Folien)."
-   }
+   },
+   "bereich": [
+    "Ladungsträger & Verpackung"
+   ]
   },
   {
    "nr": 26,
@@ -552,7 +631,11 @@
      "2.500"
     ],
     "erklaerung": "Ein 40'-Container = 2 TEU, also 10.000 ÷ 2 = 5.000."
-   }
+   },
+   "bereich": [
+    "Außerbetrieblicher Transport",
+    "Ladungsträger & Verpackung"
+   ]
   },
   {
    "nr": 27,
@@ -572,7 +655,11 @@
      "Er hat ca. 67 m³ Volumen und zählt als FEU"
     ],
     "erklaerung": "12,2 m, 2 TEU und 67 m³ gehören zum 40'-Container."
-   }
+   },
+   "bereich": [
+    "Außerbetrieblicher Transport",
+    "Ladungsträger & Verpackung"
+   ]
   },
   {
    "nr": 28,
@@ -592,7 +679,10 @@
      "Keine, er zählt als reine Verpackung"
     ],
     "erklaerung": "VL 2, S. 19–21: Palette = tragend, Big Bag = tragend und umschließend, IBC/Fasspalette = tragend, um- und abschließend."
-   }
+   },
+   "bereich": [
+    "Ladungsträger & Verpackung"
+   ]
   },
   {
    "nr": 29,
@@ -612,7 +702,10 @@
      "Kunststoffbehälter mit max. 600 × 400 mm Grundfläche"
     ],
     "erklaerung": "VL 2, S. 21. Der Gewebesack ist der Big Bag, 600 × 400 mm ist der KLT."
-   }
+   },
+   "bereich": [
+    "Ladungsträger & Verpackung"
+   ]
   },
   {
    "nr": 30,
@@ -632,7 +725,10 @@
      "3.000"
     ],
     "erklaerung": "1.000 × 2 TEU + 500 × 1 TEU = 2.500 TEU."
-   }
+   },
+   "bereich": [
+    "Außerbetrieblicher Transport"
+   ]
   },
   {
    "nr": 31,
@@ -652,7 +748,10 @@
      "Ob das Gut verpackt ist und ob sein Warenwert über einer festen Grenze liegt"
     ],
     "erklaerung": "VL 2, S. 13: Stückgut behält Gestalt und Form bei TUL, Schüttgut verändert sie."
-   }
+   },
+   "bereich": [
+    "Außerbetrieblicher Transport"
+   ]
   },
   {
    "nr": 32,
@@ -672,7 +771,10 @@
      "Eine Euro-Palette mit gestapelten Säcken Mehl"
     ],
     "erklaerung": "Vorsicht: Flüssigkeiten und Gase sind in VL 2, S. 13 eine eigene dritte Kategorie, kein Schüttgut."
-   }
+   },
+   "bereich": [
+    "Außerbetrieblicher Transport"
+   ]
   },
   {
    "nr": 33,
@@ -692,7 +794,10 @@
      "Die Verpackung wiegt insgesamt 12 kg (Tara)"
     ],
     "erklaerung": "Colli ist der Plural von Collo = Packstück (nicht in den Folien)."
-   }
+   },
+   "bereich": [
+    "Außerbetrieblicher Transport"
+   ]
   },
   {
    "nr": 34,
@@ -713,7 +818,10 @@
      "2,5 ldm"
     ],
     "erklaerung": "Auf 1 ldm passen 2,5 Euro-Paletten, eine belegt also 0,4 ldm. 10 × 0,4 = 4 ldm."
-   }
+   },
+   "bereich": [
+    "Außerbetrieblicher Transport"
+   ]
   },
   {
    "nr": 35,
@@ -733,7 +841,11 @@
      "25 kg"
     ],
     "erklaerung": "Netto = Brutto − Tara = 500 − 25 = 475 kg."
-   }
+   },
+   "bereich": [
+    "Außerbetrieblicher Transport",
+    "Ladungsträger & Verpackung"
+   ]
   },
   {
    "nr": 36,
@@ -754,7 +866,11 @@
      "Eine Maßeinheit für die belegte Ladefläche eines LKW in der Länge"
     ],
     "erklaerung": "Gleiche Nummer für alle gleichen Produkte = Artikelnummer, kleinste Variante = SKU, Ladefläche = Lademeter."
-   }
+   },
+   "bereich": [
+    "Ladungsträger & Verpackung",
+    "Kennzeichnung & IT-Systeme"
+   ]
   },
   {
    "nr": 37,
@@ -774,7 +890,10 @@
      "FCL"
     ],
     "erklaerung": "LTL = Less than Truck Load. LCL wäre dasselbe im Container (Seefracht)."
-   }
+   },
+   "bereich": [
+    "Außerbetrieblicher Transport"
+   ]
   },
   {
    "nr": 38,
@@ -794,7 +913,10 @@
      "LTL"
     ],
     "erklaerung": "FCL = Full Container Load. Merkhilfe: C = Container, T = Truck."
-   }
+   },
+   "bereich": [
+    "Außerbetrieblicher Transport"
+   ]
   },
   {
    "nr": 39,
@@ -814,7 +936,11 @@
      "See"
     ],
     "erklaerung": "ADR = Europäisches Übereinkommen über die internationale Beförderung gefährlicher Güter auf der Straße."
-   }
+   },
+   "bereich": [
+    "Außerbetrieblicher Transport",
+    "Begleitpapiere & Dienstleister"
+   ]
   },
   {
    "nr": 40,
@@ -834,7 +960,10 @@
      "Jeder Kunde bekommt zwei LKW, einen für Stückgut und einen für Schüttgut"
     ],
     "erklaerung": "VL 4, S. 25. Einstufig = beim Hersteller vorkommissioniert. Lagerung vermeidet Cross-Docking in beiden Varianten."
-   }
+   },
+   "bereich": [
+    "Umschlag & Distribution"
+   ]
   },
   {
    "nr": 41,
@@ -854,7 +983,11 @@
      "Sequenzierung"
     ],
     "erklaerung": "Deconsolidation ist das Gegenteil: eine große Sendung wieder aufteilen."
-   }
+   },
+   "bereich": [
+    "Umschlag & Distribution",
+    "Außerbetrieblicher Transport"
+   ]
   },
   {
    "nr": 42,
@@ -874,7 +1007,10 @@
      "B/L – See, AWB – Schiene, CMR – Straße, CIM – Luft"
     ],
     "erklaerung": "VL 3, S. 18."
-   }
+   },
+   "bereich": [
+    "Begleitpapiere & Dienstleister"
+   ]
   },
   {
    "nr": 43,
@@ -894,7 +1030,10 @@
      "Er ist nur gültig, wenn ihn das Konsulat des Importlandes bestätigt hat"
     ],
     "erklaerung": "VL 3, S. 17. Zahlungspflicht und Zollwert gehören zur Commercial Invoice."
-   }
+   },
+   "bereich": [
+    "Begleitpapiere & Dienstleister"
+   ]
   },
   {
    "nr": 44,
@@ -914,7 +1053,10 @@
      "ASN"
     ],
     "erklaerung": "VL 3, S. 18: CIM = Eisenbahntransport."
-   }
+   },
+   "bereich": [
+    "Begleitpapiere & Dienstleister"
+   ]
   },
   {
    "nr": 45,
@@ -934,7 +1076,10 @@
      "Der 4PL bietet nur Transport, Umschlag und Lagerung an, aber keine Planung"
     ],
     "erklaerung": "VL 3, S. 38–39. Nur Transport = 1PL, TUL = 2PL."
-   }
+   },
+   "bereich": [
+    "Begleitpapiere & Dienstleister"
+   ]
   },
   {
    "nr": 46,
@@ -954,7 +1099,11 @@
      "KEP"
     ],
     "erklaerung": "1PL = Transport, 2PL = Transport, Umschlag, Lagerung (TUL), 3PL = Kontraktlogistik."
-   }
+   },
+   "bereich": [
+    "Begleitpapiere & Dienstleister",
+    "Umschlag & Distribution"
+   ]
   },
   {
    "nr": 47,
@@ -974,7 +1123,10 @@
      "Hohe Transportsicherheit durch die festen Wände des Aufbaus"
     ],
     "erklaerung": "VL 2, S. 34. Die anderen drei sind Vorteile des Kofferfahrzeugs."
-   }
+   },
+   "bereich": [
+    "Außerbetrieblicher Transport"
+   ]
   },
   {
    "nr": 48,
@@ -994,7 +1146,10 @@
      "Offene Pritsche"
     ],
     "erklaerung": "VL 2, S. 34: Koffer = hohe Transportsicherheit, Diebstahlschutz, temperierte Transporte."
-   }
+   },
+   "bereich": [
+    "Außerbetrieblicher Transport"
+   ]
   },
   {
    "nr": 49,
@@ -1014,7 +1169,10 @@
      "Containerchassis für Seecontainer"
     ],
     "erklaerung": "VL 2, S. 33: „Pritschenaufbau mit Plane und Spriegelbrettern“."
-   }
+   },
+   "bereich": [
+    "Außerbetrieblicher Transport"
+   ]
   },
   {
    "nr": 50,
@@ -1034,7 +1192,10 @@
      "Der Umschlag der Ware im Zielhafen auf den LKW"
     ],
     "erklaerung": "Erste Meile = Vorlauf, letzte Meile = Nachlauf."
-   }
+   },
+   "bereich": [
+    "Außerbetrieblicher Transport"
+   ]
   },
   {
    "nr": 51,
@@ -1054,7 +1215,10 @@
      "Zur genauen Beschreibung der Ware für Zoll und Versicherung"
     ],
     "erklaerung": "VL 3, S. 15–16. Zollwert = Commercial Invoice, Ursprung = Customs Invoice, Beschreibung = Packliste."
-   }
+   },
+   "bereich": [
+    "Begleitpapiere & Dienstleister"
+   ]
   },
   {
    "nr": 52,
@@ -1074,7 +1238,10 @@
      "Pro-forma-Invoice"
     ],
     "erklaerung": "VL 3, S. 18: AWB mit Seriennummer der IATA."
-   }
+   },
+   "bereich": [
+    "Begleitpapiere & Dienstleister"
+   ]
   },
   {
    "nr": 53,
@@ -1094,7 +1261,10 @@
      "4PL"
     ],
     "erklaerung": "VL 3, S. 37: KEP steht bei den 1PL-Betreibermodellen."
-   }
+   },
+   "bereich": [
+    "Begleitpapiere & Dienstleister"
+   ]
   },
   {
    "nr": 54,
@@ -1114,7 +1284,10 @@
      "Quellen und Senken gibt es nur im Lager"
     ],
     "erklaerung": "VL 4, S. 26: Güterquellen (Werke) und -senken (Kunden)."
-   }
+   },
+   "bereich": [
+    "Umschlag & Distribution"
+   ]
   },
   {
    "nr": 55,
@@ -1124,7 +1297,10 @@
    "antwort": "Endpunkt eines Güterstroms (z. B. Kunde)",
    "erklaerung": "Ort, an dem ein Güterstrom endet, z. B. ein Kunde oder Verteillager. Güterströme werden als Matrix von Quellen zu Senken dargestellt.",
    "quelle": "VL 4, S. 26; VL 5, S. 6",
-   "in_folien": "ja"
+   "in_folien": "ja",
+   "bereich": [
+    "Umschlag & Distribution"
+   ]
   },
   {
    "nr": 56,
@@ -1144,7 +1320,10 @@
      "Sie wird weltweit kostenlos vergeben, jeder darf sich eine Nummer nehmen"
     ],
     "erklaerung": "VL 6, S. 16: Vergabe gegen Lizenzgebühr, Stammdaten über die EAN abrufbar."
-   }
+   },
+   "bereich": [
+    "Kennzeichnung & IT-Systeme"
+   ]
   },
   {
    "nr": 57,
@@ -1164,7 +1343,10 @@
      "GTIN gilt nur in den USA"
     ],
     "erklaerung": "VL 6, S. 16."
-   }
+   },
+   "bereich": [
+    "Kennzeichnung & IT-Systeme"
+   ]
   },
   {
    "nr": 58,
@@ -1184,7 +1366,10 @@
      "Für EDI gibt es keine einheitlichen Standards"
     ],
     "erklaerung": "VL 6, S. 35. Standard ist z. B. EDIFACT."
-   }
+   },
+   "bereich": [
+    "Kennzeichnung & IT-Systeme"
+   ]
   },
   {
    "nr": 59,
@@ -1204,7 +1389,10 @@
      "Containerbeladung auf der Freifläche"
     ],
     "erklaerung": "VL 8, S. 10."
-   }
+   },
+   "bereich": [
+    "Umschlag & Distribution"
+   ]
   },
   {
    "nr": 60,
@@ -1224,7 +1412,11 @@
      "Wenn der Wareneingang gerade frei ist und keine Zeitfenster braucht"
     ],
     "erklaerung": "VL 8, S. 11."
-   }
+   },
+   "bereich": [
+    "Umschlag & Distribution",
+    "Kennzeichnung & IT-Systeme"
+   ]
   },
   {
    "nr": 61,
@@ -1244,7 +1436,11 @@
      "Work in Process"
     ],
     "erklaerung": "Gesamtskript, S. 280: versendet, aber noch nicht geliefert."
-   }
+   },
+   "bereich": [
+    "Produktion & Bestände",
+    "Außerbetrieblicher Transport"
+   ]
   },
   {
    "nr": 62,
@@ -1264,7 +1460,10 @@
      "SCM ist in einer DIN-Norm fest und einheitlich für alle Branchen definiert"
     ],
     "erklaerung": "Gesamtskript, S. 294 (Arnold et al. 2008)."
-   }
+   },
+   "bereich": [
+    "SCM-Konzepte & Zusammenarbeit"
+   ]
   },
   {
    "nr": 63,
@@ -1274,7 +1473,10 @@
    "antwort": "Supply Chain: Lieferkette/Wertschöpfungskette über mehrere Stufen",
    "erklaerung": "Die Wertschöpfungskette über mehrere Stufen (Lieferanten, Hersteller, Händler, Kunde). SCM optimiert sie.",
    "quelle": "VL 1, S. 12",
-   "in_folien": "ja"
+   "in_folien": "ja",
+   "bereich": [
+    "SCM-Konzepte & Zusammenarbeit"
+   ]
   },
   {
    "nr": 64,
@@ -1284,7 +1486,11 @@
    "antwort": "Lieferzeit/Durchlaufzeit: Zeit von der Bestellung bis zur Lieferung",
    "erklaerung": "Zeit zwischen Auftragserteilung und Lieferung. Verwandt damit ist die Wiederbeschaffungszeit, also die Zeit von der Bedarfsfeststellung bis zum wieder aufgefüllten Bestand.",
    "quelle": "VL 1, S. 21; Gesamtskript, S. 378",
-   "in_folien": "ja"
+   "in_folien": "ja",
+   "bereich": [
+    "SCM-Konzepte & Zusammenarbeit",
+    "Produktion & Bestände"
+   ]
   },
   {
    "nr": 65,
@@ -1304,7 +1510,10 @@
      "Der Kunde entscheidet, das Eigentum geht erst bei Entnahme über"
     ],
     "erklaerung": "Eigentum erst bei Entnahme wäre VMOI bzw. Konsignation (Gesamtskript, S. 406–409)."
-   }
+   },
+   "bereich": [
+    "SCM-Konzepte & Zusammenarbeit"
+   ]
   },
   {
    "nr": 66,
@@ -1324,7 +1533,10 @@
      "Es ist kein Informationsaustausch mit dem Lieferanten mehr nötig"
     ],
     "erklaerung": "Kritisch ist gerade die Haftung bei Beschädigung oder Verlust (Gesamtskript, S. 409)."
-   }
+   },
+   "bereich": [
+    "SCM-Konzepte & Zusammenarbeit"
+   ]
   },
   {
    "nr": 67,
@@ -1344,7 +1556,10 @@
      "Keine, nur Seriennummern"
     ],
     "erklaerung": "Die Artikelnummer kennzeichnet die Artikelart, nicht das einzelne Stück."
-   }
+   },
+   "bereich": [
+    "Kennzeichnung & IT-Systeme"
+   ]
   },
   {
    "nr": 68,
@@ -1364,7 +1579,10 @@
      "GTIN"
     ],
     "erklaerung": "Artikelnummer und GTIN gelten für alle gleichen Geräte, die Losnummer für eine ganze Charge."
-   }
+   },
+   "bereich": [
+    "Kennzeichnung & IT-Systeme"
+   ]
   },
   {
    "nr": 69,
@@ -1384,7 +1602,12 @@
      "3"
     ],
     "erklaerung": "Jede Kombination aus Farbe und Größe ist eine eigene SKU: 3 × 4 = 12."
-   }
+   },
+   "bereich": [
+    "Kommissionierung & Bereitstellung",
+    "Lagerung",
+    "Kennzeichnung & IT-Systeme"
+   ]
   },
   {
    "nr": 70,
@@ -1404,7 +1627,10 @@
      "HU-Nummer der Lieferpalette"
     ],
     "erklaerung": "Die Charge fasst gemeinsam produzierte Teile zusammen, ideal für Rückrufe."
-   }
+   },
+   "bereich": [
+    "Kennzeichnung & IT-Systeme"
+   ]
   },
   {
    "nr": 71,
@@ -1414,7 +1640,11 @@
    "antwort": "Haltbarkeitsdauer / Lagerfähigkeit eines Produkts",
    "erklaerung": "Zeitraum, in dem ein Material oder Produkt verwendet oder verkauft werden darf, z. B. das Mindesthaltbarkeitsdatum. In den Folien als relevante Information für Logistikpartner genannt.",
    "quelle": "VL 1, S. 17; VL 6, S. 28 (nur erwähnt; Übersetzung = Standardbedeutung)",
-   "in_folien": "teilweise"
+   "in_folien": "teilweise",
+   "bereich": [
+    "Produktion & Bestände",
+    "Lagerung"
+   ]
   },
   {
    "nr": 72,
@@ -1434,7 +1664,10 @@
      "Wenn die Ware noch In-Transit ist und der Liefertermin noch nicht erreicht ist"
     ],
     "erklaerung": "Gesamtskript, S. 404: komplette Neuplanung als letzte Handlungsoption."
-   }
+   },
+   "bereich": [
+    "SCM-Konzepte & Zusammenarbeit"
+   ]
   },
   {
    "nr": 73,
@@ -1454,7 +1687,11 @@
      "Große Lose auf Vorrat produzieren"
     ],
     "erklaerung": "VL 4, S. 7. Erwartete Nachfrage bedienen gehört zu Make-to-Stock."
-   }
+   },
+   "bereich": [
+    "Produktion & Bestände",
+    "Umschlag & Distribution"
+   ]
   },
   {
    "nr": 74,
@@ -1474,7 +1711,11 @@
      "Maßanzug-Schneiderei"
     ],
     "erklaerung": "Massenware mit planbarer Nachfrage wird auf Vorrat nach Prognose produziert."
-   }
+   },
+   "bereich": [
+    "Produktion & Bestände",
+    "Umschlag & Distribution"
+   ]
   },
   {
    "nr": 75,
@@ -1494,7 +1735,10 @@
      "Den Frachtbrief mit Standortangabe"
     ],
     "erklaerung": "VL 7, S. 28."
-   }
+   },
+   "bereich": [
+    "Kennzeichnung & IT-Systeme"
+   ]
   },
   {
    "nr": 76,
@@ -1514,7 +1758,10 @@
      "Metallische Umgebung stört das Lesen von RFID-Tags nie"
     ],
     "erklaerung": "VL 6, S. 17–20: Anschaffung mittel bis hoch, nicht menschenlesbar, Metall kann stark stören."
-   }
+   },
+   "bereich": [
+    "Kennzeichnung & IT-Systeme"
+   ]
   },
   {
    "nr": 77,
@@ -1534,7 +1781,10 @@
      "Ware, die bereits versendet, aber beim Kunden noch nicht angekommen ist"
     ],
     "erklaerung": "Gesamtskript, S. 299. Ware unterwegs = In-Transit."
-   }
+   },
+   "bereich": [
+    "Produktion & Bestände"
+   ]
   },
   {
    "nr": 78,
@@ -1554,7 +1804,11 @@
      "Einen geringeren Sicherheitsbestand"
     ],
     "erklaerung": "Gesamtskript, S. 389: Ursachen für Dead Stock sind Phase-out und fehlerhafte Forecasts."
-   }
+   },
+   "bereich": [
+    "Produktion & Bestände",
+    "SCM-Konzepte & Zusammenarbeit"
+   ]
   },
   {
    "nr": 79,
@@ -1574,7 +1828,10 @@
      "Sie wird null"
     ],
     "erklaerung": "Die Bestellfixkosten stehen in der Wurzel im Zähler: x* = √(2 · Bedarf · Fixkosten ÷ (Preis · Lagerkostensatz))."
-   }
+   },
+   "bereich": [
+    "Produktion & Bestände"
+   ]
   },
   {
    "nr": 80,
@@ -1595,7 +1852,10 @@
      "Er muss verdoppelt werden"
     ],
     "erklaerung": "Gesamtskript, S. 380: „Je kürzer die Wiederbeschaffungszeit, desto niedriger kann der Sicherheitsbestand“."
-   }
+   },
+   "bereich": [
+    "Produktion & Bestände"
+   ]
   },
   {
    "nr": 81,
@@ -1615,7 +1875,10 @@
      "Welche Angaben zu Absender und Empfänger im Frachtbrief stehen müssen"
     ],
     "erklaerung": "Gesamtskript, S. 382."
-   }
+   },
+   "bereich": [
+    "SCM-Konzepte & Zusammenarbeit"
+   ]
   },
   {
    "nr": 82,
@@ -1635,7 +1898,10 @@
      "Cross-Docking"
     ],
     "erklaerung": "Gesamtskript, S. 389: Phase-out und fehlerhafte Forecasts."
-   }
+   },
+   "bereich": [
+    "Produktion & Bestände"
+   ]
   },
   {
    "nr": 83,
@@ -1656,7 +1922,10 @@
      "Längere Lieferzeit des Lieferanten"
     ],
     "erklaerung": "Ist das Regal leer, kauft der Kunde woanders (nicht in den Folien)."
-   }
+   },
+   "bereich": [
+    "Produktion & Bestände"
+   ]
   },
   {
    "nr": 84,
@@ -1676,7 +1945,11 @@
      "Die Ware darf nie entnommen werden"
     ],
     "erklaerung": "Gesamtskript, S. 409. Bezahlt wird erst bei Entnahme."
-   }
+   },
+   "bereich": [
+    "SCM-Konzepte & Zusammenarbeit",
+    "Produktion & Bestände"
+   ]
   },
   {
    "nr": 85,
@@ -1686,7 +1959,10 @@
    "antwort": "Betrachtung der gesamten Supply Chain vom Anfang bis zum Ende",
    "erklaerung": "Ganzheitliche Betrachtung der kompletten Supply Chain mit allen Aspekten, vom ersten Lieferanten bis zum Endkunden.",
    "quelle": "Gesamtskript, S. 410",
-   "in_folien": "ja"
+   "in_folien": "ja",
+   "bereich": [
+    "SCM-Konzepte & Zusammenarbeit"
+   ]
   },
   {
    "nr": 86,
@@ -1706,7 +1982,11 @@
      "22 h"
     ],
     "erklaerung": "Durchlaufzeit = Bearbeitungszeit + Liegezeit."
-   }
+   },
+   "bereich": [
+    "Produktion & Bestände",
+    "SCM-Konzepte & Zusammenarbeit"
+   ]
   },
   {
    "nr": 87,
@@ -1726,7 +2006,10 @@
      "Bei zu schweren KLTs, dann Transport mit autonomen Robotern (AMR)"
     ],
     "erklaerung": "VL 8, S. 41: zu viele Fächer im Supermarkt → Sequenz nach Produktionsreihenfolge (Perlenkette)."
-   }
+   },
+   "bereich": [
+    "Kommissionierung & Bereitstellung"
+   ]
   },
   {
    "nr": 88,
@@ -1746,7 +2029,11 @@
      "Lieferungen nur einmal pro Monat bündeln, um Fahrten zu sparen"
     ],
     "erklaerung": "Gesamtskript, S. 450–451."
-   }
+   },
+   "bereich": [
+    "SCM-Konzepte & Zusammenarbeit",
+    "Kommissionierung & Bereitstellung"
+   ]
   },
   {
    "nr": 89,
@@ -1766,7 +2053,11 @@
      "Die richtige Qualität (null Fehler)"
     ],
     "erklaerung": "Menge, Ort, Zeit und Qualität gehören schon zu JIT. JIS ergänzt die Sequenz („Perlenkette“)."
-   }
+   },
+   "bereich": [
+    "SCM-Konzepte & Zusammenarbeit",
+    "Kommissionierung & Bereitstellung"
+   ]
   },
   {
    "nr": 90,
@@ -1786,7 +2077,11 @@
      "Er ist ein fahrerloses System, das Hindernisse selbstständig umfährt"
     ],
     "erklaerung": "VL 11, S. 32; Gesamtskript, S. 155 und 499: kleine Mengen häufig, Pull-Prinzip."
-   }
+   },
+   "bereich": [
+    "Kommissionierung & Bereitstellung",
+    "Innerbetrieblicher Transport"
+   ]
   },
   {
    "nr": 91,
@@ -1806,7 +2101,10 @@
      "AWB"
     ],
     "erklaerung": "ETD = Estimated Time of Departure (nicht in den Folien)."
-   }
+   },
+   "bereich": [
+    "Außerbetrieblicher Transport"
+   ]
   },
   {
    "nr": 92,
@@ -1826,7 +2124,22 @@
      "76,5 %"
     ],
     "erklaerung": "OTIF zählt nur Lieferungen, die beides erfüllen. 90 % × 85 % = 76,5 % ist nur eine Näherung, wenn man die echten Zahlen nicht kennt."
-   }
+   },
+   "bereich": [
+    "SCM-Konzepte & Zusammenarbeit"
+   ]
   }
+ ],
+ "bereiche": [
+  "Lagerung",
+  "Innerbetrieblicher Transport",
+  "Ladungsträger & Verpackung",
+  "Außerbetrieblicher Transport",
+  "Begleitpapiere & Dienstleister",
+  "Kennzeichnung & IT-Systeme",
+  "Kommissionierung & Bereitstellung",
+  "Umschlag & Distribution",
+  "Produktion & Bestände",
+  "SCM-Konzepte & Zusammenarbeit"
  ]
 }

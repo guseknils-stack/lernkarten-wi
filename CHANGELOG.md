@@ -2,6 +2,13 @@
 
 Neueste Änderungen stehen oben.
 
+## 2026-11-08 – Neue Fragetypen in Quiz und Probetest
+- `data/logistik.json`: Jede Karte hat jetzt ein Feld `bereich` (ein oder mehrere Themenbereiche, z. B. „Ladungsträger & Verpackung“). Die Liste aller 10 Bereiche steht oben in `bereiche`.
+- `app.js`: Drei neue Fragetypen: „Welcher Begriff passt?“ (Beschreibung gegeben, Begriff gesucht), „Themenbereich“ und „Kategorie in der Begriffsliste“ (Intralogistik / Logistik / SCM). Die umgekehrte Frage wird bei Brutto/Netto/Tara, HALB/INT und EAN weggelassen, weil die Antwort den Begriff verrät.
+- `app.js`: `FRAGETYPEN` und `zufallsTyp()` wählen pro Karte zufällig eine Frageart. Wie oft welche Art kommt, steht oben in `QUIZ_GEWICHTE`. Quiz: pro Karte die Wissensfrage + eine zufällige andere Art. Probetest: eine zufällige Art pro Karte.
+- `sw.js`: Cache-Version auf v9.
+- Warum: Nils will verschiedene Fragestellungen wie im echten Test (Idee aus der App eines Kommilitonen).
+
 ## 2026-11-04 – Ameise-Frage korrigiert
 - `data/logistik.json`, Karte 7: Die Wissensfrage fragte, was die Ameise „kann“. Das ist unsauber, weil man im Alltag auch den elektrischen Niederhubwagen (ohne Stapeln) „Ameise“ nennt. Neue Frage: Wie ordnet VL 7 die Ameise ein? (Stapelgerät, VL 7, S. 22 wörtlich). Hinweis auf den Alltagsgebrauch in Erklärung ergänzt.
 - `sw.js`: Cache-Version auf v8.
