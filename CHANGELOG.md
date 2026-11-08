@@ -2,6 +2,14 @@
 
 Neueste Änderungen stehen oben.
 
+## 2026-11-08 – Falsche Begriffe öfter, Schwerpunkte, Fehler-Test
+- `app.js` Karteikarten: Begriffe, die schon einmal falsch waren und noch nicht grün sind, stecken zweimal im Stapel (zweites Mal in der zweiten Hälfte). Eine in der Runde falsch beantwortete Karte kommt nach 3 anderen Karten wieder (`NOCHMAL_ABSTAND`) und am Ende der Runde noch einmal.
+- `app.js`: Neue Seite „Schwerpunkte“ (`#schwerpunkte/<fach>`): pro Paket alle Begriffe, die schon einmal falsch waren, mit Fehlerzahl, rot/grün und aufklappbarer Lösung.
+- `app.js`: Neuer „Fehler-Test“ (`#probetest/<fach>/fehler`): wie der Probetest (Zeitlimit, gemischte Fragearten), aber nur mit den Begriffen mit der höchsten Fehlerquote (max. `FEHLERTEST_MAX` = 30).
+- `app.js`: Fachseite mit Knöpfen zu Schwerpunkten und Fehler-Test und einem Lerntipp (jedes Paket einmal, dann weiter, später von vorne). Bei Bilderfragen steht in der Fehlerliste jetzt „Bild: Begriff“ statt einer leeren Zeile.
+- `style.css`: Stil für die Schwerpunkte-Liste. `sw.js`: Cache-Version auf v13.
+- Warum: Nils will Fehler gezielt wiederholen. Lernmethode: Spacing und Interleaving statt eine Gruppe dreimal direkt hintereinander.
+
 ## 2026-11-08 – Eigenschaftsfragen, Probetest mit 30 Fragen, Dunkelmodus
 - `data/logistik.json`: Neues Feld `eigenschaften` bei 11 wichtigen Gegenständen (KLT, GiBo, Euro-Palette, Industriepalette, CHEP, 20'/40'-Container, Big Bag, IBC, EAN), insgesamt 18 Fragen zu Material, Maßen, Farbe, Aufbau oder Volumen. Die richtige Antwort steht an erster Stelle.
 - `app.js`: Neuer Fragetyp `eigenschaft`. Im Quiz bekommen diese Gegenstände eine dritte Frage, im Probetest kommt sie per Zufall (Gewicht in `QUIZ_GEWICHTE`).

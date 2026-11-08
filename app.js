@@ -13,6 +13,8 @@ const MINUS_POSITIV = 3;     // verpasster Tag, solange der Fortschritt über 0 
 const MINUS_NEGATIV = 1;     // verpasster Tag, wenn der Fortschritt schon bei 0 oder darunter ist
 const PROBETEST_FRAGEN = 30;
 const PROBETEST_MINUTEN = 20;
+const FEHLERTEST_MAX = 30;   // höchstens so viele Begriffe im Fehler-Test
+const NOCHMAL_ABSTAND = 3;   // falsche Karte kommt nach so vielen anderen Karten noch einmal
 // Wie oft welche Frageart in Quiz und Probetest kommt (höhere Zahl = öfter)
 const QUIZ_GEWICHTE = { wissen: 3, eigenschaft: 3, bedeutung: 2, begriff: 2, bild: 2, bereich: 1, kategorie: 1 };
 const SPEICHER = "paukbaer-v1";
@@ -66,6 +68,11 @@ function verbuchen(fach, nr, richtig) {
   if (richtig) S.richtigTage[heute()] = (S.richtigTage[heute()] || 0) + 1;
   speichern();
 }
+
+// Wie oft eine Karte falsch war (aus dem Speicher). Grundlage für Schwerpunkte und Fehler-Test.
+const fehlerZahl = (fach, nr) => S.karten[kartenSchluessel(fach, nr)]?.falsch ?? 0;
+// "Schwer" = schon mindestens einmal falsch und noch nicht sicher (Stufe unter 2 = Ampel nicht grün)
+const istSchwer = (fach, nr) => fehlerZahl(fach, nr) > 0 && stufe(fach, nr) < 2;
 
 function paketKarten(daten, p) { return daten.karten.filter((k) => k.nr >= p.von && k.nr <= p.bis); }
 // Ampel: grün = alle Karten mindestens 2x netto richtig, gelb = angefangen, rot = neu
@@ -192,7 +199,8 @@ function iosHinweis() {
 async function fachSeite(id) {
   const d = await fachLaden(id);
   const alleGruen = d.pakete.every((p) => ampel(d, p) === "gruen");
-  const letzte = S.tests.filter((t) => t.fach === id).slice(-1)[0];
+  const letzte = S.tests.filter((t) => t.fach === id && t.art !== "fehler").slice(-1)[0];
+  const anzahlFehler = d.karten.filter((k) => fehlerZahl(id, k.nr) > 0).length;
   zeige(`
     ${kopf(d.titel, "start")}
     <p class="leise" style="margin-top:-6px">${esc(d.testinfo)} · ${countdownText(d.testdatum)}</p>
@@ -212,6 +220,14 @@ async function fachSeite(id) {
       <button class="knopf" data-los="probetest/${id}" ${alleGruen ? "" : "disabled"}>Probetest starten</button>
       ${alleGruen ? "" : `<div class="abstand"></div><button class="knopf zweit" data-los="probetest/${id}">Trotzdem schon üben</button>`}
     </section>
+    <section class="feld">
+      <h3>🎯 Schwerpunkte und Fehler-Test</h3>
+      <p class="leise">${anzahlFehler ? `${anzahlFehler} Begriffe hattest du schon mindestens einmal falsch.` : "Noch keine Fehler gespeichert. Lern erst ein paar Pakete."}</p>
+      <button class="knopf zweit" data-los="schwerpunkte/${id}">Schwerpunkte ansehen</button>
+      <div class="abstand"></div>
+      <button class="knopf" data-los="probetest/${id}/fehler" ${anzahlFehler ? "" : "disabled"}>Fehler-Test starten</button>
+    </section>
+    <p class="leise">So lernst du am besten: jedes Paket einmal, dann das nächste, und später wieder von vorne. Falsche Begriffe kommen von selbst öfter dran.</p>
   `);
 }
 
@@ -295,6 +311,30 @@ function kalender() {
   `);
 }
 
+// ---------- Schwerpunkte ----------
+// Zeigt pro Paket die Begriffe, die schon einmal falsch waren, mit Fehlerzahl und Lösung zum Nachlesen.
+// Begriffe, die inzwischen sitzen (grün), bleiben sichtbar, aber mit Haken, damit man den Fortschritt sieht.
+async function schwerpunkte(id) {
+  const d = await fachLaden(id);
+  const gruppen = d.pakete.map((p) => ({
+    p, ks: paketKarten(d, p).filter((k) => fehlerZahl(id, k.nr) > 0).sort((a, b) => fehlerZahl(id, b.nr) - fehlerZahl(id, a.nr)),
+  })).filter((g) => g.ks.length);
+  const eintrag = (k) => `<details class="schwer">
+      <summary><span class="ampel ${istSchwer(id, k.nr) ? "rot" : "gruen"}"></span><b>${esc(vorne(k))}</b>
+        <span class="leise">${fehlerZahl(id, k.nr)}× falsch${istSchwer(id, k.nr) ? "" : " · sitzt jetzt ✅"}</span></summary>
+      ${k.bild ? bildSVG(k.bild, vorne(k)) : ""}
+      <div class="kurz">${esc(k.antwort)}</div>
+      <p class="leise">${esc(k.erklaerung)}</p>
+    </details>`;
+  zeige(`
+    ${kopf("🎯 Schwerpunkte", `fach/${id}`)}
+    <p class="leise" style="margin-top:-6px">Alle Begriffe, die du schon mindestens einmal falsch hattest. Tippen zeigt die Lösung. Rot = noch unsicher, grün = sitzt inzwischen.</p>
+    ${gruppen.length ? gruppen.map((g) => `<section class="feld"><h3>Paket ${g.p.nr} <span class="leise">· ${g.ks.length} Begriff${g.ks.length === 1 ? "" : "e"}</span></h3>${g.ks.map(eintrag).join("")}</section>`).join("")
+      : `<section class="feld"><p>Noch keine Fehler gespeichert. 👍</p></section>`}
+    ${gruppen.length ? `<button class="knopf" data-los="probetest/${id}/fehler">Fehler-Test starten</button>` : ""}
+  `);
+}
+
 // ---------- Antwort-Bewertung (Tipp-Modus) ----------
 // Wörter, die beim Vergleich keine Rolle spielen
 const FUELLWOERTER = new Set(["also", "eine", "einer", "eines", "einem", "einen", "der", "die", "das", "den", "dem", "des", "und", "oder", "für", "mit", "von", "vom", "bei", "beim", "nicht", "nach", "auf", "aus", "ein", "ist", "sind", "wird", "werden", "noch", "auch", "nur", "wie", "was", "dass", "z.b", "englisch", "bzw", "etc"]);
@@ -346,12 +386,23 @@ function bewerten(eingabe, karte) {
 // ---------- Karteikarten ----------
 // Karteikarten: mischen, dann entweder Antwort eintippen (App bewertet) oder umdrehen (selbst bewerten).
 // Hat die Karte eine Wissensfrage (mc), kommt sie danach als zweiter Teil. Die Karte zählt nur als
-// richtig, wenn beide Teile stimmen. Nicht gewusste Karten kommen am Ende der Runde nochmal. Das Symbol erscheint erst bei der Lösung,
-// weil es sonst bei Abkürzungen einen Hinweis geben würde.
+// richtig, wenn beide Teile stimmen. Das Symbol erscheint erst bei der Lösung, weil es sonst bei Abkürzungen
+// einen Hinweis geben würde.
+// Schwere Begriffe kommen öfter dran: Wer schon falsch war und noch nicht grün ist, steckt zweimal im Stapel
+// (einmal in der ersten, einmal in der zweiten Hälfte). Eine in dieser Runde falsch beantwortete Karte kommt
+// nach NOCHMAL_ABSTAND anderen Karten wieder und am Ende der Runde noch einmal. Der Abstand ist Absicht:
+// Sofort wiederholen bringt wenig, weil die Antwort dann noch im Kurzzeitgedächtnis ist.
 function karteikarten(id, nr) {
   fachLaden(id).then((d) => {
     const p = d.pakete.find((x) => x.nr === +nr);
-    let stapel = mischen(paketKarten(d, p));
+    const karten = mischen(paketKarten(d, p));
+    const schwere = karten.filter((k) => istSchwer(id, k.nr));
+    // zweites Exemplar der schweren Karten zufällig in die zweite Hälfte einsortieren
+    let stapel = [...karten];
+    schwere.forEach((k) => {
+      const ab = Math.ceil(stapel.length / 2);
+      stapel.splice(ab + Math.floor(Math.random() * (stapel.length - ab + 1)), 0, k);
+    });
     const nochmal = new Set();
     let pos = 0, richtig = 0, gesamt = 0;
 
@@ -431,7 +482,13 @@ function karteikarten(id, nr) {
     // Karte verbuchen und zur nächsten
     const abschliessen = (k, gewusst) => {
       verbuchen(id, k.nr, gewusst); gesamt++;
-      if (gewusst) richtig++; else if (!nochmal.has(k.nr)) { nochmal.add(k.nr); stapel.push(k); }
+      if (gewusst) richtig++;
+      else if (!nochmal.has(k.nr)) {
+        // bald wiederholen (mit kleinem Abstand) und am Ende der Runde noch einmal
+        nochmal.add(k.nr);
+        stapel.splice(Math.min(stapel.length, pos + 1 + NOCHMAL_ABSTAND), 0, k);
+        stapel.push(k);
+      }
       pos++;
       pos < stapel.length ? karte() : ende();
     };
@@ -446,7 +503,10 @@ function karteikarten(id, nr) {
       <div class="abstand"></div>
       <button class="knopf zweit" data-los="quiz/${id}/${nr}">Jetzt das Quiz</button>
       <div class="abstand"></div>
+      <button class="knopf zweit" data-los="schwerpunkte/${id}">🎯 Meine Schwerpunkte</button>
+      <div class="abstand"></div>
       <button class="knopf zweit" data-los="start">Zum Bären</button>
+      <p class="leise">Tipp: Mach jetzt mit dem nächsten Paket weiter und wiederhol dieses später. Mit Abstand bleibt mehr hängen als dreimal direkt hintereinander.</p>
     `);
     karte();
   });
@@ -613,11 +673,20 @@ function quiz(id, nr) {
 }
 
 // Probetest: zufällige Karten aus allen Paketen, mit Zeitlimit, Auswertung erst am Ende.
+// art = "fehler": Fehler-Test nur mit den Begriffen, die am häufigsten falsch waren (höchste Fehlerquote zuerst).
 // Pro Karte eine Frage mit zufälligem Fragetyp (Gewichte oben in den Einstellungen).
 // Welche Fragearten im echten Kurztest kommen, wissen wir nicht. Deshalb eine Mischung.
-function probetest(id) {
+function probetest(id, art) {
   fachLaden(id).then((d) => {
-    const fragen = mischen(d.karten).slice(0, PROBETEST_FRAGEN)
+    const fehlerTest = art === "fehler";
+    const quote = (k) => { const e = S.karten[kartenSchluessel(id, k.nr)]; return e ? e.falsch / (e.falsch + e.richtig) : 0; };
+    const auswahl = fehlerTest
+      ? d.karten.filter((k) => fehlerZahl(id, k.nr) > 0)
+        .sort((a, b) => quote(b) - quote(a) || fehlerZahl(id, b.nr) - fehlerZahl(id, a.nr)).slice(0, FEHLERTEST_MAX)
+      : d.karten;
+    if (!auswahl.length) { zeige(`${kopf("Fehler-Test", `fach/${id}`)}<section class="feld"><p>Noch keine Fehler gespeichert. 👍</p></section>`); return; }
+    const titel = fehlerTest ? "Fehler-Test" : "Probetest";
+    const fragen = mischen(auswahl).slice(0, PROBETEST_FRAGEN)
       .map((k) => FRAGETYPEN[zufallsTyp(k, QUIZ_GEWICHTE)].bauen(d, k));
     const antworten = [];
     const ablauf = Date.now() + PROBETEST_MINUTEN * 60000;
@@ -631,7 +700,7 @@ function probetest(id) {
     const frage = () => {
       const f = fragen[pos];
       zeige(`
-        ${kopf("Probetest", `fach/${id}`)}
+        ${kopf(titel, `fach/${id}`)}
         <div class="fortschritt">Frage ${pos + 1} von ${fragen.length} · ⏱️ <span class="timer" id="uhr"></span></div>
         ${mcHtml(f, undefined, false)}
       `);
@@ -650,20 +719,22 @@ function probetest(id) {
         verbuchen(id, f.karte.nr, ok);
         ok ? richtig++ : fehler.push({ f, gewaehlt: f.optionen[antworten[i]] });
       });
-      S.tests.push({ fach: id, datum: Date.now(), richtig, gesamt: fragen.length }); speichern();
+      S.tests.push({ fach: id, art: fehlerTest ? "fehler" : "probe", datum: Date.now(), richtig, gesamt: fragen.length }); speichern();
       const quote = Math.round((richtig / fragen.length) * 100);
       const loesung = (f) => f.optionen.find((o) => o.richtig).text;
       zeige(`
-        ${kopf("Probetest – Ergebnis", `fach/${id}`)}
+        ${kopf(`${titel} – Ergebnis`, `fach/${id}`)}
         <section class="feld" style="text-align:center">
           ${zeitUm ? `<p><b>⏰ Die Zeit ist abgelaufen.</b></p>` : ""}
           <div class="ergebnis">${quote}%</div>
           <p>${richtig} von ${fragen.length} richtig. ${quote >= 90 ? "Stark, du bist bereit! 🏆" : quote >= 70 ? "Gut! Die Fehler unten noch einmal ansehen." : "Da geht noch was. Lern die Pakete mit gelber Ampel weiter."}</p>
         </section>
         ${fehler.length ? `<section class="feld"><h3>Das solltest du wiederholen</h3><ul class="fehler">
-          ${fehler.map(({ f, gewaehlt }) => `<li><b>${esc(f.frage)}</b><br>✅ ${esc(loesung(f))}${gewaehlt ? `<br><span class="leise">Deine Antwort: ${esc(gewaehlt.text)}</span>` : `<br><span class="leise">nicht beantwortet</span>`}<br><span class="leise">${esc(f.erklaerung)}</span></li>`).join("")}
+          ${fehler.map(({ f, gewaehlt }) => `<li><b>${esc(f.frage || `Bild: ${vorne(f.karte)}`)}</b><br>✅ ${esc(loesung(f))}${gewaehlt ? `<br><span class="leise">Deine Antwort: ${esc(gewaehlt.text)}</span>` : `<br><span class="leise">nicht beantwortet</span>`}<br><span class="leise">${esc(f.erklaerung)}</span></li>`).join("")}
         </ul></section>` : ""}
-        <button class="knopf" data-los="probetest/${id}">Neuer Probetest</button>
+        <button class="knopf" data-los="probetest/${id}${fehlerTest ? "/fehler" : ""}">Neuer ${titel}</button>
+        <div class="abstand"></div>
+        <button class="knopf zweit" data-los="schwerpunkte/${id}">🎯 Schwerpunkte ansehen</button>
         <div class="abstand"></div>
         <button class="knopf zweit" data-los="start">Zum Bären</button>
       `);
@@ -676,7 +747,7 @@ function probetest(id) {
 function route() {
   const [seite, a, b] = (location.hash.slice(1) || "start").split("/");
   ({ start: startseite, fach: () => fachSeite(a), paket: () => paketSeite(a, b), karten: () => karteikarten(a, b),
-     quiz: () => quiz(a, b), probetest: () => probetest(a), kalender }[seite] || startseite)();
+     quiz: () => quiz(a, b), probetest: () => probetest(a, b), schwerpunkte: () => schwerpunkte(a), kalender }[seite] || startseite)();
 }
 $app.addEventListener("click", (e) => {
   const z = e.target.closest("[data-los]");

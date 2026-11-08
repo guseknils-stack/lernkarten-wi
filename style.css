@@ -109,3 +109,10 @@ ul.fehler { padding-left: 18px; } ul.fehler li { margin-bottom: 10px; }
 /* Gezeichnete Bilder (bilder.js) */
 .bild { width: 100%; max-width: 340px; height: auto; display: block; margin: 6px auto 10px; border-radius: 10px; }
 .ohne-text .bt { display: none; }
+
+/* Schwerpunkte: aufklappbare Einträge */
+.schwer { border-top: 1px solid var(--linie); padding: 10px 0; }
+.schwer summary { display: flex; align-items: center; gap: 10px; cursor: pointer; list-style: none; }
+.schwer summary::-webkit-details-marker { display: none; }
+.schwer summary .leise { margin-left: auto; white-space: nowrap; }
+.schwer .kurz { font-weight: 650; margin: 8px 0 4px; }
