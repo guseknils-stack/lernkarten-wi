@@ -16,7 +16,11 @@ const PROBETEST_MINUTEN = 20;
 const FEHLERTEST_MAX = 30;   // höchstens so viele Begriffe im Fehler-Test
 const NOCHMAL_ABSTAND = 3;   // falsche Karte kommt nach so vielen anderen Karten noch einmal
 // Wie oft welche Frageart in Quiz und Probetest kommt (höhere Zahl = öfter)
-const QUIZ_GEWICHTE = { wissen: 3, eigenschaft: 3, bedeutung: 2, begriff: 2, bild: 2, bereich: 1, kategorie: 1 };
+// Die Kategorie-Frage ist nicht dabei: Es gibt nur 3 Kategorien, im echten Test hat aber jede Frage 5 Antworten.
+const QUIZ_GEWICHTE = { wissen: 3, eigenschaft: 3, bedeutung: 2, begriff: 2, bild: 2, bereich: 1 };
+// Wie im echten Kurztest: jede Multiple-Choice-Frage hat 5 Antworten, genau eine ist richtig
+const ANTWORTEN = 5;
+const FALSCHE = ANTWORTEN - 1;
 const SPEICHER = "paukbaer-v1";
 
 // ---------- Speicher (nur auf diesem Gerät) ----------
@@ -513,9 +517,9 @@ function karteikarten(id, nr) {
 }
 
 // ---------- Multiple Choice (Quiz und Probetest) ----------
-// Bedeutungsfrage: "Was bedeutet X?" mit der richtigen Antwort und 3 falschen aus derselben Kategorie
+// Bedeutungsfrage: "Was bedeutet X?" mit der richtigen Antwort und 4 falschen aus derselben Kategorie
 function bedeutungsFrage(d, k) {
-  const andere = mischen(d.karten.filter((x) => x.nr !== k.nr && x.kategorie === k.kategorie && x.antwort !== k.antwort)).slice(0, 3);
+  const andere = mischen(d.karten.filter((x) => x.nr !== k.nr && x.kategorie === k.kategorie && x.antwort !== k.antwort)).slice(0, FALSCHE);
   return {
     karte: k, ueber: "Was bedeutet …", frage: `${vorne(k)}?`, erklaerung: k.erklaerung,
     optionen: mischen([k, ...andere]).map((o) => ({ text: o.antwort, richtig: o.nr === k.nr })),
@@ -536,7 +540,7 @@ function mcHtml(f, gewaehlt, mitAuswertung = true) {
     <section class="feld"><div class="leise">${esc(f.ueber)}</div>${f.bild || ""}${f.frage ? `<h2>${esc(f.frage)}</h2>` : ""}</section>
     ${f.optionen.map((o, i) => {
       const kl = beantwortet ? (o.richtig ? "richtig" : i === gewaehlt ? "falsch" : "") : "";
-      return `<button class="option ${kl}" data-i="${i}" ${beantwortet ? "disabled" : ""}>${"ABCD"[i]}) ${esc(o.text)}</button>`;
+      return `<button class="option ${kl}" data-i="${i}" ${beantwortet ? "disabled" : ""}>${"ABCDE"[i]}) ${esc(o.text)}</button>`;
     }).join("")}
     ${beantwortet ? `<section class="feld">
         <b>${f.optionen[gewaehlt].richtig ? "✅ Richtig!" : "❌ Leider falsch."}</b>
@@ -552,13 +556,14 @@ const umkehrbar = (k) => !begriffTeile(k).some((t) => k.antwort.toLowerCase().in
 
 // Umgekehrte Frage: Die Beschreibung ist gegeben, gesucht ist der Begriff (falsche Antworten aus derselben Kategorie)
 function begriffsFrage(d, k) {
-  const andere = mischen(d.karten.filter((x) => x.nr !== k.nr && x.kategorie === k.kategorie)).slice(0, 3);
+  const andere = mischen(d.karten.filter((x) => x.nr !== k.nr && x.kategorie === k.kategorie)).slice(0, FALSCHE);
   return {
     karte: k, ueber: "Welcher Begriff passt?", frage: `„${k.antwort}“`, erklaerung: `${vorne(k)}: ${k.erklaerung}`,
     optionen: mischen([k, ...andere]).map((o) => ({ text: vorne(o), richtig: o.nr === k.nr })),
   };
 }
 // Kategorie-Frage: unter welcher Überschrift steht der Begriff in Seifermanns Liste?
+// Zurzeit nicht in QUIZ_GEWICHTE, weil sie nur 3 statt 5 Antworten haben kann (bleibt für später drin).
 function kategorieFrage(d, k) {
   const alle = [...new Set(d.karten.map((x) => x.kategorie))];
   return {
@@ -571,7 +576,7 @@ function kategorieFrage(d, k) {
 // deshalb kommen als falsche Antworten nur Bereiche infrage, die bei der Karte gar nicht stehen.
 function bereichsFrage(d, k) {
   const richtig = mischen(k.bereich)[0];
-  const falsch = mischen(d.bereiche.filter((b) => !k.bereich.includes(b))).slice(0, 3);
+  const falsch = mischen(d.bereiche.filter((b) => !k.bereich.includes(b))).slice(0, FALSCHE);
   return {
     karte: k, ueber: "Themenbereich", frage: `Zu welchem Bereich gehört „${vorne(k)}“?`,
     erklaerung: `${vorne(k)} gehört zu: ${k.bereich.join(", ")}. ${k.antwort}`,
@@ -582,7 +587,7 @@ function bereichsFrage(d, k) {
 // Bilderfrage: Zeichnung ohne Beschriftung, gesucht ist der Begriff (falsche Antworten bevorzugt aus anderen Bildern)
 function bildFrage(d, k) {
   const mitBild = mischen(d.karten.filter((x) => x.bild && x.nr !== k.nr));
-  const andere = [...mitBild, ...mischen(d.karten.filter((x) => !x.bild && x.kategorie === k.kategorie))].slice(0, 3);
+  const andere = [...mitBild, ...mischen(d.karten.filter((x) => !x.bild && x.kategorie === k.kategorie))].slice(0, FALSCHE);
   return {
     karte: k, ueber: "Was zeigt das Bild?", frage: "", bild: bildSVG(k.bild, "Bild zur Frage", true), erklaerung: `${vorne(k)}: ${k.erklaerung}`,
     optionen: mischen([k, ...andere]).map((o) => ({ text: vorne(o), richtig: o.nr === k.nr })),
@@ -609,7 +614,7 @@ const FRAGETYPEN = {
   bild: { bauen: bildFrage, moeglich: (k) => !!k.bild },
   eigenschaft: { bauen: eigenschaftsFrage, moeglich: (k) => !!k.eigenschaften?.length },
 };
-// Zieht zufällig einen Fragetyp für die Karte. gewichte z. B. { bedeutung: 2, kategorie: 1 }: höhere Zahl = kommt öfter.
+// Zieht zufällig einen Fragetyp für die Karte. gewichte z. B. { bedeutung: 2, bereich: 1 }: höhere Zahl = kommt öfter.
 // "ohne" schließt Typen aus, die bei dieser Karte schon dran waren.
 function zufallsTyp(k, gewichte, ohne = []) {
   const topf = Object.entries(gewichte).filter(([typ]) => FRAGETYPEN[typ].moeglich(k) && !ohne.includes(typ))

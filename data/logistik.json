@@ -68,7 +68,8 @@
      "Es wird automatisch statt von Hand bedient",
      "Es lagert Paletten statt Behälter",
      "Es gilt formell erst ab 12 m Regalhöhe",
-     "Es lagert ausschließlich nach dem FIFO-Prinzip"
+     "Es lagert ausschließlich nach dem FIFO-Prinzip",
+     "Es wird von Kommissionierstaplern bis 12 m Höhe bedient"
     ],
     "erklaerung": "Behälterregale können wegen der geringen Teilegewichte manuell bedient werden. Bei automatischer Bedienung heißt es AKL (VL 9, S. 27). Die 12 m gelten für das Hochregallager."
    },
@@ -92,7 +93,8 @@
      "Es bringt ganze Lagereinheiten zum Übergabepunkt und lagert sie danach wieder ein",
      "Der Kommissionierer läuft im Regalgang zu festen Fächern und entnimmt dort die Ware selbst",
      "Es sortiert die fertigen Kundenaufträge automatisch auf die passenden Versandtore",
-     "Es stellt Kleinteile im U-förmigen Kommissioniernest für sehr hohe Pickleistungen bereit"
+     "Es stellt Kleinteile im U-förmigen Kommissioniernest für sehr hohe Pickleistungen bereit",
+     "Es lagert Paletten nur ein, die Auslagerung macht ein Gabelstapler"
     ],
     "erklaerung": "Das AS/RS ist ein Beispiel für zentrale, dynamische Bereitstellung (VL 11, S. 10). Das Kommissioniernest ist zentral, aber statisch."
    },
@@ -116,7 +118,8 @@
      "Weil KLT von Hand gehandhabt werden (Ergonomie)",
      "Weil Durchlaufregale nur 20 kg pro Kanal tragen",
      "Weil eine Euro-Viertelpalette nur 20 kg trägt",
-     "Weil der Kunststoff sonst beim Stapeln bricht"
+     "Weil der Kunststoff sonst beim Stapeln bricht",
+     "Weil das AKL-Shuttle höchstens 20 kg heben kann"
     ],
     "erklaerung": "VL 8, S. 29: max. 20 kg befüllt „aufgrund ergonomischer Anforderungen bei manuellem Handling“."
    },
@@ -131,7 +134,8 @@
       "600 × 400 mm (Euro-Viertelpalette)",
       "800 × 600 mm",
       "1.200 × 800 mm",
-      "400 × 300 mm"
+      "400 × 300 mm",
+      "1.000 × 600 mm"
      ],
      "erklaerung": "VL 8, S. 29: max. 600 × 400 mm, also ein Viertel der Euro-Palette."
     },
@@ -141,7 +145,8 @@
       "Farbiger Kunststoff",
       "Holz",
       "Stahlblech",
-      "Wellpappe"
+      "Wellpappe",
+      "Aluminium"
      ],
      "erklaerung": "VL 8, S. 29: aus farbigem Kunststoff, stapelbar, poolfähig, schlag- und stoßfest."
     }
@@ -162,7 +167,8 @@
      "Man sieht die Teile und kann sie auch im Stapel direkt herausgreifen",
      "Damit ein Stapler mit der Gabel unter den Kasten fahren und ihn anheben kann",
      "Damit ein automatisches Kleinteilelager den Kasten sicher erkennen kann",
-     "Damit Schüttgut kontrolliert und ohne Werkzeug aus dem Kasten rieseln kann"
+     "Damit Schüttgut kontrolliert und ohne Werkzeug aus dem Kasten rieseln kann",
+     "Damit der Kasten im Durchlaufregal von selbst nach vorne rutscht"
     ],
     "erklaerung": "Sichtlagerkasten: vorne offen, stapelbar, für Kleinteile in Werkstatt, Montage und Kommissionierung."
    },
@@ -186,7 +192,8 @@
      "Über Flurförderzeuge (z. B. Stapler) oder Ketten, denn er ist unterfahrbar",
      "Von Hand durch eine Person, solange er befüllt nicht mehr als 20 kg wiegt",
      "Ausschließlich mit einem Brückenkran, weil er für Flurförderzeuge zu schwer ist",
-     "Nur auf Stetigförderern wie Rollenbahnen, die ihn automatisch weiterleiten"
+     "Nur auf Stetigförderern wie Rollenbahnen, die ihn automatisch weiterleiten",
+     "Mit dem Sackkarren, weil er auf Rollen steht"
     ],
     "erklaerung": "VL 8, S. 30: „Unterfahrbar (mit Stapler, Hubgerät, Regalbediengerät etc.) → Behälterhandling ausschließlich über Flurförderzeuge oder über Ketten“. Die 20-kg-Regel gilt für KLT."
    },
@@ -211,7 +218,8 @@
      "GLT: unterfahrbar, wird mit Stapler oder Hubwagen bewegt",
      "KLT: stapelbar, wird von Hand ins Durchlaufregal gestellt",
      "IBC: umschließend, wird über ein Ventil mit Flüssigkeit befüllt",
-     "Big Bag: flexibel, wird an Schlaufen vom Kran gehoben"
+     "Big Bag: flexibel, wird an Schlaufen vom Kran gehoben",
+     "KLT: faltbar, wird leer zusammengelegt und von Hand getragen"
     ],
     "erklaerung": "Die Euro-Gitterbox-Pool-Palette („Gibo“) ist in VL 8, S. 30 das Beispiel für einen GLT."
    },
@@ -226,7 +234,8 @@
       "Aus Stahlgitter",
       "Aus Holzlatten",
       "Aus Kunststoffplatten",
-      "Aus Wellpappe"
+      "Aus Wellpappe",
+      "Aus Aluminiumblech"
      ],
      "erklaerung": "Euro-Gitterbox-Pool-Palette: Stahlgitterwände auf einem Palettenboden. (nicht in den Folien)"
     },
@@ -236,7 +245,8 @@
       "Wie eine Euro-Palette (ca. 1.200 × 800 mm)",
       "Wie ein KLT (600 × 400 mm)",
       "Wie eine Industriepalette (1.200 × 1.000 mm)",
-      "Wie ein halber 20'-Container (ca. 3 × 2,4 m)"
+      "Wie ein halber 20'-Container (ca. 3 × 2,4 m)",
+      "Wie eine Halbpalette (600 × 800 mm)"
      ],
      "erklaerung": "Die Gitterbox steht auf dem Euro-Palettenmaß und passt deshalb in dieselben Regale und Lager (nicht ausdrücklich in den Folien)."
     }
@@ -257,7 +267,8 @@
      "Als Stapelgerät (elektrischer Hochhubwagen), neben dem Gabelstapler",
      "Als manuelles Umschlaggerät, neben Sackkarre und Handhubwagen",
      "Als Transportgerät, neben Wagen und Schleppern",
-     "Als Fahrerloses Transportsystem (FTS) mit fester Route"
+     "Als Fahrerloses Transportsystem (FTS) mit fester Route",
+     "Als Lagergerät, neben Schubmast- und Spreizenstapler"
     ],
     "erklaerung": "VL 7, S. 22 wörtlich: „Stapelgeräte: elektrischer Hochhubwagen, „Ameise“; Gabelstapler“. Achtung: Im Alltag sagt man „Ameise“ oft auch zum elektrischen Niederhubwagen, der nicht stapeln kann. Für den Test gilt die Einordnung aus der Vorlesung."
    },
@@ -281,7 +292,8 @@
      "Es bleibt stehen, weil es an die vorgegebene Route gebunden ist",
      "Es umfährt das Hindernis selbstständig mit Hilfe seiner Sensoren",
      "Es berechnet per GPS sofort eine neue Route um das Hindernis",
-     "Es fährt automatisch zurück zur Ladestation und meldet einen Fehler"
+     "Es fährt automatisch zurück zur Ladestation und meldet einen Fehler",
+     "Es schiebt das Hindernis mit der Gabel langsam zur Seite"
     ],
     "erklaerung": "FTS fahren entlang Draht, Magnetband oder Laser-Referenzen. Ausweichen kann erst ein AMR."
    },
@@ -305,7 +317,8 @@
      "Kein Umbau der Halle nötig (keine Magnetbänder oder Drähte), und er umfährt Hindernisse",
      "Er ist in der Anschaffung meist deutlich günstiger, weil er einfacher aufgebaut ist",
      "Er kommt ganz ohne Sensoren aus, weil die Route vorher fest einprogrammiert wird",
-     "Er darf ohne Sicherheitsprüfung fahren, weil er langsamer ist als ein Stapler"
+     "Er darf ohne Sicherheitsprüfung fahren, weil er langsamer ist als ein Stapler",
+     "Er braucht keine Steuerungs- und Leittechnik mehr"
     ],
     "erklaerung": "AMR orientieren sich in Echtzeit an der Umgebung. Dafür sind sie meist teurer. (nicht in den Folien, siehe Quelle der Karte)"
    },
@@ -329,7 +342,8 @@
      "Fest installiert im Hochregallager, mit Führungssystem",
      "Frei fahrend als Gabelstapler, vor allem im Außenbereich",
      "An der Hallendecke hängend, als Teil einer Elektrohängebahn",
-     "Mitten im U-förmigen Kommissioniernest, vom Menschen geführt"
+     "Mitten im U-förmigen Kommissioniernest, vom Menschen geführt",
+     "Auf einem LKW-Auflieger, zum Entladen an der Rampe"
     ],
     "erklaerung": "VL 9, S. 25: Hochregallager mit fest installiertem Regalbediengerät mit Führungssystem."
    },
@@ -354,7 +368,8 @@
      "Genau die benötigten Teile sind da, keins zu viel, keins zu wenig (Poka Yoke), keine Bestände",
      "Sehr viele Varianten lassen sich sortenrein und platzsparend im Supermarkt anstellen",
      "Großteile kommen ohne schwere, platzraubende GLT-Behälter direkt an die Linie",
-     "Ware wird über Kreuz direkt vom ankommenden in den abgehenden LKW umgeschlagen"
+     "Ware wird über Kreuz direkt vom ankommenden in den abgehenden LKW umgeschlagen",
+     "Teile werden in großen Mengen im Zwei-Behälter-Prinzip angestellt"
     ],
     "erklaerung": "VL 8, S. 39: Vorkommissionierte Bereitstellung von Kits, z. B. als mitfahrende Wagen in der Automobil-Endmontage."
    },
@@ -377,7 +392,8 @@
      "Durch Sprechen, z. B. einer Prüfnummer auf der Ware",
      "Durch Drücken des Tasters am Lichtsignal direkt am Regalfach",
      "Durch Abhaken der Position auf der ausgedruckten Pickliste",
-     "Durch Scannen des Lagerplatzes oder des Artikels mit dem Terminal"
+     "Durch Scannen des Lagerplatzes oder des Artikels mit dem Terminal",
+     "Durch Unterschrift auf dem Lieferschein am Ende der Tour"
     ],
     "erklaerung": "VL 11, S. 30. Taster am Licht = Pick-by-Light, Scannen = Pick-by-Scan, Abhaken = Pickliste."
    },
@@ -401,7 +417,8 @@
      "Wenn der mitgeführte Behälter gleichzeitig die Versandeinheit zum Kunden ist",
      "Wenn die Ware nach der Entnahme direkt auf ein Förderband zum Versand gelegt wird",
      "Wenn die Ware erst später im Versandbereich in Kartons verpackt wird",
-     "Wenn mit Pick-by-Light kommissioniert und am Licht quittiert wird"
+     "Wenn mit Pick-by-Light kommissioniert und am Licht quittiert wird",
+     "Wenn ein Roboter statt eines Menschen die Teile greift"
     ],
     "erklaerung": "VL 11, S. 13. Ware aufs Förderband legen heißt Pick-to-Belt."
    },
@@ -424,7 +441,8 @@
      "Auf welchem Lagerplatz die Ware steht",
      "Wie viel von einem Artikel insgesamt da ist",
      "Welche Rechnungen offen sind",
-     "Welche Bestellungen beim Lieferanten laufen"
+     "Welche Bestellungen beim Lieferanten laufen",
+     "Welchen Preis der Lieferant für einen Artikel verlangt"
     ],
     "erklaerung": "VL 8, S. 25: „ERP kennt nur Mengen, weiß aber nicht, wo diese stehen“."
    },
@@ -448,7 +466,8 @@
      "Gezieltes, optimiertes Erstellen von Picklisten",
      "Den automatischen Datenaustausch mit Lieferanten per EDI",
      "Eine fortlaufende, automatische Inventur per RFID-Tags",
-     "Die tägliche Touren- und Fahrzeugplanung der LKW"
+     "Die tägliche Touren- und Fahrzeugplanung der LKW",
+     "Die Erfassung von Maschinendaten direkt in der Produktion"
     ],
     "erklaerung": "VL 8, S. 25."
    },
@@ -472,7 +491,8 @@
      "Auf der Betriebsleitebene, zwischen ERP und Produktion",
      "Auf der Unternehmensleitebene, wo es das ERP-System ersetzt",
      "Auf der Feldebene, wo es einzelne Sensoren direkt steuert",
-     "Beim Lieferanten, als Schnittstelle für den Datenaustausch"
+     "Beim Lieferanten, als Schnittstelle für den Datenaustausch",
+     "In der Cloud des Spediteurs, für die Sendungsverfolgung"
     ],
     "erklaerung": "Gesamtskript, S. 328–329: Das MES verbindet ERP und operativen Betrieb."
    },
@@ -495,7 +515,8 @@
      "Daten dort elektronisch erfassen, wo sie entstehen, und ans ERP weitergeben",
      "Strukturierte Daten automatisch zwischen verschiedenen Unternehmen austauschen",
      "Die Belegung jedes einzelnen Lagerplatzes mit jeder Packungseinheit abbilden",
-     "Den Produktionsplan für die nächste Woche aus den Kundenaufträgen erstellen"
+     "Den Produktionsplan für die nächste Woche aus den Kundenaufträgen erstellen",
+     "Daten per Funk-Etikett ohne Sichtkontakt am Produkt speichern"
     ],
     "erklaerung": "Datenaustausch zwischen Unternehmen ist EDI, Lagerplatzbelegung ist der Stock-Locator."
    },
@@ -544,7 +565,8 @@
      "RM → HALB → FP",
      "HALB → RM → FP",
      "RM → FP → HALB",
-     "FP → HALB → RM"
+     "FP → HALB → RM",
+     "HALB → FP → RM"
     ],
     "erklaerung": "Rohmaterial wird zum Halbfabrikat (Zwischenprodukt) und dann zum Fertigprodukt."
    },
@@ -567,7 +589,8 @@
      "4",
      "0,25",
      "450.000 €",
-     "90"
+     "90",
+     "750.000 €"
     ],
     "erklaerung": "Umschlaghäufigkeit = Wareneinsatz ÷ Ø Lagerbestand = 600.000 ÷ 150.000 = 4. (90 wären die Tage Lagerdauer: 360 ÷ 4)"
    },
@@ -591,7 +614,8 @@
      "4",
      "2",
      "6",
-     "8"
+     "8",
+     "3"
     ],
     "erklaerung": "KLT max. 600 × 400 mm = Euro-Viertelpalette. 1.200 × 800 mm ÷ (600 × 400 mm) = 4."
    },
@@ -606,7 +630,8 @@
       "Holz",
       "Kunststoff",
       "Aluminium",
-      "Pressspan"
+      "Pressspan",
+      "Stahl"
      ],
      "erklaerung": "Die EPAL-Euro-Palette ist aus Holz (Bretter, Klötze, Nägel). Kunststoffpaletten gibt es auch, sie sind aber keine EPAL-1-Palette. (nicht in den Folien)"
     },
@@ -616,7 +641,8 @@
       "9",
       "6",
       "4",
-      "12"
+      "12",
+      "8"
      ],
      "erklaerung": "3 Reihen mit je 3 Klötzen = 9 Klötze. Daran erkennt man sie auch im Bild (Quelle: EPAL, nicht in den Folien)."
     },
@@ -626,7 +652,8 @@
       "600 × 800 mm",
       "400 × 600 mm",
       "1.200 × 400 mm",
-      "800 × 800 mm"
+      "800 × 800 mm",
+      "600 × 600 mm"
      ],
      "erklaerung": "VL 12, S. 34: Euro 1.200 × 800, Halbpalette 600 × 800, Viertelpalette 600 × 400 mm."
     },
@@ -636,7 +663,8 @@
       "ca. 1.500 kg",
       "ca. 150 kg",
       "ca. 500 kg",
-      "ca. 10.000 kg"
+      "ca. 10.000 kg",
+      "ca. 50 kg"
      ],
      "erklaerung": "EPAL gibt für gleichmäßig verteilte Last ca. 1.500 kg an (nicht in den Folien)."
     }
@@ -657,7 +685,8 @@
      "Sie ist nach den Regeln der European Pallet Association hergestellt und tauschfähig",
      "Sie ist eine blaue Mietpalette des Pooling-Anbieters CHEP und wird gewartet",
      "Sie ist nach ADR für den Transport von Gefahrgut auf der Straße zugelassen",
-     "Sie hat das Industriemaß 1.200 × 1.000 mm statt des Euro-Maßes"
+     "Sie hat das Industriemaß 1.200 × 1.000 mm statt des Euro-Maßes",
+     "Sie ist eine Einwegpalette und darf nicht getauscht werden"
     ],
     "erklaerung": "EPAL organisiert Herstellung, Reparatur und Tausch der Euro-Paletten (nicht in den Folien)."
    },
@@ -680,7 +709,8 @@
      "20 cm (1.000 statt 800 mm)",
      "40 cm",
      "Gar nicht, sie ist nur länger",
-     "10 cm"
+     "10 cm",
+     "30 cm"
     ],
     "erklaerung": "Euro: 1.200 × 800 mm, Industrie: 1.200 × 1.000 mm (VL 12, S. 34)."
    },
@@ -695,7 +725,8 @@
       "Um 25 % (1,2 m² statt 0,96 m²)",
       "Um 50 %",
       "Um 10 %",
-      "Gar nicht, nur die Form ist anders"
+      "Gar nicht, nur die Form ist anders",
+      "Um 20 %"
      ],
      "erklaerung": "1,2 × 1,0 = 1,2 m² und 1,2 × 0,8 = 0,96 m². 1,2 ÷ 0,96 = 1,25, also 25 % mehr. (nicht in den Folien)"
     }
@@ -716,7 +747,8 @@
      "Sie wird gemietet und vom Anbieter gewartet, nicht getauscht",
      "Sie ist eine Einwegpalette, die nach dem Transport entsorgt wird",
      "Sie hat das kleinere Maß 600 × 400 mm einer Viertelpalette",
-     "Sie gehört nach der Lieferung immer dem Empfänger der Ware"
+     "Sie gehört nach der Lieferung immer dem Empfänger der Ware",
+     "Sie besteht aus Metall und hält deshalb länger"
     ],
     "erklaerung": "CHEP vermietet blaue Paletten über ein Pool-System (nicht in den Folien)."
    },
@@ -731,7 +763,8 @@
       "Blau",
       "Naturholz mit Brandzeichen",
       "Rot",
-      "Grau"
+      "Grau",
+      "Gelb"
      ],
      "erklaerung": "CHEP-Paletten sind blau gestrichen, damit man die Mietpaletten sofort erkennt. (nicht in den Folien)"
     }
@@ -752,7 +785,8 @@
      "5.000",
      "10.000",
      "20.000",
-     "2.500"
+     "2.500",
+     "1.000"
     ],
     "erklaerung": "Ein 40'-Container = 2 TEU, also 10.000 ÷ 2 = 5.000."
    },
@@ -768,7 +802,8 @@
       "ca. 67 m³",
       "ca. 33 m³",
       "ca. 120 m³",
-      "ca. 20 m³"
+      "ca. 20 m³",
+      "ca. 100 m³"
      ],
      "erklaerung": "40'-Standardcontainer: ca. 67 m³, also etwa doppelt so viel wie ein 20'-Container (ca. 33 m³). (nicht in den Folien)"
     }
@@ -789,7 +824,8 @@
      "Er ist die Basiseinheit für TEU und ca. 6,1 m lang",
      "Er zählt als 2 TEU, weil er doppelt so hoch ist",
      "Er ist außen ca. 12,2 m lang und 2,44 m breit",
-     "Er hat ca. 67 m³ Volumen und zählt als FEU"
+     "Er hat ca. 67 m³ Volumen und zählt als FEU",
+     "Er ist die Basiseinheit für FEU und ca. 3 m lang"
     ],
     "erklaerung": "12,2 m, 2 TEU und 67 m³ gehören zum 40'-Container."
    },
@@ -805,7 +841,8 @@
       "ca. 6,1 m",
       "ca. 12,2 m",
       "ca. 3 m",
-      "ca. 9 m"
+      "ca. 9 m",
+      "ca. 4,5 m"
      ],
      "erklaerung": "20 Fuß ≈ 6,1 m. Der 40'-Container ist ca. 12,2 m lang. (nicht in den Folien)"
     },
@@ -815,7 +852,8 @@
       "Aus Stahl",
       "Aus Holz",
       "Aus Aluminium-Planen",
-      "Aus Kunststoff"
+      "Aus Kunststoff",
+      "Aus Pressspan"
      ],
      "erklaerung": "ISO-Seecontainer sind aus Stahl (meist wetterfester Cortenstahl), damit sie stapelbar und seefest sind. (nicht in den Folien)"
     }
@@ -836,7 +874,8 @@
      "Tragend und umschließend",
      "Nur tragend, wie die Palette",
      "Tragend, umschließend und abschließend, wie der IBC",
-     "Keine, er zählt als reine Verpackung"
+     "Keine, er zählt als reine Verpackung",
+     "Umschließend und abschließend, aber nicht tragend"
     ],
     "erklaerung": "VL 2, S. 19–21: Palette = tragend, Big Bag = tragend und umschließend, IBC/Fasspalette = tragend, um- und abschließend."
    },
@@ -851,7 +890,8 @@
       "Flexibles Kunststoffgewebe",
       "Hartplastik",
       "Stahlblech",
-      "Holz"
+      "Holz",
+      "Pappe"
      ],
      "erklaerung": "Big Bag (FIBC): großer, flexibler Gewebesack, meist aus Polypropylen-Gewebe, mit Schlaufen zum Anheben. (nicht in den Folien)"
     },
@@ -861,7 +901,8 @@
       "An den Schlaufen oben (mit Stapler oder Kran)",
       "An einer Gabeltasche unten wie bei einer Palette",
       "An einem Hahn unten",
-      "Nur von Hand an zwei Griffen"
+      "Nur von Hand an zwei Griffen",
+      "An einem Haken in der Mitte des Bodens"
      ],
      "erklaerung": "Die Schlaufen werden über Staplergabeln oder einen Kranhaken gelegt. (nicht in den Folien)"
     }
@@ -882,7 +923,8 @@
      "Tragend, umschließend und abschließend, für Flüssigkeiten",
      "Nur tragend, wie eine Palette, für verpacktes Stückgut",
      "Tragend und umschließend, für Schüttgut wie Granulat im Gewebesack",
-     "Kunststoffbehälter mit max. 600 × 400 mm Grundfläche"
+     "Kunststoffbehälter mit max. 600 × 400 mm Grundfläche",
+     "Abschließend, aber nicht tragend, für Gase in Flaschen"
     ],
     "erklaerung": "VL 2, S. 21. Der Gewebesack ist der Big Bag, 600 × 400 mm ist der KLT."
    },
@@ -897,7 +939,8 @@
       "ca. 1.000 Liter",
       "ca. 200 Liter",
       "ca. 30 Liter",
-      "ca. 10.000 Liter"
+      "ca. 10.000 Liter",
+      "ca. 5.000 Liter"
      ],
      "erklaerung": "Ein IBC fasst typischerweise ca. 1.000 Liter. 200 Liter wäre ein Fass. (nicht in den Folien)"
     },
@@ -907,7 +950,8 @@
       "Kunststofftank in einem Stahlgitterkäfig auf einer Palette",
       "Stahlfass auf Rollen",
       "Flexibler Gewebesack mit Schlaufen",
-      "Holzkiste mit Deckel"
+      "Holzkiste mit Deckel",
+      "Kunststoffkanister in einem Karton"
      ],
      "erklaerung": "VL 2, S. 21: tragend, umschließend und abschließend. Der Käfig schützt den Tank, die Palette macht ihn staplerfähig."
     }
@@ -928,7 +972,8 @@
      "2.500",
      "1.500",
      "2.000",
-     "3.000"
+     "3.000",
+     "1.250"
     ],
     "erklaerung": "1.000 × 2 TEU + 500 × 1 TEU = 2.500 TEU."
    },
@@ -951,7 +996,8 @@
      "Ob es bei TUL als Einheit behandelt wird und seine Form behält",
      "Ob das Gut mehr oder weniger als eine Tonne wiegt und mit Stapler bewegt werden kann",
      "Mit welchem Verkehrsträger es transportiert wird: Straße, Schiene, See oder Luft",
-     "Ob das Gut verpackt ist und ob sein Warenwert über einer festen Grenze liegt"
+     "Ob das Gut verpackt ist und ob sein Warenwert über einer festen Grenze liegt",
+     "Ob das Gut gefährlich ist und unter das ADR fällt"
     ],
     "erklaerung": "VL 2, S. 13: Stückgut behält Gestalt und Form bei TUL, Schüttgut verändert sie."
    },
@@ -975,7 +1021,8 @@
      "Getreide, das lose in einen Waggon geschüttet wird",
      "50 Colli Kartons mit losen Schrauben darin",
      "Flüssiggas, das im Tankwagen transportiert wird",
-     "Eine Euro-Palette mit gestapelten Säcken Mehl"
+     "Eine Euro-Palette mit gestapelten Säcken Mehl",
+     "Ein IBC mit 1.000 Litern Öl"
     ],
     "erklaerung": "Vorsicht: Flüssigkeiten und Gase sind in VL 2, S. 13 eine eigene dritte Kategorie, kein Schüttgut."
    },
@@ -999,7 +1046,8 @@
      "Die Sendung besteht aus 12 Packstücken",
      "Die Sendung braucht 12 Lademeter Ladefläche",
      "Die Sendung belegt 12 TEU auf dem Schiff",
-     "Die Verpackung wiegt insgesamt 12 kg (Tara)"
+     "Die Verpackung wiegt insgesamt 12 kg (Tara)",
+     "Die Sendung geht an 12 verschiedene Empfänger"
     ],
     "erklaerung": "Colli ist der Plural von Collo = Packstück (nicht in den Folien)."
    },
@@ -1023,7 +1071,8 @@
      "4 ldm",
      "8 ldm",
      "10 ldm",
-     "2,5 ldm"
+     "2,5 ldm",
+     "5 ldm"
     ],
     "erklaerung": "Auf 1 ldm passen 2,5 Euro-Paletten, eine belegt also 0,4 ldm. 10 × 0,4 = 4 ldm."
    },
@@ -1047,7 +1096,8 @@
      "475 kg",
      "525 kg",
      "500 kg",
-     "25 kg"
+     "25 kg",
+     "450 kg"
     ],
     "erklaerung": "Netto = Brutto − Tara = 500 − 25 = 475 kg."
    },
@@ -1072,7 +1122,8 @@
      "Physische Einheit mit eindeutiger Nummer, HUs lassen sich verschachteln",
      "Eine Nummer, die alle gleichen Produkte gemeinsam haben, egal welches Stück",
      "Die kleinste unterscheidbare Artikelvariante im Lager, z. B. Farbe und Größe",
-     "Eine Maßeinheit für die belegte Ladefläche eines LKW in der Länge"
+     "Eine Maßeinheit für die belegte Ladefläche eines LKW in der Länge",
+     "Ein Dokument, das die Übernahme der Ware durch den Frachtführer bestätigt"
     ],
     "erklaerung": "Gleiche Nummer für alle gleichen Produkte = Artikelnummer, kleinste Variante = SKU, Ladefläche = Lademeter."
    },
@@ -1096,7 +1147,8 @@
      "LTL",
      "FTL",
      "LCL",
-     "FCL"
+     "FCL",
+     "Cross-Docking"
     ],
     "erklaerung": "LTL = Less than Truck Load. LCL wäre dasselbe im Container (Seefracht)."
    },
@@ -1119,7 +1171,8 @@
      "FCL",
      "LCL",
      "FTL",
-     "LTL"
+     "LTL",
+     "Konsolidierung"
     ],
     "erklaerung": "FCL = Full Container Load. Merkhilfe: C = Container, T = Truck."
    },
@@ -1142,7 +1195,8 @@
      "Straße",
      "Schiene",
      "Luft",
-     "See"
+     "See",
+     "Binnenschiff"
     ],
     "erklaerung": "ADR = Europäisches Übereinkommen über die internationale Beförderung gefährlicher Güter auf der Straße."
    },
@@ -1166,7 +1220,8 @@
      "Hersteller liefern artikelreine Ware, kundenbezogen kommissioniert wird erst im Cross-Dock",
      "Hersteller kommissionieren schon kundenbezogen vor, das Cross-Dock bündelt nur noch",
      "Die Ware wird im Cross-Dock für einige Tage zwischengelagert und dann verteilt",
-     "Jeder Kunde bekommt zwei LKW, einen für Stückgut und einen für Schüttgut"
+     "Jeder Kunde bekommt zwei LKW, einen für Stückgut und einen für Schüttgut",
+     "Beim zweistufigen wird die Ware zweimal umgeschlagen, ohne dass jemand kommissioniert"
     ],
     "erklaerung": "VL 4, S. 25. Einstufig = beim Hersteller vorkommissioniert. Lagerung vermeidet Cross-Docking in beiden Varianten."
    },
@@ -1190,7 +1245,8 @@
      "Konsolidierung",
      "Deconsolidation",
      "Kitting",
-     "Sequenzierung"
+     "Sequenzierung",
+     "Milkrun"
     ],
     "erklaerung": "Deconsolidation ist das Gegenteil: eine große Sendung wieder aufteilen."
    },
@@ -1214,7 +1270,8 @@
      "B/L – See, AWB – Luft, CMR – Straße, CIM – Schiene",
      "B/L – Luft, AWB – See, CMR – Schiene, CIM – Straße",
      "B/L – Straße, AWB – Luft, CMR – See, CIM – Schiene",
-     "B/L – See, AWB – Schiene, CMR – Straße, CIM – Luft"
+     "B/L – See, AWB – Schiene, CMR – Straße, CIM – Luft",
+     "B/L – Schiene, AWB – Luft, CMR – Straße, CIM – See"
     ],
     "erklaerung": "VL 3, S. 18."
    },
@@ -1237,7 +1294,8 @@
      "Er gilt nur mit Unterschrift von Absender und Frachtführer und wird dreifach ausgefertigt",
      "Er begründet die Zahlungspflicht des Käufers und ist die Grundlage für den Zollwert",
      "Er wird nur vom Empfänger unterschrieben und in einfacher Ausfertigung erstellt",
-     "Er ist nur gültig, wenn ihn das Konsulat des Importlandes bestätigt hat"
+     "Er ist nur gültig, wenn ihn das Konsulat des Importlandes bestätigt hat",
+     "Er wird erst nach der Bezahlung der Ware ausgestellt"
     ],
     "erklaerung": "VL 3, S. 17. Zahlungspflicht und Zollwert gehören zur Commercial Invoice."
    },
@@ -1260,7 +1318,8 @@
      "CIM",
      "AWB",
      "B/L",
-     "ASN"
+     "ASN",
+     "EDI"
     ],
     "erklaerung": "VL 3, S. 18: CIM = Eisenbahntransport."
    },
@@ -1283,7 +1342,8 @@
      "Der 4PL hat keine eigenen Ressourcen wie Fuhrpark oder Lager und steuert über Subunternehmer",
      "Der 4PL macht ausschließlich reine Transporte mit eigenem Fuhrpark und eigenen Fahrern",
      "Der 4PL übernimmt zusätzlich die Produktion und die Montage beim Kunden",
-     "Der 4PL bietet nur Transport, Umschlag und Lagerung an, aber keine Planung"
+     "Der 4PL bietet nur Transport, Umschlag und Lagerung an, aber keine Planung",
+     "Der 4PL ist ein reiner KEP-Dienstleister für kleine Sendungen"
     ],
     "erklaerung": "VL 3, S. 38–39. Nur Transport = 1PL, TUL = 2PL."
    },
@@ -1306,7 +1366,8 @@
      "2PL",
      "1PL",
      "4PL",
-     "KEP"
+     "KEP",
+     "3PL"
     ],
     "erklaerung": "1PL = Transport, 2PL = Transport, Umschlag, Lagerung (TUL), 3PL = Kontraktlogistik."
    },
@@ -1330,7 +1391,8 @@
      "Schnelle Be- und Entladung von der Seite und von hinten, kostengünstig",
      "Hoher Schutz gegen Diebstahl, weil der Aufbau fest und abschließbar ist",
      "Temperierte Transporte sind möglich, z. B. für gekühlte Lebensmittel",
-     "Hohe Transportsicherheit durch die festen Wände des Aufbaus"
+     "Hohe Transportsicherheit durch die festen Wände des Aufbaus",
+     "Beladung nur von hinten über die Rampe"
     ],
     "erklaerung": "VL 2, S. 34. Die anderen drei sind Vorteile des Kofferfahrzeugs."
    },
@@ -1354,7 +1416,8 @@
      "Kofferfahrzeug",
      "Curtainsider",
      "Pritsche mit Plane und Spriegelbrettern",
-     "Offene Pritsche"
+     "Offene Pritsche",
+     "Tankfahrzeug"
     ],
     "erklaerung": "VL 2, S. 34: Koffer = hohe Transportsicherheit, Diebstahlschutz, temperierte Transporte."
    },
@@ -1378,7 +1441,8 @@
      "Pritschenaufbau mit Plane",
      "Kofferfahrzeug mit festem Aufbau",
      "Tankfahrzeug für Flüssigkeiten",
-     "Containerchassis für Seecontainer"
+     "Containerchassis für Seecontainer",
+     "Wechselbrücke mit festem Kofferaufbau"
     ],
     "erklaerung": "VL 2, S. 33: „Pritschenaufbau mit Plane und Spriegelbrettern“."
    },
@@ -1402,7 +1466,8 @@
      "Der Nachlauf zum Empfänger, meist per LKW",
      "Der Hauptlauf, z. B. per Schiff oder Bahn",
      "Der Vorlauf vom Versender zum ersten Umschlagpunkt",
-     "Der Umschlag der Ware im Zielhafen auf den LKW"
+     "Der Umschlag der Ware im Zielhafen auf den LKW",
+     "Die letzte Seemeile vor dem Zielhafen"
     ],
     "erklaerung": "Erste Meile = Vorlauf, letzte Meile = Nachlauf."
    },
@@ -1425,7 +1490,8 @@
      "Zur Beantragung von Importlizenzen, ohne Zahlungspflicht",
      "Als Grundlage für den Zollwert, mit Zahlungspflicht",
      "Als Ursprungserklärung, vom Konsulat bestätigt",
-     "Zur genauen Beschreibung der Ware für Zoll und Versicherung"
+     "Zur genauen Beschreibung der Ware für Zoll und Versicherung",
+     "Als Versandnachweis, vom Frachtführer unterschrieben"
     ],
     "erklaerung": "VL 3, S. 15–16. Zollwert = Commercial Invoice, Ursprung = Customs Invoice, Beschreibung = Packliste."
    },
@@ -1448,7 +1514,8 @@
      "AWB",
      "CMR",
      "B/L",
-     "Pro-forma-Invoice"
+     "Pro-forma-Invoice",
+     "CIM"
     ],
     "erklaerung": "VL 3, S. 18: AWB mit Seriennummer der IATA."
    },
@@ -1471,7 +1538,8 @@
      "1PL",
      "2PL",
      "3PL",
-     "4PL"
+     "4PL",
+     "Keiner, KEP zählt nicht zu den Logistikdienstleistern"
     ],
     "erklaerung": "VL 3, S. 37: KEP steht bei den 1PL-Betreibermodellen."
    },
@@ -1494,7 +1562,8 @@
      "Werk = Quelle, Kunde = Senke",
      "Kunde = Quelle, Werk = Senke",
      "Werk und Kunde sind beide Senken",
-     "Quellen und Senken gibt es nur im Lager"
+     "Quellen und Senken gibt es nur im Lager",
+     "Quelle und Senke bezeichnen beide den Spediteur"
     ],
     "erklaerung": "VL 4, S. 26: Güterquellen (Werke) und -senken (Kunden)."
    },
@@ -1530,7 +1599,8 @@
      "13-stelliger 1D-Barcode, die Stammdaten liegen in Datenbanken, heute GTIN",
      "Ein 2D-Code wie der QR-Code, der viele Daten direkt auf dem Etikett speichert",
      "Sie kennzeichnet jedes einzelne Stück eindeutig, wie eine Seriennummer",
-     "Sie wird weltweit kostenlos vergeben, jeder darf sich eine Nummer nehmen"
+     "Sie wird weltweit kostenlos vergeben, jeder darf sich eine Nummer nehmen",
+     "Ein 2D-Code mit 13 Ziffern, heute UPC genannt"
     ],
     "erklaerung": "VL 6, S. 16: Vergabe gegen Lizenzgebühr, Stammdaten über die EAN abrufbar."
    },
@@ -1545,7 +1615,8 @@
       "Ein 1D-Strichcode",
       "Ein 2D-Code wie der QR-Code",
       "Ein Funk-Chip (RFID)",
-      "Eine reine Klarschrift ohne Code"
+      "Eine reine Klarschrift ohne Code",
+      "Ein Magnetstreifen"
      ],
      "erklaerung": "VL 6, S. 16: EAN heute standardisiert als 1D-Barcode mit 13 Stellen."
     }
@@ -1566,7 +1637,8 @@
      "GTIN ist der heutige Name der EAN",
      "GTIN ist der 2D-Nachfolger der EAN",
      "GTIN ist die Seriennummer, EAN die Artikelnummer",
-     "GTIN gilt nur in den USA"
+     "GTIN gilt nur in den USA",
+     "EAN und GTIN sind zwei konkurrierende Standards"
     ],
     "erklaerung": "VL 6, S. 16."
    },
@@ -1589,7 +1661,8 @@
      "Jede Nachricht muss den Empfänger genau einmal erreichen",
      "Die Daten müssen beim Empfänger von Hand abgetippt werden",
      "EDI funktioniert nur innerhalb eines einzelnen Unternehmens",
-     "Für EDI gibt es keine einheitlichen Standards"
+     "Für EDI gibt es keine einheitlichen Standards",
+     "EDI-Nachrichten dürfen nur einmal pro Tag verschickt werden"
     ],
     "erklaerung": "VL 6, S. 35. Standard ist z. B. EDIFACT."
    },
@@ -1612,7 +1685,8 @@
      "Wetter- und Verschmutzungsschutz",
      "Seitliche Beladung von Curtainsidern",
      "Anschlüsse für Silofahrzeuge",
-     "Containerbeladung auf der Freifläche"
+     "Containerbeladung auf der Freifläche",
+     "Beladung von Kofferfahrzeugen von hinten"
     ],
     "erklaerung": "VL 8, S. 10."
    },
@@ -1636,7 +1710,8 @@
      "Wenn viele unterschiedliche Einzeleinheiten mit der Lieferung kommen",
      "Nur bei Gefahrgut, weil dann die Feuerwehr informiert werden muss",
      "Nur bei Komplettladungen (FTL), weil dann ein ganzer LKW kommt",
-     "Wenn der Wareneingang gerade frei ist und keine Zeitfenster braucht"
+     "Wenn der Wareneingang gerade frei ist und keine Zeitfenster braucht",
+     "Nur bei Luftfracht mit AWB"
     ],
     "erklaerung": "VL 8, S. 11."
    },
@@ -1660,7 +1735,8 @@
      "Rollende Bestände",
      "Dead Stock",
      "Sicherheitsbestand",
-     "Work in Process"
+     "Work in Process",
+     "Konsignationsbestand"
     ],
     "erklaerung": "Gesamtskript, S. 280: versendet, aber noch nicht geliefert."
    },
@@ -1684,7 +1760,8 @@
      "Keine einheitliche Definition, gemeint ist die Koordination der ganzen Kette",
      "SCM betrifft nur das eigene Lager und dessen Bestände, nicht Lieferanten oder Kunden",
      "SCM ist nur ein anderes Wort für die Planung von Transporten zwischen Werken",
-     "SCM ist in einer DIN-Norm fest und einheitlich für alle Branchen definiert"
+     "SCM ist in einer DIN-Norm fest und einheitlich für alle Branchen definiert",
+     "SCM bedeutet, dass ein 4PL alle Lager des Unternehmens besitzt"
     ],
     "erklaerung": "Gesamtskript, S. 294 (Arnold et al. 2008)."
    },
@@ -1734,7 +1811,8 @@
      "Der Lieferant entscheidet, das Eigentum geht bei Lieferung über",
      "Der Lieferant entscheidet, das Eigentum geht erst bei Entnahme über",
      "Der Kunde entscheidet, das Eigentum geht bei Lieferung über",
-     "Der Kunde entscheidet, das Eigentum geht erst bei Entnahme über"
+     "Der Kunde entscheidet, das Eigentum geht erst bei Entnahme über",
+     "Der Spediteur entscheidet, das Eigentum geht bei Lieferung über"
     ],
     "erklaerung": "Eigentum erst bei Entnahme wäre VMOI bzw. Konsignation (Gesamtskript, S. 406–409)."
    },
@@ -1757,7 +1835,8 @@
      "Er bezahlt erst bei Entnahme und bindet kein Kapital im Bestand",
      "Er plant seine Bestände selbst und bestellt dann beim Lieferanten",
      "Die Haftung bei Schäden ist dadurch automatisch eindeutig geklärt",
-     "Es ist kein Informationsaustausch mit dem Lieferanten mehr nötig"
+     "Es ist kein Informationsaustausch mit dem Lieferanten mehr nötig",
+     "Der Lieferant übernimmt dafür die Produktion des Kunden"
     ],
     "erklaerung": "Kritisch ist gerade die Haftung bei Beschädigung oder Verlust (Gesamtskript, S. 409)."
    },
@@ -1780,7 +1859,8 @@
      "1",
      "100",
      "Eine pro Charge",
-     "Keine, nur Seriennummern"
+     "Keine, nur Seriennummern",
+     "4 (eine pro Palette)"
     ],
     "erklaerung": "Die Artikelnummer kennzeichnet die Artikelart, nicht das einzelne Stück."
    },
@@ -1803,7 +1883,8 @@
      "Seriennummer",
      "Artikelnummer",
      "Losnummer",
-     "GTIN"
+     "GTIN",
+     "HU-Nummer"
     ],
     "erklaerung": "Artikelnummer und GTIN gelten für alle gleichen Geräte, die Losnummer für eine ganze Charge."
    },
@@ -1826,7 +1907,8 @@
      "12",
      "1",
      "7",
-     "3"
+     "3",
+     "4"
     ],
     "erklaerung": "Jede Kombination aus Farbe und Größe ist eine eigene SKU: 3 × 4 = 12."
    },
@@ -1851,7 +1933,8 @@
      "Lot-/Batch-Nummer (Charge)",
      "Seriennummer des einzelnen Akkus",
      "Artikelnummer des Akkumodells",
-     "HU-Nummer der Lieferpalette"
+     "HU-Nummer der Lieferpalette",
+     "GTIN des Akkus"
     ],
     "erklaerung": "Die Charge fasst gemeinsam produzierte Teile zusammen, ideal für Rückrufe."
    },
@@ -1888,7 +1971,8 @@
      "Wenn keine Korrektur oder Anpassung mehr hilft und nur die Neuplanung bleibt",
      "Schon bei jeder kleinen Verspätung, auch wenn die Lieferung noch zu retten ist",
      "Wenn der Kunde den Auftrag selbst storniert, weil er die Ware nicht mehr braucht",
-     "Wenn die Ware noch In-Transit ist und der Liefertermin noch nicht erreicht ist"
+     "Wenn die Ware noch In-Transit ist und der Liefertermin noch nicht erreicht ist",
+     "Wenn ein Auftrag doppelt per EDI angekommen ist"
     ],
     "erklaerung": "Gesamtskript, S. 404: komplette Neuplanung als letzte Handlungsoption."
    },
@@ -1911,7 +1995,8 @@
      "Lieferzusagen einhalten",
      "Erwartete Nachfrage aus dem Lager bedienen",
      "Möglichst hohe Sicherheitsbestände aufbauen",
-     "Große Lose auf Vorrat produzieren"
+     "Große Lose auf Vorrat produzieren",
+     "Lagerkosten durch Produktion auf Vorrat senken"
     ],
     "erklaerung": "VL 4, S. 7. Erwartete Nachfrage bedienen gehört zu Make-to-Stock."
    },
@@ -1935,7 +2020,8 @@
      "Zahnpasta für Supermärkte",
      "Sondermaschinenbau",
      "Werft für Kreuzfahrtschiffe",
-     "Maßanzug-Schneiderei"
+     "Maßanzug-Schneiderei",
+     "Architekturbüro für Einzelhäuser"
     ],
     "erklaerung": "Massenware mit planbarer Nachfrage wird auf Vorrat nach Prognose produziert."
    },
@@ -1959,7 +2045,8 @@
      "Funkpeilung („Indoor-GPS“)",
      "EAN-Barcodes an den Hallenwänden",
      "EDI-Nachrichten zwischen den Geräten",
-     "Den Frachtbrief mit Standortangabe"
+     "Den Frachtbrief mit Standortangabe",
+     "Satellitensignale direkt durch das Hallendach"
     ],
     "erklaerung": "VL 7, S. 28."
    },
@@ -1982,7 +2069,8 @@
      "Kein Sichtkontakt nötig, mehrere Tags gleichzeitig lesbar (Bulk)",
      "RFID ist in der Anschaffung günstiger als ein gedruckter Barcode",
      "RFID-Tags sind für Menschen direkt lesbar, auch ohne Lesegerät",
-     "Metallische Umgebung stört das Lesen von RFID-Tags nie"
+     "Metallische Umgebung stört das Lesen von RFID-Tags nie",
+     "RFID-Tags speichern unbegrenzt viele Daten"
     ],
     "erklaerung": "VL 6, S. 17–20: Anschaffung mittel bis hoch, nicht menschenlesbar, Metall kann stark stören."
    },
@@ -2006,7 +2094,8 @@
      "Unfertige Erzeugnisse, die schon einen Teil der Wertschöpfung durchlaufen haben",
      "Rohstoffe, die noch gar nicht in die Produktion gegangen sind",
      "Fertigerzeugnisse, die verkaufsfertig im Lager auf Kunden warten",
-     "Ware, die bereits versendet, aber beim Kunden noch nicht angekommen ist"
+     "Ware, die bereits versendet, aber beim Kunden noch nicht angekommen ist",
+     "Ware, für die kein Abruf mehr geplant ist"
     ],
     "erklaerung": "Gesamtskript, S. 299. Ware unterwegs = In-Transit."
    },
@@ -2029,7 +2118,8 @@
      "Dead Stock",
      "Eine höhere Umschlaghäufigkeit",
      "Eine kürzere Durchlaufzeit",
-     "Einen geringeren Sicherheitsbestand"
+     "Einen geringeren Sicherheitsbestand",
+     "Einen höheren OTIF-Wert"
     ],
     "erklaerung": "Gesamtskript, S. 389: Ursachen für Dead Stock sind Phase-out und fehlerhafte Forecasts."
    },
@@ -2053,7 +2143,8 @@
      "Sie steigt",
      "Sie sinkt",
      "Sie bleibt gleich",
-     "Sie wird null"
+     "Sie wird null",
+     "Sie halbiert sich"
     ],
     "erklaerung": "Die Bestellfixkosten stehen in der Wurzel im Zähler: x* = √(2 · Bedarf · Fixkosten ÷ (Preis · Lagerkostensatz))."
    },
@@ -2077,7 +2168,8 @@
      "Er kann niedriger sein",
      "Er muss höher sein",
      "Sie hat keinen Einfluss",
-     "Er muss verdoppelt werden"
+     "Er muss verdoppelt werden",
+     "Er wird komplett überflüssig"
     ],
     "erklaerung": "Gesamtskript, S. 380: „Je kürzer die Wiederbeschaffungszeit, desto niedriger kann der Sicherheitsbestand“."
    },
@@ -2100,7 +2192,8 @@
      "Die einzuhaltende Lieferbereitschaft, ggf. mit Eskalationsregeln",
      "Den Preis pro Palettenstellplatz, den der Dienstleister berechnet",
      "Wie Seriennummern für einzelne Produkte vergeben und gespeichert werden",
-     "Welche Angaben zu Absender und Empfänger im Frachtbrief stehen müssen"
+     "Welche Angaben zu Absender und Empfänger im Frachtbrief stehen müssen",
+     "Die Lagerplatzvergabe im WMS"
     ],
     "erklaerung": "Gesamtskript, S. 382."
    },
@@ -2123,7 +2216,8 @@
      "Phase-out von Produkten",
      "Zu hohe OTIF-Quote",
      "Just-in-Time-Belieferung",
-     "Cross-Docking"
+     "Cross-Docking",
+     "Eine hohe Umschlaghäufigkeit"
     ],
     "erklaerung": "Gesamtskript, S. 389: Phase-out und fehlerhafte Forecasts."
    },
@@ -2147,7 +2241,8 @@
      "Verlorene Verkäufe (Lost Sales)",
      "Mehr Dead Stock",
      "Höhere Lagerkosten",
-     "Längere Lieferzeit des Lieferanten"
+     "Längere Lieferzeit des Lieferanten",
+     "Mehr Ware im Konsignationslager"
     ],
     "erklaerung": "Ist das Regal leer, kauft der Kunde woanders (nicht in den Folien)."
    },
@@ -2170,7 +2265,8 @@
      "Die Haftung bei Beschädigung oder Verlust",
      "Der Kunde muss die Ware schon bei Lieferung bezahlen",
      "Der Lieferant weiß nicht, wo seine Ware liegt",
-     "Die Ware darf nie entnommen werden"
+     "Die Ware darf nie entnommen werden",
+     "Der Lieferant muss die Ware sofort nach Lieferung zurücknehmen"
     ],
     "erklaerung": "Gesamtskript, S. 409. Bezahlt wird erst bei Entnahme."
    },
@@ -2207,7 +2303,8 @@
      "24 h",
      "20 h",
      "2 h",
-     "22 h"
+     "22 h",
+     "44 h"
     ],
     "erklaerung": "Durchlaufzeit = Bearbeitungszeit + Liegezeit."
    },
@@ -2231,7 +2328,8 @@
      "Bei zu hoher Variantenvielfalt, dann sequenzierte Bereitstellung",
      "Bei sehr großen Teilen, dann Kommissionierung per Pick-by-Light",
      "Bei sehr wenigen Varianten, dann Cross-Docking direkt an der Linie",
-     "Bei zu schweren KLTs, dann Transport mit autonomen Robotern (AMR)"
+     "Bei zu schweren KLTs, dann Transport mit autonomen Robotern (AMR)",
+     "Bei zu vielen gleichen Teilen, dann Konsignationslager"
     ],
     "erklaerung": "VL 8, S. 41: zu viele Fächer im Supermarkt → Sequenz nach Produktionsreihenfolge (Perlenkette)."
    },
@@ -2255,7 +2353,8 @@
      "Weniger Bestände und Durchlaufzeit bei mehr Flexibilität",
      "Hohe Sicherheitsbestände an jeder Station, damit nichts fehlt",
      "Möglichst große Lose, damit die Rüstkosten sinken",
-     "Lieferungen nur einmal pro Monat bündeln, um Fahrten zu sparen"
+     "Lieferungen nur einmal pro Monat bündeln, um Fahrten zu sparen",
+     "Lager möglichst voll halten, um Lieferzeiten zu verkürzen"
     ],
     "erklaerung": "Gesamtskript, S. 450–451."
    },
@@ -2279,7 +2378,8 @@
      "Die richtige Reihenfolge (Sequenz)",
      "Die richtige Menge (genau so viel wie nötig)",
      "Der richtige Ort (direkt an die Linie)",
-     "Die richtige Qualität (null Fehler)"
+     "Die richtige Qualität (null Fehler)",
+     "Der richtige Zeitpunkt (genau dann, wenn gebraucht)"
     ],
     "erklaerung": "Menge, Ort, Zeit und Qualität gehören schon zu JIT. JIS ergänzt die Sequenz („Perlenkette“)."
    },
@@ -2304,7 +2404,8 @@
      "Feste Route, feste Haltestellen, regelmäßiger Takt, Leergut wird mitgenommen",
      "Er fährt nur auf Abruf direkt zu der Station, die gerade Material braucht",
      "Er liefert große Mengen selten, damit sich jede einzelne Fahrt lohnt",
-     "Er ist ein fahrerloses System, das Hindernisse selbstständig umfährt"
+     "Er ist ein fahrerloses System, das Hindernisse selbstständig umfährt",
+     "Jede Haltestelle wird nur nach Bestellung per EDI angefahren"
     ],
     "erklaerung": "VL 11, S. 32; Gesamtskript, S. 155 und 499: kleine Mengen häufig, Pull-Prinzip."
    },
@@ -2329,7 +2430,8 @@
      "ETD",
      "ASN",
      "OTIF",
-     "AWB"
+     "AWB",
+     "EAN"
     ],
     "erklaerung": "ETD = Estimated Time of Departure (nicht in den Folien)."
    },
@@ -2352,7 +2454,8 @@
      "80 %",
      "85 %",
      "90 %",
-     "76,5 %"
+     "76,5 %",
+     "95 %"
     ],
     "erklaerung": "OTIF zählt nur Lieferungen, die beides erfüllen. 90 % × 85 % = 76,5 % ist nur eine Näherung, wenn man die echten Zahlen nicht kennt."
    },

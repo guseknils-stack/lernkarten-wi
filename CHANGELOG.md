@@ -2,6 +2,13 @@
 
 Neueste Änderungen stehen oben.
 
+## 2026-11-20 – Jede Frage hat 5 Antworten wie im echten Kurztest
+- `data/logistik.json`: Alle 85 Wissensfragen und 18 Eigenschaftsfragen haben eine 5. falsche Antwort bekommen (die richtige steht weiterhin an erster Stelle).
+- `app.js`: Neue Einstellungen `ANTWORTEN = 5` und `FALSCHE`. Bedeutungs-, Begriffs-, Bild- und Bereichsfragen ziehen jetzt 4 statt 3 falsche Antworten. Antworten heißen A bis E.
+- `app.js`: Die Kategorie-Frage ist aus `QUIZ_GEWICHTE` herausgenommen, weil es nur 3 Kategorien gibt und 5 Antworten damit nicht möglich sind. Die Funktion bleibt im Code.
+- `sw.js`: Cache-Version auf v14.
+- Warum: Nils weiß jetzt, dass im Kurztest jede Aufgabe Multiple Choice mit 5 Optionen und genau einer richtigen Antwort ist.
+
 ## 2026-11-08 – Falsche Begriffe öfter, Schwerpunkte, Fehler-Test
 - `app.js` Karteikarten: Begriffe, die schon einmal falsch waren und noch nicht grün sind, stecken zweimal im Stapel (zweites Mal in der zweiten Hälfte). Eine in der Runde falsch beantwortete Karte kommt nach 3 anderen Karten wieder (`NOCHMAL_ABSTAND`) und am Ende der Runde noch einmal.
 - `app.js`: Neue Seite „Schwerpunkte“ (`#schwerpunkte/<fach>`): pro Paket alle Begriffe, die schon einmal falsch waren, mit Fehlerzahl, rot/grün und aufklappbarer Lösung.
